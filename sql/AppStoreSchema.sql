@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS customers (
  	last_name VARCHAR(64) NOT NULL,
  	email VARCHAR(64) UNIQUE NOT NULL,
  	dob DATE NOT NULL,
-	contact_no. NUMERIC(8) NOT NULL);
+	contact_no NUMERIC(8) NOT NULL);
 	
 
 /*
