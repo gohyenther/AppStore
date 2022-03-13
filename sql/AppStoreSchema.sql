@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS offices(
  street VARCHAR(32),
  unit_no VARCHAR(32),
  postal_code NUMERIC(6),
+ vacancy VARCHAR(16),
  FOREIGN KEY (street, unit_no, postal_code) REFERENCES address(street, unit_no, postal_code) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
  PRIMARY KEY (type, street, unit_no, postal_code));
 
