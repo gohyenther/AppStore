@@ -15,8 +15,9 @@ def index(request):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customers ORDER BY customerid")
         customers = cursor.fetchall()
+        offices = cursor.fetchall()
 
-    result_dict = {'records': customers}
+    result_dict = {'records': customers, 'offices': offices}
 
     return render(request,'app/index.html',result_dict)
 
