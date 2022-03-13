@@ -10,6 +10,12 @@ def index(request):
         if request.POST['action'] == 'delete':
             with connection.cursor() as cursor:
                 cursor.execute("DELETE FROM customers WHERE customerid = %s", [request.POST['id']])
+    
+    ## Rent office space
+    if request.POST:
+        if request.POST['action'] == 'rent':
+            with connection.cursor() as cursor:
+                cursor.execute("UPDATE offices SET vacancy = 'NO' WHERE type = %s", [request.POST['id']])
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
