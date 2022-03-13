@@ -15,6 +15,7 @@ def index(request):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customers ORDER BY customerid")
         customers = cursor.fetchall()
+        cursor.execute("SELECT * FROM offices ORDER BY unit")
         offices = cursor.fetchall()
 
     result_dict = {'records': customers, 'offices': offices}
