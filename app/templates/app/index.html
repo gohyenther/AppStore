@@ -39,7 +39,7 @@
     
     <br/><br/>
     <h2>Office Spaces<h2/>
-    <br/><br/>
+    <br/>
     <table border=1>
         <thead>
             <th>Unit</th>
@@ -50,7 +50,6 @@
             <th>Street</th>
             <th>Unit no.</th>
             <th>Postal Code</th>
-            <th>Action</th>
         </thead>
         {% for offi in offices %}
         <tr>
@@ -62,11 +61,6 @@
             <td> {{ offi.5 }} </td>
             <td> {{ offi.6 }} </td>
             <td> {{ offi.7 }} </td>
-            <td>
-                {% csrf_token %}
-                <input type="hidden" name="id" value="{{offi.0}}"/>
-                <button onclick="return confirm('Are you sure you want to rent this unit?');" type="submit" name="action" value="rent">Rent</button> 
-              </form></td>
         </tr>
         {% endfor %}
     </table>
