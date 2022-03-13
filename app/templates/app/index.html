@@ -64,7 +64,7 @@
             <td>
                 <form method="POST" style="display: inline;">
                 {% csrf_token %}
-                <input type="hidden" name="id" value="{{offi.0}}"/>
+                <input type="hidden" name="id" value="{{offi.3}, {offi.5}, {offi.6}, {offi.7}}"/>
                 <button onclick="return confirm('Are you sure you want to rent this {{offi.0}}?');" type="submit" name="action" value="rent">Rent</button> 
               </form></td> 
         </tr>
