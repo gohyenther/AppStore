@@ -62,7 +62,12 @@
             <td> {{ offi.5 }} </td>
             <td> {{ offi.6 }} </td>
             <td> {{ offi.7 }} </td>
+            if ({{offi.8}} == 'YES' {
+            <td style="background-color:#00FF00"> {{ offi.8 }} </td>
+            }
+            else {
             <td style="background-color:#FF0000"> {{ offi.8 }} </td>
+            }
             <td>
                 <form method="POST" style="display: inline;">
                 {% csrf_token %}
