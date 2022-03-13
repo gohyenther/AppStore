@@ -62,13 +62,7 @@
             <td> {{ offi.5 }} </td>
             <td> {{ offi.6 }} </td>
             <td> {{ offi.7 }} </td>
-            <td 
-                @if ({{ offi.8 }} == 'YES')
-                    style="background-color:#00FF00"> {{ offi.8 }}
-                @elseif ({{ offi.8 }} == 'NO')
-                    style="background-color:#FF0000"> {{ offi.8 }}
-                @endif
-            </td>
+            <td style="background-color:#00FF00"> {{ offi.8 }} </td>
             <td>
                 <form method="POST" style="display: inline;">
                 {% csrf_token %}
@@ -77,7 +71,16 @@
                 <input type="hidden" name="id_unit_no" value="{{offi.6}}"/>
                 <input type="hidden" name="id_postal_code" value="{{offi.7}}"/>
                 <button onclick="return confirm('Are you sure you want to rent this {{offi.0}}?');" type="submit" name="action" value="rent">Rent</button> 
-              </form></td> 
+              </form>
+                
+                <form method="POST" style="display: inline;">
+                {% csrf_token %}
+                <input type="hidden" name="id_type" value="{{offi.3}}"/>
+                <input type="hidden" name="id_street" value="{{offi.5}}"/>
+                <input type="hidden" name="id_unit_no" value="{{offi.6}}"/>
+                <input type="hidden" name="id_postal_code" value="{{offi.7}}"/>
+                <button onclick="return confirm('Are you sure you want to vacate this {{offi.0}}?');" type="submit" name="action" value="vacate">Vacate</button> 
+                </form></td> 
         </tr>
         {% endfor %}
     </table>
