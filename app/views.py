@@ -15,7 +15,8 @@ def index(request):
     if request.POST:
         if request.POST['action'] == 'rent':
             with connection.cursor() as cursor:
-                cursor.execute("UPDATE offices SET vacancy = 'NO' WHERE type = %s AND street = %s", [request.POST['id_1'], request.POST['id_2']])
+                cursor.execute("UPDATE offices SET vacancy = 'NO' WHERE type = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                               [request.POST['id_type'], request.POST['id_street'], request.POST['id_unit_no'], request.POST['id_postal_code']])
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
