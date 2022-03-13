@@ -15,7 +15,7 @@
         Last name<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="last_name" value="{{obj.1}}" maxlength="64" class="textinput textInput" required="" id="id_last_name"> </div> </div> <div id="div_id_email" class="control-group"> <label for="id_email" class="control-label requiredField">
         Email<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="email" value="{{obj.2}}" maxlength="64" class="textinput textInput" required="" id="id_email"> </div> </div> <div id="div_id_dob" class="control-group"> <label for="id_dob" class="control-label requiredField">
         Date of birth (yyyy-mm-dd)<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="dob" value="{{obj.3|slugify}}" class="dateinput" required="" id="id_dob"> </div> </div> <div id="div_id_contact_no" class="control-group"> <label for="id_contact_no" class="control-label requiredField">
-        Contact No.<span class="asteriskField">*</span> </label> <div class="controls"> <input type="number" name="contact_no" value="{{obj.4}}" maxlength="8" class="textinput textInput" required="" id="id_contact_no"> </div> </div>
+        Contact No.<span class="asteriskField">*</span> </label> <div class="controls"> <input type="number" name="contact_no" value="{{obj.4}}" maxlength="8" class="numberinput numberInput" required="" id="id_contact_no"> </div> </div>
         
         <br>
         <button type="submit" value="Update">Update</button>
