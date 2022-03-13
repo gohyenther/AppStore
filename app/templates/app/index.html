@@ -62,17 +62,14 @@
             <td> {{ offi.5 }} </td>
             <td> {{ offi.6 }} </td>
             <td> {{ offi.7 }} </td>
-            if ({{offi.8}} == 'YES' {
             <td style="background-color:#00FF00"> {{ offi.8 }} </td>
-            }
-            else {
-            <td style="background-color:#FF0000"> {{ offi.8 }} </td>
-            }
             <td>
                 <form method="POST" style="display: inline;">
                 {% csrf_token %}
-                <input type="hidden" name="id_1" value="{{offi.3}}"/>
-                <input type="hidden" name="id_2" value="{{offi.5}}"/>
+                <input type="hidden" name="id_type" value="{{offi.3}}"/>
+                <input type="hidden" name="id_street" value="{{offi.5}}"/>
+                <input type="hidden" name="id_unit_no" value="{{offi.6}}"/>
+                <input type="hidden" name="id_postal_code" value="{{offi.7}}"/>
                 <button onclick="return confirm('Are you sure you want to rent this {{offi.0}}?');" type="submit" name="action" value="rent">Rent</button> 
               </form></td> 
         </tr>
