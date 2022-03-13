@@ -35,4 +35,4 @@ psql ${URI} -f sql/units.sql
 psql ${URI} -f sql/features.sql
 psql ${URI} -f sql/address.sql
 psql ${URI} -f sql/type.sql
-
+psql ${URI} -f sql/officespaces.sql
