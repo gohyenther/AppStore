@@ -32,6 +32,7 @@ psql ${URI} -f sql/AppStoreClean.sql
 psql ${URI} -f sql/AppStoreSchema.sql
 psql ${URI} -f sql/AppStoreCustomers.sql
 psql ${URI} -f sql/units.sql
-psql ${URI} -f sql/featuress.sql
+psql ${URI} -f sql/features.sql
 psql ${URI} -f sql/address.sql
+psql ${URI} -f sql/type.sql
 
