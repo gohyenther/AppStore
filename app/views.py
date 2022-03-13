@@ -48,7 +48,7 @@ def add(request):
             if customer == None:
                 ##TODO: date validation
                 cursor.execute("INSERT INTO customers VALUES (%s, %s, %s, %s, %s, %s)"
-                        , request.POST['customerid'], [request.POST['first_name'], request.POST['last_name'], request.POST['email'],
+                        , [request.POST['customerid'], request.POST['first_name'], request.POST['last_name'], request.POST['email'],
                            request.POST['dob'] , request.POST['contact_no'] ])
                 return redirect('index')    
             else:
