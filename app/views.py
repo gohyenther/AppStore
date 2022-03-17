@@ -9,7 +9,7 @@ def index(request):
     status = ''
 
     ## Check if admin login?
-    username = request.POST.get('username')
+    username = request.POST['username']
     if (username == 'admin'):
         ##TODO: login to administrator account
         return redirect('administrator')    
