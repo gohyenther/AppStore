@@ -11,7 +11,7 @@ def index(request):
     if request.POST:
         if request.POST['action'] == 'login':
             ## Check if administrator trying to login?
-            if request.POST['username'] == 'admin' and request.POST['pwd'] == 'admin':
+            if lower(request.POST['username']) == 'admin' and request.POST['pwd'] == 'admin':
                 return redirect('administrator')   
             else:
                 status = 'Invalid username and password!'
@@ -86,7 +86,7 @@ def add(request):
                 cursor.execute("INSERT INTO customers VALUES (%s, %s, %s, %s, %s, %s)"
                         , [request.POST['customerid'], request.POST['first_name'], request.POST['last_name'], request.POST['email'],
                            request.POST['dob'] , request.POST['contact_no'] ])
-                return redirect('administrator')    
+                return redirect('administrator')
             else:
                 status = 'Customer with ID %s already exists' % (request.POST['customerid'])
 
@@ -119,6 +119,7 @@ def edit(request, id):
             status = 'Customer edited successfully!'
             cursor.execute("SELECT * FROM customers WHERE customerid = %s", [id])
             obj = cursor.fetchone()
+            return redirect('administrator')
 
     context["obj"] = obj
     context["status"] = status
