@@ -5,11 +5,15 @@
     <br/><br/><br/><br/><br/>
   
     <div style="text-align:center">
-    <form method="POST" style="display: inline;">
-                {% csrf_token %}
-                <input type="hidden" name="id" value=""/>
-                <button type="submit" name="action" value="login">Login</button> 
-    </form>
+        <!-- Create a Form -->
+        <form method="POST" style="display: inline;">
+            <!-- Security token by Django -->
+            {% csrf_token %}
+            <!-- form -->
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" value=""/><br>
+            <button type="submit" name="action" value="login">Login</button> 
+        </form>
     </div>
     
 </body>
