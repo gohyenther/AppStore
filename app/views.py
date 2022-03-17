@@ -8,11 +8,12 @@ def index(request):
     
     if request.POST:
         ## Check if admin login?
-        if request.POST['username'] == 'admin' && request.POST['pwd'] == 'admin':
-            ##TODO: login to administrator account
-            return redirect('administrator')    
-        else:
-            status = 'Invalid username and password!'
+        with connection.cursor() as cursor:
+            if request.POST['username'] == 'admin' && request.POST['pwd'] == 'admin':
+                ##TODO: login to administrator account
+                return redirect('administrator')    
+            else:
+                status = 'Invalid username and password!'
 
 
     context['status'] = status
