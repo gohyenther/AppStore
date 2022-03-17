@@ -15,10 +15,10 @@ def index(request):
             else:
                 status = 'Invalid username and password!'
 
-
-    context['status'] = status
+    context["obj"] = obj
+    context["status"] = status
     
-    return render(request,'app/index.html')
+    return render(request,'app/index.html',context)
 
 
 # ADMINISTRATOR PAGE
