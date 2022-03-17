@@ -15,7 +15,7 @@ def index(request):
             customer = cursor.fetchone()
             ## No customer with same id
             if customer == None:
-                return redirect('index')    
+                return redirect('administrator')    
             else:
                 status = 'Invalid username and password!
 
