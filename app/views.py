@@ -10,7 +10,7 @@ def index(request):
     
     ## Check if admin login?
     if request.POST:
-        if request.POST['action'] == 'login' and request.post['username'] == 'admin':
+        if request.POST['action'] == 'login' and request.POST['username'] == 'admin':
             return redirect('administrator')   
         else:
             status = 'Invalid username and password!'
