@@ -4,8 +4,14 @@ from django.db import connection
 
 # LOGIN PAGE
 def index(request):
-    """Shows the main page"""
+    """Shows the login page"""
+    return render(request,'app/index.html')
 
+
+# CUSTOMER PROFILE PAGE
+def customer_profile(request):
+    """Shows the customer profile page"""
+    
     ## Delete customer
     if request.POST:
         if request.POST['action'] == 'delete':
@@ -34,20 +40,13 @@ def index(request):
         offices = cursor.fetchall()
 
     result_dict = {'records': customers, 'offices': offices}
-
-    return render(request,'app/index.html',result_dict)
-
-
-# CUSTOMER PROFILE PAGE
-def customer_profile(request):
-    """Shows the login page"""
-
-    return render(request,'app/customer_profile.html')
+    
+    return render(request,'app/customer_profile.html',result_dict)
 
 
-# Create your views here.
+# VIEW PAGE
 def view(request, id):
-    """Shows the main page"""
+    """Shows the view page"""
     
     ## Use raw query to get a customer
     with connection.cursor() as cursor:
@@ -58,9 +57,9 @@ def view(request, id):
     return render(request,'app/view.html',result_dict)
 
 
-# Create your views here.
+# ADD CUSTOMERS PAGE
 def add(request):
-    """Shows the main page"""
+    """Shows the add customers page"""
     context = {}
     status = ''
 
@@ -86,7 +85,7 @@ def add(request):
     return render(request, "app/add.html", context)
 
 
-# Create your views here.
+# EDIT CUSTOMER PROFILE PAGE
 def edit(request, id):
     """Shows the main page"""
 
