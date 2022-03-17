@@ -2,6 +2,14 @@ from django.shortcuts import render, redirect
 from django.db import connection
 
 # Create your views here.
+def login(request):
+    """Shows the login page"""
+    
+    ## Use raw query to get all objects
+
+    return render(request,'app/login.html')
+
+
 def index(request):
     """Shows the main page"""
 
@@ -36,6 +44,7 @@ def index(request):
 
     return render(request,'app/index.html',result_dict)
 
+
 # Create your views here.
 def view(request, id):
     """Shows the main page"""
@@ -47,6 +56,7 @@ def view(request, id):
     result_dict = {'cust': customer}
 
     return render(request,'app/view.html',result_dict)
+
 
 # Create your views here.
 def add(request):
@@ -74,6 +84,7 @@ def add(request):
     context['status'] = status
  
     return render(request, "app/add.html", context)
+
 
 # Create your views here.
 def edit(request, id):
