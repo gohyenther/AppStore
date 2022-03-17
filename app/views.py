@@ -5,7 +5,19 @@ from django.db import connection
 # LOGIN PAGE
 def index(request):
     """Shows the login page"""
-    return render(request,'app/index.html')
+    
+    if request.POST:
+        ## Check if admin login?
+        if request.POST['username'] == 'admin' && request.POST['pwd'] == 'admin':
+            ##TODO: login to administrator account
+            return redirect('administrator')    
+        else:
+            status = 'Invalid username and password!'
+
+
+    context['status'] = status
+    
+    return render(request,'app/index.html', context)
 
 
 # ADMINISTRATOR PAGE
@@ -85,7 +97,7 @@ def add(request):
     return render(request, "app/add.html", context)
 
 
-# EDIT CUSTOMER PROFILE PAGE
+# EDIT CUSTOMER PAGE
 def edit(request, id):
     """Shows the main page"""
 
