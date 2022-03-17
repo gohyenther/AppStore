@@ -3,7 +3,7 @@ from django.db import connection
 
 
 # LOGIN PAGE
-def index(request):
+def index(request, username):
     """Shows the login page"""
     context = {}
     status = ''
@@ -11,7 +11,7 @@ def index(request):
     if request.POST:
         ## Check if admin login?
         with connection.cursor() as cursor:
-            if (request.POST['username'] == 'admin') and (request.POST['pwd'] == 'admin'):
+            if (username == 'admin'):
                 ##TODO: login to administrator account
                 return redirect('administrator')    
             else:
