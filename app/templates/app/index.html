@@ -3,17 +3,6 @@
     <br/>
     <h1 style="text-align:center">Welcome to Hot-Desk App</h1>
     <br/><br/><br/><br/><br/>
-    
-    <!-- Create a Form -->
-    <form style="text-align:center" method="POST">
-      <!-- Security token by Django -->
-      {% csrf_token %}
-      <!-- form -->
-      <label for="username">Username:</label><br>
-      <input type="text" id="username" name="username"><br>
-      <label for="pwd">Password:</label><br>
-      <input type="password" id="pwd" name="pwd">
-    </form>
   
     <div style="text-align:center">
       <button type="submit" name="action" value="login">Login</button>
