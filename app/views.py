@@ -11,9 +11,9 @@ def index(request):
     if request.POST:
         ## Check if admin login?
         with connection.cursor() as cursor:
-            if request.POST['username'] == 'admin' && request.POST['pwd'] == 'admin':
+            obj = cursor.fetchone()
+            if (request.POST['username'] == 'admin') and (request.POST['pwd'] == 'admin'):
                 ##TODO: login to administrator account
-                obj = cursor.fetchone()
                 return redirect('administrator')    
             else:
                 status = 'Invalid username and password!'
