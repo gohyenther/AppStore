@@ -17,7 +17,7 @@ def index(request):
 
     context['status'] = status
     
-    return render(request,'app/index.html', context)
+    return render(request,'app/index.html')
 
 
 # ADMINISTRATOR PAGE
