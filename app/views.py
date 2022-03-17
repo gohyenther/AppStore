@@ -8,13 +8,15 @@ def index(request):
     context = {}
     status = ''
     
-    ## Check if admin login?
     if request.POST:
-        if request.POST['action'] == 'login' and request.POST['username'] == 'admin':
-            return redirect('administrator')   
-        else:
-            status = 'Invalid username and password!'
+        if request.POST['action'] == 'login':
+            ## Check if administrator trying to login?
+            if request.POST['username'] == 'admin' and request.POST['pwd'] == 'admin':
+                return redirect('administrator')   
+            else:
+                status = 'Invalid username and password!'
     
+    context['status'] = status
     return render(request,'app/index.html',context)
 
 
@@ -50,11 +52,10 @@ def administrator(request):
         offices = cursor.fetchall()
 
     result_dict = {'records': customers, 'offices': offices}
-    
     return render(request,'app/administrator.html',result_dict)
 
 
-# VIEW PAGE
+# VIEW CUSTOMERS DETAILS PAGE
 def view(request, id):
     """Shows the view page"""
     
@@ -89,9 +90,7 @@ def add(request):
             else:
                 status = 'Customer with ID %s already exists' % (request.POST['customerid'])
 
-
     context['status'] = status
- 
     return render(request, "app/add.html", context)
 
 
@@ -121,8 +120,6 @@ def edit(request, id):
             cursor.execute("SELECT * FROM customers WHERE customerid = %s", [id])
             obj = cursor.fetchone()
 
-
     context["obj"] = obj
     context["status"] = status
- 
     return render(request, "app/edit.html", context)
