@@ -7,15 +7,14 @@ def index(request):
     """Shows the login page"""
     context = {}
     status = ''
-    
-    if request.POST:
-        ## Check if admin login?
-        username = request.POST.get('username')
-        if (username == 'admin'):
-            ##TODO: login to administrator account
-            return redirect('administrator')    
-        else:
-            status = 'Invalid username and password!'
+
+    ## Check if admin login?
+    username = request.POST.get('username')
+    if (username == 'admin'):
+        ##TODO: login to administrator account
+        return redirect('administrator')    
+    else:
+        status = 'Invalid username and password!'
 
     context["status"] = status
     
