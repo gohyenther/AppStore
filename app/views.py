@@ -8,9 +8,9 @@ def index(request):
     return render(request,'app/index.html')
 
 
-# CUSTOMER PROFILE PAGE
-def customer_profile(request):
-    """Shows the customer profile page"""
+# ADMINISTRATOR PAGE
+def administrator(request):
+    """Shows the administrator profile page"""
     
     ## Delete customer
     if request.POST:
@@ -41,7 +41,7 @@ def customer_profile(request):
 
     result_dict = {'records': customers, 'offices': offices}
     
-    return render(request,'app/customer_profile.html',result_dict)
+    return render(request,'app/administrator.html',result_dict)
 
 
 # VIEW PAGE
