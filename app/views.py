@@ -10,12 +10,14 @@ def index(request):
 
     ## Check if admin login?
     if request.POST:
-        username = request.POST['username']
-        if (username == 'admin'):
-            ##TODO: login to administrator account
-            return redirect('administrator')    
-        else:
-            status = 'Invalid username and password!'
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM customers WHERE customerid = %s", [request.POST['admin']])
+            customer = cursor.fetchone()
+            ## No customer with same id
+            if customer == None:
+                return redirect('index')    
+            else:
+                status = 'Invalid username and password!
 
     context["status"] = status
     
