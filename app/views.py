@@ -11,14 +11,12 @@ def index(request):
     if request.POST:
         ## Check if admin login?
         with connection.cursor() as cursor:
-            obj = cursor.fetchone()
             if (request.POST['username'] == 'admin') and (request.POST['pwd'] == 'admin'):
                 ##TODO: login to administrator account
                 return redirect('administrator')    
             else:
                 status = 'Invalid username and password!'
 
-    context["obj"] = obj
     context["status"] = status
     
     return render(request,'app/index.html',context)
