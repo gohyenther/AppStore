@@ -3,19 +3,19 @@ from django.db import connection
 
 
 # LOGIN PAGE
-def index(request, username):
+def index(request):
     """Shows the login page"""
     context = {}
     status = ''
     
     if request.POST:
         ## Check if admin login?
-        with connection.cursor() as cursor:
-            if (username == 'admin'):
-                ##TODO: login to administrator account
-                return redirect('administrator')    
-            else:
-                status = 'Invalid username and password!'
+        username = request.POST.get('username')
+        if (username == 'admin'):
+            ##TODO: login to administrator account
+            return redirect('administrator')    
+        else:
+            status = 'Invalid username and password!'
 
     context["status"] = status
     
