@@ -1,1 +1,88 @@
-
+<html>
+<body>
+    <h1 style="text-align:center">Welcome to Hot-Desk App</h1>
+    <br/>
+    
+    <h2>Customers Section<h2/>
+    <a href="add">Click here to add New customer</a>
+    <br/><br/>
+    <table border=1>
+        <thead>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>D.O.B</th>
+            <th>Contact No.</th>
+            <th>Action</th>
+        </thead>
+        {% for cust in records %}
+        <tr>
+            <td> {{ cust.0 }} </td>
+            <td> {{ cust.1 }} </td>
+            <td> {{ cust.2 }} </td>
+            <td> {{ cust.3 }} </td>
+            <td> {{ cust.4 }} </td>
+            <td> {{ cust.5 }} </td>
+            <td>
+                <a href="view/{{cust.0}}"><button>View</button></a> | 
+                <a href="edit/{{cust.0}}"><button>Edit</button></a>
+                | 
+                <form method="POST" style="display: inline;">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{cust.0}}"/>
+                <button onclick="return confirm('Are you sure you want to delete {{cust.0}}?');" type="submit" name="action" value="delete">Delete</button> 
+              </form></td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <br/><br/>
+    <h2>Office Spaces<h2/>
+    <table border=1>
+        <thead>
+            <th>Unit</th>
+            <th>Features</th>
+            <th>Timescale</th>
+            <th>Type</th>
+            <th>Size (s.f.)</th>
+            <th>Street</th>
+            <th>Unit no.</th>
+            <th>Postal Code</th>
+            <th>VACANCY</th>
+            <th>Action</th>
+        </thead>
+        {% for offi in offices %}
+        <tr>
+            <td> {{ offi.0 }} </td>
+            <td> {{ offi.1 }} </td>
+            <td> {{ offi.2 }} </td>
+            <td> {{ offi.3 }} </td>
+            <td> {{ offi.4 }} </td>
+            <td> {{ offi.5 }} </td>
+            <td> {{ offi.6 }} </td>
+            <td> {{ offi.7 }} </td>
+            <td style="background-color:#00FF00"> {{ offi.8 }} </td>
+            <td>
+                <form method="POST" style="display: inline;">
+                {% csrf_token %}
+                <input type="hidden" name="id_type" value="{{offi.3}}"/>
+                <input type="hidden" name="id_street" value="{{offi.5}}"/>
+                <input type="hidden" name="id_unit_no" value="{{offi.6}}"/>
+                <input type="hidden" name="id_postal_code" value="{{offi.7}}"/>
+                <button onclick="return confirm('Are you sure you want to rent this {{offi.0}}?');" type="submit" name="action" value="rent">Rent</button> 
+              </form>
+                
+                <form method="POST" style="display: inline;">
+                {% csrf_token %}
+                <input type="hidden" name="id_type" value="{{offi.3}}"/>
+                <input type="hidden" name="id_street" value="{{offi.5}}"/>
+                <input type="hidden" name="id_unit_no" value="{{offi.6}}"/>
+                <input type="hidden" name="id_postal_code" value="{{offi.7}}"/>
+                <button onclick="return confirm('Are you sure you want to vacate this {{offi.0}}?');" type="submit" name="action" value="vacate">Vacate</button> 
+                </form></td> 
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
