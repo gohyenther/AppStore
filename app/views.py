@@ -1,13 +1,8 @@
 from django.shortcuts import render, redirect
 from django.db import connection
 
+
 # Create your views here.
-def login(request):
-    """Shows the login page"""
-
-    return render(request,'app/login.html')
-
-
 def index(request):
     """Shows the main page"""
 
@@ -41,6 +36,12 @@ def index(request):
     result_dict = {'records': customers, 'offices': offices}
 
     return render(request,'app/index.html',result_dict)
+
+
+def customer_profile(request):
+    """Shows the login page"""
+
+    return render(request,'app/customer_profile.html')
 
 
 # Create your views here.
