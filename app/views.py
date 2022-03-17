@@ -5,19 +5,12 @@ from django.db import connection
 # LOGIN PAGE
 def index(request):
     """Shows the login page"""
-    context = {}
-    status = ''
-
     ## Check if admin login?
     if request.POST:
         if request.POST['action'] == 'login':
             return redirect('administrator')    
-        else:
-            status = 'Invalid username and password!'
-
-    context["status"] = status
     
-    return render(request,'app/index.html',context)
+    return render(request,'app/index.html')
 
 
 # ADMINISTRATOR PAGE
