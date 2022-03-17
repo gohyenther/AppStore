@@ -119,6 +119,7 @@ def edit(request, id):
             status = 'Customer edited successfully!'
             cursor.execute("SELECT * FROM customers WHERE customerid = %s", [id])
             obj = cursor.fetchone()
+            return redirect('administrator')
 
     context["obj"] = obj
     context["status"] = status
