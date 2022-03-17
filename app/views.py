@@ -17,7 +17,7 @@ def index(request):
             if customer == None:
                 return redirect('administrator')    
             else:
-                status = 'Invalid username and password!
+                status = 'Invalid username and password!'
 
     context["status"] = status
     
