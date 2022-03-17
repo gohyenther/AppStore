@@ -9,12 +9,13 @@ def index(request):
     status = ''
 
     ## Check if admin login?
-    username = request.POST['username']
-    if (username == 'admin'):
-        ##TODO: login to administrator account
-        return redirect('administrator')    
-    else:
-        status = 'Invalid username and password!'
+    if request.POST:
+        username = request.POST['username']
+        if (username == 'admin'):
+            ##TODO: login to administrator account
+            return redirect('administrator')    
+        else:
+            status = 'Invalid username and password!'
 
     context["status"] = status
     
