@@ -11,7 +11,7 @@ def index(request):
     ## Check if admin login?
     if request.POST:
         with connection.cursor() as cursor:
-            cursor.execute("SELECT * FROM customers WHERE customerid = %s", [request.POST['admin']])
+            cursor.execute("SELECT * FROM customers WHERE customerid = %s", [request.POST['username']])
             customer = cursor.fetchone()
             ## No customer with same id
             if customer == None:
