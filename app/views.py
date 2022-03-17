@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.db import connection
 
 
-# Create your views here.
+# LOGIN PAGE
 def index(request):
     """Shows the main page"""
 
@@ -38,6 +38,7 @@ def index(request):
     return render(request,'app/index.html',result_dict)
 
 
+# CUSTOMER PROFILE PAGE
 def customer_profile(request):
     """Shows the login page"""
 
