@@ -57,4 +57,5 @@ CREATE TABLE IF NOT EXISTS offices(
  PRIMARY KEY (customerid, name, version),
  FOREIGN KEY (name, version) REFERENCES games(name, version) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED);
  
+ 
 */
