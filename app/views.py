@@ -14,8 +14,8 @@ def index(request):
             if request.POST['username'] == 'admin' or request.POST['username'] == 'Admin':
                 if request.POST['pwd'] == 'admin'or request.POST['pwd'] == 'Admin':     
                     return redirect('administrator')   
-            else:
-                status = 'Invalid username and password!'
+                else:
+                    status = 'Invalid username and password!'
     
     context['status'] = status
     return render(request,'app/index.html',context)
