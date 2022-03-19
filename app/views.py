@@ -16,6 +16,9 @@ def index(request):
                     return redirect('administrator')   
                 else:
                     status = 'Invalid username and password!'
+            ##else:
+                ## customers login
+                ##return redirect('customerprofile')
     
     context['status'] = status
     return render(request,'app/index.html',context)
