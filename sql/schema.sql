@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS workcubes(
  occupier VARCHAR(16),
  rate NUMERIC(32),
  FOREIGN KEY (street, unit_no, postal_code) REFERENCES address(street, unit_no, postal_code) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
- PRIMARY KEY (type, street, unit_no, postal_code));
+ PRIMARY KEY (unit, street, unit_no, postal_code));
 
 
 CREATE TABLE IF NOT EXISTS confrooms(
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS confrooms(
  occupier VARCHAR(16),
  rate NUMERIC(32),
  FOREIGN KEY (street, unit_no, postal_code) REFERENCES address(street, unit_no, postal_code) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
- PRIMARY KEY (type, street, unit_no, postal_code));
+ PRIMARY KEY (unit, street, unit_no, postal_code));
 	
 	
 CREATE TABLE IF NOT EXISTS storages(
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS storages(
  occupier VARCHAR(16),
  rate NUMERIC(32),
  FOREIGN KEY (street, unit_no, postal_code) REFERENCES address(street, unit_no, postal_code) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
- PRIMARY KEY (type, street, unit_no, postal_code));
+ PRIMARY KEY (unit, street, unit_no, postal_code));
 
 
 CREATE TABLE IF NOT EXISTS unf_units(
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS unf_units(
  occupier VARCHAR(16),
  rate NUMERIC(32),
  FOREIGN KEY (street, unit_no, postal_code) REFERENCES address(street, unit_no, postal_code) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
- PRIMARY KEY (type, street, unit_no, postal_code));
+ PRIMARY KEY (unit, street, unit_no, postal_code));
  
  
 /* if it exists in the table rent, then no vacancy */
