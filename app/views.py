@@ -172,9 +172,9 @@ def addoffice(request):
             office = cursor.fetchone()
             ## No same office
             if office == None:
-                cursor.execute("INSERT INTO offices VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                cursor.execute("INSERT INTO offices VALUES (%s, %s, %s, %s, %s, %s, %s, %s, NULL, %s)",
                                [request.POST['unit'], request.POST['features'], request.POST['timescale'], request.POST['type'],
-                                request.POST['size_sf'], request.POST['street'], request.POST['unit_no'], request.POST['postal_code'], NULL, request.POST['rate']])
+                                request.POST['size_sf'], request.POST['street'], request.POST['unit_no'], request.POST['postal_code'], request.POST['rate']])
                 return redirect('administrator')
             else:
                 status = '%s with this address already exists!' %(request.POST['unit'])
