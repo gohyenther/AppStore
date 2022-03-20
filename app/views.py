@@ -24,7 +24,7 @@ def index(request):
                     customer = cursor.fetchone()
                 if customer != None:
                     # valid login
-                    return redirect('customerprofile');
+                    return redirect('customerprofile/' + request.POST['username']);
                 else:
                     status = 'Invalid username and password!'
     
