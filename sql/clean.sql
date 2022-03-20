@@ -4,7 +4,6 @@
 
 *******************/
 
-DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS offices;
 DROP TABLE IF EXISTS workcubes;
 DROP TABLE IF EXISTS confrooms;
@@ -16,3 +15,6 @@ DROP TABLE IF EXISTS features;
 DROP TABLE IF EXISTS type;
 DROP TABLE IF EXISTS address;
 DROP TABLE IF EXISTS transaction;
+DROP TABLE IF EXISTS customers;
+
+
