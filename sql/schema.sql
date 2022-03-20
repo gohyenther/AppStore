@@ -118,6 +118,7 @@ CREATE TABLE IF NOT EXISTS unf_units(
  FOREIGN KEY (street, unit_no, postal_code) REFERENCES address(street, unit_no, postal_code) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
  PRIMARY KEY (type, street, unit_no, postal_code));
  
+ 
 /* if it exists in the table rent, then no vacancy */
 CREATE TABLE IF NOT EXISTS rent(
  customerid VARCHAR(16) REFERENCES customers(customerid) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
@@ -127,7 +128,7 @@ CREATE TABLE IF NOT EXISTS rent(
  postal_code NUMERIC(6),
  PRIMARY KEY (customerid, unit, street, unit_no, postal_code),
  /* REFERENCES TO EITHER offices, workcubes, confrooms, storages or unf_units */
- FOREIGN KEY (unit, street, unit_no, postal_code) REFERENCES address(unit, street, unit_no, postal_code) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED);
+ FOREIGN KEY (street, unit_no, postal_code) REFERENCES address(street, unit_no, postal_code) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED);
  
 	
 /* transaction == payment table */
@@ -137,18 +138,3 @@ CREATE TABLE IF NOT EXISTS transaction(
  
  
  
- 
- 
-
-/*
-
-
-  
- CREATE TABLE downloads(
- customerid VARCHAR(16) REFERENCES customers(customerid) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
- name VARCHAR(32),
- version CHAR(3),
- PRIMARY KEY (customerid, name, version),
- FOREIGN KEY (name, version) REFERENCES games(name, version) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED);
- 
-*/
