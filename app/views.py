@@ -42,7 +42,7 @@ def customerprofile(request, id):
             with connection.cursor() as cursor:
                 cursor.execute("UPDATE offices SET occupier = %s WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [id, request.POST['office_unit'], request.POST['office_street'], request.POST['office_unit_no'], request.POST['office_postal_code']])
-                cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s",
+                cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s)",
                                [id, request.POST['office_unit'], request.POST['office_street'], request.POST['office_unit_no'], request.POST['office_postal_code']])
          
     ## Vacate office space
