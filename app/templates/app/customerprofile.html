@@ -39,7 +39,7 @@
             <th>Street</th>
             <th>Unit No.</th>
             <th>Postal Code</th>
-            <th>Action</th>
+            <th style="color:red">Action</th>
         </thead>
         
         {% for rent in rented %}
@@ -64,8 +64,9 @@
         {% endfor %}
     </table>
     <br/><br/>
-            
-    <h2>Office Spaces<h2/>
+    
+    <h2 style="text-align:center" style="color:green">Available spaces for rent<h2/>
+    <h2 style="color:blue">Office Spaces<h2/>
     <table border=1>
         <thead>
             <th>Unit</th>
@@ -78,6 +79,7 @@
             <th>Postal Code</th>
             <th>Occupier</th>
             <th>Rate ($/Timescale)</th>
+            <th style="color:green">Action</th>
         </thead>
         {% for offi in offices %}
         <tr>
