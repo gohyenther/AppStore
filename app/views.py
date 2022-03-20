@@ -170,6 +170,13 @@ def addoffice(request):
             cursor.execute("SELECT * FROM offices WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                            [request.POST['unit'], request.POST['street'], request.POST['unit_no'], request.POST['postal_code']])
             office = cursor.fetchone()
+            cursor.execute("SELECT * FROM address WHERE street = %s AND unit_no = %s AND postal_code = %s",
+                           [request.POST['street'], request.POST['unit_no'], request.POST['postal_code']])
+            address = cursor.fetchone()
+            ## No such address
+            if address == None:
+                cursor.execute("INSERT INTO address VALUES (%s, %s, %s)",
+                               [request.POST['street'], request.POST['unit_no'], request.POST['postal_code']])
             ## No same office
             if office == None:
                 cursor.execute("INSERT INTO offices VALUES (%s, %s, %s, %s, %s, %s, %s, %s, NULL, %s)",
