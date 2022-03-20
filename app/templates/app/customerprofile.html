@@ -3,8 +3,9 @@
     <br/>
     <h1 style="text-align:center">Welcome to Hot-Desk</h1>
     <br/>
+    {% for cust in records %}
     
-    <h2 style="text-align:center">Hello User!<h2/>
+    <h2 style="text-align:center">Hello {{cust.1}}!<h2/>
     <br/>
       
     <table border=1>
@@ -17,7 +18,7 @@
             <th>Contact No.</th>
             <th>Action</th>
         </thead>
-        {% for cust in records %}
+        
         <tr>
             <td> {{ cust.0 }} </td>
             <td> {{ cust.1 }} </td>
@@ -58,7 +59,7 @@
             <td> {{ offi.5 }} </td>
             <td> {{ offi.6 }} </td>
             <td> {{ offi.7 }} </td>
-            <td style="background-color:#00FF00"> {{ offi.8 }} </td>
+            <td> {{ offi.8 }} </td>
             <td> {{ offi.9 }} </td>
             <td>
                 <form method="POST" style="display: inline;">
