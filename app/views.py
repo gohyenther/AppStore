@@ -52,7 +52,7 @@ def customerprofile(request, id):
                 cursor.execute("UPDATE offices SET occupier = NULL WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
                 cursor.execute("DELETE FROM rent WHERE customerid = %s AND unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
-                               [id, request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
+                               [request.POST['rent_customerid'], request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
