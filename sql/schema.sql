@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS offices(
  occupier VARCHAR(16),
  rate NUMERIC(32),
  FOREIGN KEY (street, unit_no, postal_code) REFERENCES address(street, unit_no, postal_code) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
- PRIMARY KEY (type, street, unit_no, postal_code));
+ PRIMARY KEY (unit, street, unit_no, postal_code));
 
 
 CREATE TABLE IF NOT EXISTS workcubes(
