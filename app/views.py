@@ -56,8 +56,10 @@ def customerprofile(request, id):
         customers = cursor.fetchall()
         cursor.execute("SELECT * FROM offices WHERE occupier ISNULL ORDER BY unit")
         offices = cursor.fetchall()
+        cursor.execute("SELECT * FROM rent WHERE customerid = %s", [id])
+        rented = cursor.fetchall()
 
-    result_dict = {'records': customers, 'offices': offices}
+    result_dict = {'records': customers, 'offices': offices, 'rented': rented}
     return render(request,'app/customerprofile.html',result_dict)
 
 
