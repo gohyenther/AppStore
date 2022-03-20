@@ -54,7 +54,7 @@ def customerprofile(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customers WHERE customerid = %s", [id])
         customers = cursor.fetchall()
-        cursor.execute("SELECT * FROM offices ORDER BY unit WHERE occupier ISNULL")
+        cursor.execute("SELECT * FROM offices WHERE occupier ISNULL ORDER BY unit")
         offices = cursor.fetchall()
 
     result_dict = {'records': customers, 'offices': offices}
