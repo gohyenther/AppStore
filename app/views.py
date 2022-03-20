@@ -167,17 +167,18 @@ def addoffice(request):
     if request.POST:
         ## Check if customerid is already in the table
         with connection.cursor() as cursor:
-            cursor.execute("SELECT * FROM customers WHERE customerid = %s", [request.POST['customerid']])
-            customer = cursor.fetchone()
+            cursor.execute("SELECT * FROM offices WHERE unit = %s AND street = %s",
+                           [request.POST['unit'], request.POST['street']])
+            office = cursor.fetchone()
             ## No customer with same id
-            if customer == None:
+            if office == None:
                 ##TODO: date validation
-                cursor.execute("INSERT INTO customers VALUES (%s, %s, %s, %s, %s, %s)"
-                        , [request.POST['customerid'], request.POST['first_name'], request.POST['last_name'], request.POST['email'],
-                           request.POST['dob'] , request.POST['contact_no'] ])
+                cursor.execute("INSERT INTO offices VALUES (%s, %s, %s, %s, %s, %s)",
+                               [request.POST['unit'], request.POST['feature'], request.POST['timescale'], request.POST['type'],
+                                request.POST['size'] , request.POST['street'] ])
                 return redirect('administrator')
             else:
-                status = 'Customer with ID %s already exists' % (request.POST['customerid'])
+                status = 'Office with unit %s and street %s already exists' %(request.POST['unit']) %(request.POST['street'])
 
     context['status'] = status
     return render(request, "app/addoffice.html", context)
