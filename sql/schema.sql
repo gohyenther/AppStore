@@ -133,8 +133,11 @@ CREATE TABLE IF NOT EXISTS rent(
 	
 /* transaction == payment table */
 CREATE TABLE IF NOT EXISTS transaction(
- customerid VARCHAR(16) REFERENCES customers(customerid)
-	);
+ customerid VARCHAR(16) REFERENCES customers(customerid));
  
  
+/* login credentials */
+CREATE TABLE IF NOT EXISTS login(
+ username VARCHAR(16) REFERENCES customers(customerid)
+ password VARCHAR(16) NOT NULL);
  
