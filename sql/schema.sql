@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS type(
 CREATE TABLE IF NOT EXISTS features(
  items VARCHAR(32) PRIMARY KEY);
 
+
 /* this address table exists only to be referrenced to ensure address is valid, removed rate*/
 CREATE TABLE IF NOT EXISTS address(
  street VARCHAR(32),
@@ -34,12 +35,12 @@ CREATE TABLE IF NOT EXISTS address(
 	
 /* each address are already unique 
 we can treat this as product table
-so im thinking to include rate here not address (together with timescale)
-so when we calculate payable amount we dont need to joint tables*/	
+so im thinking to include rate here not in address (together with timescale)
+so when we calculate payable amount we don't need to join tables*/	
 
 /* changed the vacancy column to occupier column
-it will contain the customerid when occupied
-and NULL when unoccupied */
+it will contain the customerid if occupied,
+and NULL if unoccupied */
 
 CREATE TABLE IF NOT EXISTS offices(
  unit VARCHAR(32) REFERENCES units(purpose) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
@@ -116,7 +117,7 @@ CREATE TABLE IF NOT EXISTS unf_units(
  PRIMARY KEY (unit, street, unit_no, postal_code));
  
  
-/* if it exists in the table rent, then no vacancy */
+/* if it exists in the table rent, then occupier = NULL in office spaces, workcubes, confrooms, storages, unf_units */
 CREATE TABLE IF NOT EXISTS rent(
  customerid VARCHAR(16) REFERENCES customers(customerid) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
  unit VARCHAR(32) REFERENCES units(purpose) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
