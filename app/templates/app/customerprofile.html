@@ -99,6 +99,7 @@
             <td>
                 <form method="POST" style="display: inline;">
                 {% csrf_token %}
+                <input type="hidden" name="office_customerid" value="{{cust.0}}"/>
                 <input type="hidden" name="office_unit" value="{{offi.0}}"/>
                 <input type="hidden" name="office_street" value="{{offi.5}}"/>
                 <input type="hidden" name="office_unit_no" value="{{offi.6}}"/>
