@@ -138,6 +138,6 @@ CREATE TABLE IF NOT EXISTS transaction(
  
 /* login credentials */
 CREATE TABLE IF NOT EXISTS login(
- username VARCHAR(16) REFERENCES customers(customerid)
+ username VARCHAR(16) REFERENCES customers(customerid),
  password VARCHAR(16) NOT NULL);
  
