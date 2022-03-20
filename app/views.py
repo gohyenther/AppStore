@@ -32,6 +32,35 @@ def index(request):
     return render(request,'app/index.html',context)
 
 
+# CUSTOMERPROFILE PAGE
+def customerprofile(request, id):
+    """Shows the customer profile page"""
+    
+    ## Rent office space
+    if request.POST:
+        if request.POST['action'] == 'rent':
+            with connection.cursor() as cursor:
+                cursor.execute("UPDATE offices SET vacancy = 'NO' WHERE type = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                               [request.POST['id_type'], request.POST['id_street'], request.POST['id_unit_no'], request.POST['id_postal_code']])
+                
+    ## Vacate office space
+    if request.POST:
+        if request.POST['action'] == 'vacate':
+            with connection.cursor() as cursor:
+                cursor.execute("UPDATE offices SET vacancy = 'YES' WHERE type = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                               [request.POST['id_type'], request.POST['id_street'], request.POST['id_unit_no'], request.POST['id_postal_code']])
+
+    ## Use raw query to get all objects
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM customers ORDER BY customerid")
+        customers = cursor.fetchall()
+        cursor.execute("SELECT * FROM offices ORDER BY unit")
+        offices = cursor.fetchall()
+
+    result_dict = {'records': customers, 'offices': offices}
+    return render(request,'app/customerprofile.html',result_dict)
+
+
 # ADMINISTRATOR PAGE
 def administrator(request):
     """Shows the administrator profile page"""
