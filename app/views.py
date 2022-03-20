@@ -165,17 +165,16 @@ def addoffice(request):
     status = ''
 
     if request.POST:
-        ## Check if customerid is already in the table
+        ## Check if office unit, street, unit_no, postal_code is already in the table
         with connection.cursor() as cursor:
-            cursor.execute("SELECT * FROM offices WHERE unit = %s AND street = %s",
-                           [request.POST['unit'], request.POST['street']])
+            cursor.execute("SELECT * FROM offices WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                           [request.POST['unit'], request.POST['street'], request.POST['unit_no'], request.POST['postal_code']])
             office = cursor.fetchone()
-            ## No customer with same id
+            ## No same office
             if office == None:
-                ##TODO: date validation
-                cursor.execute("INSERT INTO offices VALUES (%s, %s, %s, %s, %s, %s)",
-                               [request.POST['unit'], request.POST['feature'], request.POST['timescale'], request.POST['type'],
-                                request.POST['size'] , request.POST['street'] ])
+                cursor.execute("INSERT INTO offices VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                               [request.POST['unit'], request.POST['features'], request.POST['timescale'], request.POST['type'],
+                                request.POST['size_sf'], request.POST['street'], request.POST['unit_no'], request.POST['postal_code'], NULL, request.POST['rate']])
                 return redirect('administrator')
             else:
                 status = 'Office with unit %s and street %s already exists' %(request.POST['unit']) %(request.POST['street'])
