@@ -24,7 +24,8 @@ urlpatterns = [
     path('', app.views.index, name='index'),
     path('customerprofile/<str:id>', app.views.customerprofile, name='customerprofile'),
     path('administrator', app.views.administrator, name='administrator'),
-    path('add', app.views.add, name='add'),
+    path('addcustomer', app.views.addcustomer, name='addcustomer'),
+    path('addoffice', app.views.addoffice, name='addoffice'),
     path('view/<str:id>', app.views.view, name='view'),
     path('edit/<str:id>', app.views.edit, name='edit'),
 ]
