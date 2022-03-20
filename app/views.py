@@ -53,6 +53,15 @@ def customerprofile(request, id):
                                [request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
                 cursor.execute("DELETE FROM rent WHERE customerid = %s AND unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [request.POST['rent_customerid'], request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
+    ##Sort function
+    if request.POST:
+        if request.POST['action'] == 'sortby':
+            ##check what type of sorting
+            ##sort by price
+            if request.POST['action'] == 'pricehighlow':
+                with connection.cursor() as cursor:
+                    cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages, unf_units ORDER BY rate")
+                    offices_price_highlow = cursor.fetchall()
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
