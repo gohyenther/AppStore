@@ -51,7 +51,7 @@
             <th>Street</th>
             <th>Unit no.</th>
             <th>Postal Code</th>
-            <th>Vacancy</th>
+            <th>Occupier</th>
             <th>Rate ($/Timescale)</th>
         </thead>
         {% for offi in offices %}
@@ -64,7 +64,7 @@
             <td> {{ offi.5 }} </td>
             <td> {{ offi.6 }} </td>
             <td> {{ offi.7 }} </td>
-            <td style="background-color:#00FF00"> {{ offi.8 }} </td>
+            <td> {{ offi.8 }} </td>
             <td> {{ offi.9 }} </td>
         </tr>
         {% endfor %}
