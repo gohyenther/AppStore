@@ -16,9 +16,17 @@ def index(request):
                     return redirect('administrator')   
                 else:
                     status = 'Invalid username and password!'
-            #else:
-                # customers login
-                # return redirect('customerprofile')
+            
+            ## Check if a customer is trying to login?
+            else:
+                with connection.cursor() as cursor:
+                    cursor.execute("SELECT * FROM login WHERE username = %s AND password = %s", [request.POST['username'], request.POST['pwd']])
+                    customer = cursor.fetchone()
+                if customer != None:
+                    # valid login
+                    return redirect('customerprofile');
+                else:
+                    status = 'Invalid username and password!'
     
     context['status'] = status
     return render(request,'app/index.html',context)
@@ -81,7 +89,6 @@ def add(request):
     if request.POST:
         ## Check if customerid is already in the table
         with connection.cursor() as cursor:
-
             cursor.execute("SELECT * FROM customers WHERE customerid = %s", [request.POST['customerid']])
             customer = cursor.fetchone()
             ## No customer with same id
