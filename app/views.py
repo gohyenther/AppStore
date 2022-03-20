@@ -42,13 +42,17 @@ def customerprofile(request, id):
             with connection.cursor() as cursor:
                 cursor.execute("UPDATE offices SET occupier = %s WHERE type = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [id, request.POST['id_type'], request.POST['id_street'], request.POST['id_unit_no'], request.POST['id_postal_code']])
-                
+                cursor.execute("INSERT INTO rent VALUES (%s, %s, %s, %s, %s)",
+                               [id, request.POST['id_unit'], request.POST['id_street'], request.POST['id_unit_no'], request.POST['id_postal_code']])
+         
     ## Vacate office space
     if request.POST:
         if request.POST['action'] == 'vacate':
             with connection.cursor() as cursor:
-                cursor.execute("UPDATE offices SET occupier = NULL WHERE type = %s AND street = %s AND unit_no = %s AND postal_code = %s",
-                               [request.POST['id_type'], request.POST['id_street'], request.POST['id_unit_no'], request.POST['id_postal_code']])
+                cursor.execute("UPDATE offices SET occupier = NULL WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                               [request.POST['id_unit'], request.POST['id_street'], request.POST['id_unit_no'], request.POST['id_postal_code']])
+                cursor.execute("DELETE FROM rent WHERE customerid = %s AND unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                               [id, request.POST['id_unit'], request.POST['id_street'], request.POST['id_unit_no'], request.POST['id_postal_code']])
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
