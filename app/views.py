@@ -70,20 +70,6 @@ def administrator(request):
         if request.POST['action'] == 'delete':
             with connection.cursor() as cursor:
                 cursor.execute("DELETE FROM customers WHERE customerid = %s", [request.POST['id']])
-    
-    ## Rent office space
-    if request.POST:
-        if request.POST['action'] == 'rent':
-            with connection.cursor() as cursor:
-                cursor.execute("UPDATE offices SET vacancy = 'NO' WHERE type = %s AND street = %s AND unit_no = %s AND postal_code = %s",
-                               [request.POST['id_type'], request.POST['id_street'], request.POST['id_unit_no'], request.POST['id_postal_code']])
-                
-    ## Vacate office space
-    if request.POST:
-        if request.POST['action'] == 'vacate':
-            with connection.cursor() as cursor:
-                cursor.execute("UPDATE offices SET vacancy = 'YES' WHERE type = %s AND street = %s AND unit_no = %s AND postal_code = %s",
-                               [request.POST['id_type'], request.POST['id_street'], request.POST['id_unit_no'], request.POST['id_postal_code']])
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
