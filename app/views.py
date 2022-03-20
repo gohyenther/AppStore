@@ -40,21 +40,21 @@ def customerprofile(request, id):
     if request.POST:
         if request.POST['action'] == 'rent':
             with connection.cursor() as cursor:
-                cursor.execute("UPDATE offices SET vacancy = 'NO' WHERE type = %s AND street = %s AND unit_no = %s AND postal_code = %s",
-                               [request.POST['id_type'], request.POST['id_street'], request.POST['id_unit_no'], request.POST['id_postal_code']])
+                cursor.execute("UPDATE offices SET occupier = %s WHERE type = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                               [id, request.POST['id_type'], request.POST['id_street'], request.POST['id_unit_no'], request.POST['id_postal_code']])
                 
     ## Vacate office space
     if request.POST:
         if request.POST['action'] == 'vacate':
             with connection.cursor() as cursor:
-                cursor.execute("UPDATE offices SET vacancy = 'YES' WHERE type = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                cursor.execute("UPDATE offices SET occupier = NULL WHERE type = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [request.POST['id_type'], request.POST['id_street'], request.POST['id_unit_no'], request.POST['id_postal_code']])
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM customers ORDER BY customerid")
+        cursor.execute("SELECT * FROM customers WHERE customerid = %s", [id])
         customers = cursor.fetchall()
-        cursor.execute("SELECT * FROM offices ORDER BY unit")
+        cursor.execute("SELECT * FROM offices ORDER BY unit WHERE occupier IS NOT NULL")
         offices = cursor.fetchall()
 
     result_dict = {'records': customers, 'offices': offices}
