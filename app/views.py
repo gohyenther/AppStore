@@ -177,7 +177,7 @@ def addoffice(request):
                                 request.POST['size_sf'], request.POST['street'], request.POST['unit_no'], request.POST['postal_code'], NULL, request.POST['rate']])
                 return redirect('administrator')
             else:
-                status = 'Office with unit %s and street %s already exists' %(request.POST['unit']) %(request.POST['street'])
+                status = '%s with this address already exists!' %(request.POST['unit']))
 
     context['status'] = status
     return render(request, "app/addoffice.html", context)
