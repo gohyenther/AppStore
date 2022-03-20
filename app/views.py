@@ -102,7 +102,7 @@ def view(request, id):
 
 
 # ADD CUSTOMERS PAGE
-def add(request):
+def addcustomer(request):
     """Shows the add customers page"""
     context = {}
     status = ''
