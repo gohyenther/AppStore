@@ -58,7 +58,7 @@
                 <input type="hidden" name="rent_street" value="{{rent.2}}"/>
                 <input type="hidden" name="rent_unit_no" value="{{rent.3}}"/>
                 <input type="hidden" name="rent_postal_code" value="{{rent.4}}"/>
-                <button onclick="return confirm('Are you sure you want to vacate this {{rent.1}}?');" type="submit" name="action" value="vacate">Vacate</button> 
+                <button style="color:red" onclick="return confirm('Are you sure you want to vacate this {{rent.1}}?');" type="submit" name="action" value="vacate">Vacate</button> 
                 </form></td> 
         </tr>
         {% endfor %}
@@ -98,7 +98,7 @@
                 <input type="hidden" name="office_street" value="{{offi.5}}"/>
                 <input type="hidden" name="office_unit_no" value="{{offi.6}}"/>
                 <input type="hidden" name="office_postal_code" value="{{offi.7}}"/>
-                <button onclick="return confirm('Are you sure you want to rent this {{offi.0}}?');" type="submit" name="action" value="rent">Rent</button> 
+                <button style="color:green" onclick="return confirm('Are you sure you want to rent this {{offi.0}}?');" type="submit" name="action" value="rent">Rent</button> 
                 </form></td> 
         </tr>
         {% endfor %}
