@@ -5,6 +5,7 @@
     <img src="{% static 'app/images/hotdesk.jpg' %}" style="text-align:center; width: 30%" alt="HotDesk logo"/><br/>
     <br/>
     
+    
     {% for cust in records %}
     
     <h2 style="text-align:center">Hello {{cust.1}}!<h2/>
@@ -109,5 +110,17 @@
         </tr>
         {% endfor %}
     </table>
+        
+        <div class='dropdown'>
+            <button>Sort By</button>
+            <div class='dropdown-content'>
+                <a href = #>Price (High to Low)</a>
+                <a href = #>Price (High to Low)</a>
+                <a href = #>Office size (High to Low)</a>
+                <a href = #>Office size (High to Low)</a>
+            </div>
+        </div>
+        
+        
 </body>
 </html>
