@@ -1,7 +1,8 @@
+{% load static %}
 <html>
 <body>
     <br/>
-    <h1 style="text-align:center">Welcome to Hot-Desk</h1>
+    <img src="{% static 'app/images/hotdesk.jpg' %}" style="text-align:center; width: 30%" alt="HotDesk logo"/><br/>
     <br/>
     
     {% for cust in records %}
