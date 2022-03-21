@@ -1,1 +1,16 @@
-INSERT
+INSERT INTO workcube_features VALUES('air-con, high speed Wi-Fi, restroom');
+INSERT INTO workcube_features VALUES('air-con, high speed Wi-Fi, restroom, CCTV Security');
+INSERT INTO workcube_features VALUES('air-con, high speed Wi-Fi, restroom, near MRT');
+INSERT INTO workcube_features VALUES('air-con, high speed Wi-Fi, restroom, CCTV Security, near MRT');
+INSERT INTO workcube_features VALUES('air-con, high speed Wi-Fi, restroom, CCTV Security, monitor');
+INSERT INTO workcube_features VALUES('air-con, high speed Wi-Fi, restroom, CCTV Security, monitor, near MRT');
+INSERT INTO workcube_features VALUES('air-con, restroom');
+INSERT INTO workcube_features VALUES('non air-con, restroom');
+INSERT INTO workcube_features VALUES('non air-con, high speed Wi-Fi, restroom');
+INSERT INTO workcube_features VALUES('air-con, restroom, near MRT');
+INSERT INTO workcube_features VALUES('non air-con, restroom, near MRT');
+INSERT INTO workcube_features VALUES('non air-con, high speed Wi-Fi, restroom, near MRT');
+INSERT INTO workcube_features VALUES('air-con, high speed Wi-Fi, near MRT');
+INSERT INTO workcube_features VALUES('air-con, high speed Wi-Fi');
+INSERT INTO workcube_features VALUES('non air-con, high speed Wi-Fi, near MRT');
+INSERT INTO workcube_features VALUES('non air-con, high speed Wi-Fi');
