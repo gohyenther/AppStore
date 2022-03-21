@@ -1,5 +1,5 @@
 insert into customers (customerid, first_name, last_name, email, gender, dob, contact_no) values ('john1997', 'John', 'Anderson', 'johnng1997@gmail.com', 'Male', '1997-05-20', '987765432');
-insert into customers (customerid, first_name, last_name, email, gender, dob, contact_no) values ('mshepperd1', 'Magdalena', 'Shepperd', 'mshepperd1@cmu.edu', 'Female', '3/19/1987', '4274704204');
+insert into customers (customerid, first_name, last_name, email, gender, dob, contact_no) values ('mshepperd1', 'Magdalena', 'Shepperd', 'mshepperd1@cmu.edu', 'Female', '3/19/1987', '42747042');
 insert into customers (customerid, first_name, last_name, email, gender, dob, contact_no) values ('csumsion2', 'Colet', 'Sumsion', 'csumsion2@admin.ch', 'Male', '4/10/2011', '22258865');
 insert into customers (customerid, first_name, last_name, email, gender, dob, contact_no) values ('apuddicombe3', 'Arliene', 'Puddicombe', 'apuddicombe3@symantec.com', 'Male', '12/22/2016', '33873948');
 insert into customers (customerid, first_name, last_name, email, gender, dob, contact_no) values ('kensley4', 'Kristal', 'Ensley', 'kensley4@shinystat.com', 'Female', '4/12/2002', '12056758');
