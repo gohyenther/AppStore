@@ -7,8 +7,14 @@
     
     <h2 style="text-align:center">Hello Administrator!<h2/>
     <br/>
+
+    <style>
+    div.wrapper { overflow:hidden; overflow-y: scroll; height: 100px; // change this to desired height }
+    </style>
+
     <h2>Customers<h2/>
     <a href="addcustomer">Add new customer</a>
+    <div class=div.wrapper>
     <table border=1>
         <thead>
             <th>ID</th>
@@ -39,6 +45,7 @@
         </tr>
         {% endfor %}
     </table>
+    </div>
     
     <br/><br/>
     <h2>Office Spaces<h2/>
