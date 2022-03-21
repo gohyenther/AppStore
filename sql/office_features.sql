@@ -8,7 +8,7 @@ INSERT INTO office_features VALUES('fully-furnished, air-con, high speed Wi-Fi, 
 INSERT INTO office_features VALUES('fully-furnished, air-con, high speed Wi-Fi, pantry, meeting room, near MRT');
 INSERT INTO office_features VALUES('fully-furnished, air-con, high speed Wi-Fi, pantry, meeting room, projector, near MRT');
 INSERT INTO office_features VALUES('fully-furnished, air-con, high speed Wi-Fi, pantry, meeting room, projector, CCTV Security, near MRT');
-INSERT INTO office features VALUES('unfurnished, air-con, near MRT');
-INSERT INTO office features VALUES('unfurnished, non-air-con, near MRT');
-INSERT INTO office features VALUES('unfurnished, air-con');
-INSERT INTO office features VALUES('unfurnished, non-air-con');
+INSERT INTO office_features VALUES('unfurnished, air-con, near MRT');
+INSERT INTO office_features VALUES('unfurnished, non-air-con, near MRT');
+INSERT INTO office_features VALUES('unfurnished, air-con');
+INSERT INTO office_features VALUES('unfurnished, non-air-con');
