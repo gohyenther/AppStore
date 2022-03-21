@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS customers (
  	first_name VARCHAR(64) NOT NULL,
  	last_name VARCHAR(64) NOT NULL,
  	email VARCHAR(64) UNIQUE NOT NULL,
+	gender VARCHAR(16) NOT NULL,
  	dob DATE NOT NULL,
 	contact_no NUMERIC(8) NOT NULL);
 
