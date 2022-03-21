@@ -128,7 +128,7 @@ def addcustomer(request):
                 cursor.execute("INSERT INTO customers VALUES (%s, %s, %s, %s, %s, %s, %s)"
                         , [request.POST['customerid'], request.POST['first_name'], request.POST['last_name'], request.POST['email'],
                            request.POST['gender'], request.POST['dob'] , request.POST['contact_no'] ])
-                cursor.execute("INSERT INTO login VALUES (%s, %s)", [request.POST['id'], request.POST['id']])
+                cursor.execute("INSERT INTO login VALUES (%s, %s)", [request.POST['customerid'], request.POST['customerid']])
                 return redirect('administrator')
             else:
                 status = 'Customer with ID %s already exists' % (request.POST['customerid'])
