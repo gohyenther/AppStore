@@ -24,7 +24,8 @@ so that our database is tele */
 
 /* feel free to include suggestion below for better effieciency of doing so */
 
-/* For populating the login table, the command will be as follows:
+/* For populating the login table, i suggest:
 INSERT INTO login (username, password) SELECT customerid, customerid FROM customers;
-because i think let's keep their username and password the same as customerid for us to login easily for demo
+because i think let's keep their username and password the same as customerid as default, afterwhich they can change their password if they wish to.
+Easier for us to login with same username and password for demo.
 
