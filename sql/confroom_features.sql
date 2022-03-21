@@ -1,1 +1,13 @@
-dsafafs
+INSERT INTO confroom_features VALUES('air-con, high speed Wi-Fi, restroom');
+INSERT INTO confroom_features VALUES('air-con, high speed Wi-Fi, restroom, near MRT');
+INSERT INTO confroom_features VALUES('air-con, high speed Wi-Fi, restroom, projector, CCTV Security, near MRT');
+INSERT INTO confroom_features VALUES('air-con, high speed Wi-Fi, restroom, projector, near MRT');
+INSERT INTO confroom_features VALUES('air-con, high speed Wi-Fi, projector, near MRT');
+INSERT INTO confroom_features VALUES('air-con, high speed Wi-Fi, restroom, projector, iMac, CCTV Security, near MRT');
+INSERT INTO confroom_features VALUES('air-con, high speed Wi-Fi, projector, CCTV Security, near MRT');
+INSERT INTO confroom_features VALUES('air-con, high speed Wi-Fi, CCTV Security');
+INSERT INTO confroom_features VALUES('air-con, high speed Wi-Fi');
+INSERT INTO confroom_features VALUES('air-con, high speed Wi-Fi, iMac, CCTV Security');
+INSERT INTO confroom_features VALUES('air-con, high speed Wi-Fi, CCTV Security, near MRT');
+INSERT INTO confroom_features VALUES('air-con, high speed Wi-Fi, near MRT');
+INSERT INTO confroom_features VALUES('air-con, high speed Wi-Fi, iMac, CCTV Security, near MRT');
