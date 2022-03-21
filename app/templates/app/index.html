@@ -1,9 +1,8 @@
 {% load static %}
 <html>
 <body>
-    <br/>
     <img src="{% static 'app/images/hotdesk.jpg' %}" style="text-align:center; width: 30%" alt="HotDesk logo"/><br/>
-    <br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/>
     
     <p style="color:red; text-align:center">{{ status|safe }}</p>
     
@@ -17,7 +16,7 @@
             <input type="text" id="username" name="username" value=""><br/>
             <label for="pwd">Password:</label><br/>
             <input type="password" id="pwd" name="pwd"><br/><br/>
-            <button type="submit" name="action" value="login">Login</button> 
+            <button type="submit" style="color:green" name="action" value="login">Login</button> 
         </form>
     </div>
     
