@@ -1,5 +1,5 @@
-insert into address (street, unit_ni, postal_code) values ('Prince Edward Park', '04-25', '120113')
-insert into address (street, unit_no, postal_code) values ('Prince George Park', '03-01', '118221')
+insert into address (street, unit_ni, postal_code) values ('Prince Edward Park', '04-25', '120113');
+insert into address (street, unit_no, postal_code) values ('Prince George Park', '03-01', '118221');
 insert into address (street, unit_no, postal_code) values ('25302 Hoepker Junction', '64-97', '807667');
 insert into address (street, unit_no, postal_code) values ('5 Kings Point', '65-02', '488609');
 insert into address (street, unit_no, postal_code) values ('06 Daystar Pass', '47-51', '941996');
