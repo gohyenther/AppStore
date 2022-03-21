@@ -23,3 +23,8 @@ then reinsert accordingly
 so that our database is tele */
 
 /* feel free to include suggestion below for better effieciency of doing so */
+
+/* For populating the login table, the command will be as follows:
+INSERT INTO login (username, password) VALUES (SELECT customerid FROM customers, SELECT customerid FROM customers)
+because i think lets keep their username and password the same as customerid for us to login easily for demo
+
