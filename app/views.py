@@ -189,6 +189,7 @@ def addoffice(request):
                                [request.POST['street'], request.POST['unit_no'], request.POST['postal_code']])
             ## No same office
             if office == None:
+                cursor.execute("INSERT INTO office_features VALUES (%s)", [request.POST['features']])
                 cursor.execute("INSERT INTO offices VALUES (%s, %s, %s, %s, %s, %s, %s, %s, NULL, %s)",
                                [request.POST['unit'], request.POST['features'], request.POST['timescale'], request.POST['type'],
                                 request.POST['size_sf'], request.POST['street'], request.POST['unit_no'], request.POST['postal_code'], request.POST['rate']])
