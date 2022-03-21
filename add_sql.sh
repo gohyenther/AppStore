@@ -38,6 +38,8 @@ psql ${URI} -f sql/office_features.sql
 psql ${URI} -f sql/officespaces.sql
 psql ${URI} -f sql/confroom_features.sql
 psql ${URI} -f sql/confrooms.sql
+psql ${URI} -f sql/storage_features.sql
+psql ${URI} -f sql/storages.sql
 psql ${URI} -f sql/transaction.sql
 psql ${URI} -f sql/rent.sql
 psql ${URI} -f sql/loginaccounts.sql
