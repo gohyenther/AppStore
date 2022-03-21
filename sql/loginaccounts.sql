@@ -1,5 +1,5 @@
 
-insert into login (username, password) values ('john1997', 'john1997');
+insert into login (username, password) values (SELECT customerid FROM customers, SELECT customerid FROM customers);
 -- insert into login (username, password) values ('adamsmith', 'adamsmith');
 -- insert into login (username, password) values ('dsimonsen2', 'pYs3x7w2');
 -- insert into login (username, password) values ('cputtnam3', 'ukB0MeQXPC');
