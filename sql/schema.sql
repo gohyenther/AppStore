@@ -38,10 +38,6 @@ CREATE TABLE IF NOT EXISTS storage_features(
  features VARCHAR(512) PRIMARY KEY);
  
  
-CREATE TABLE IF NOT EXISTS unfunit_features(
- features VARCHAR(512) PRIMARY KEY);
- 
- 
 /* this address table exists only to be referrenced to ensure address is valid, removed rate*/
 CREATE TABLE IF NOT EXISTS address(
  street VARCHAR(32),
@@ -118,21 +114,6 @@ CREATE TABLE IF NOT EXISTS storages(
  FOREIGN KEY (street, unit_no, postal_code) REFERENCES address(street, unit_no, postal_code) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
  PRIMARY KEY (unit, street, unit_no, postal_code));
 
-
-CREATE TABLE IF NOT EXISTS unf_units(
- unit VARCHAR(32) REFERENCES units(purpose) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
- features VARCHAR(32) REFERENCES unfunit_features(features) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
- timescale VARCHAR(32) NOT NULL,
- type VARCHAR(32) REFERENCES type(classification) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
- size_sf NUMERIC(16) NOT NULL,
- street VARCHAR(32),
- unit_no VARCHAR(32),
- postal_code NUMERIC(6),
- occupier VARCHAR(16),
- rate NUMERIC(32),
- FOREIGN KEY (street, unit_no, postal_code) REFERENCES address(street, unit_no, postal_code) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
- PRIMARY KEY (unit, street, unit_no, postal_code));
- 
  
 /* if it exists in the table rent, then occupier = NULL in office spaces, workcubes, confrooms, storages, unf_units */
 CREATE TABLE IF NOT EXISTS rent(
