@@ -1,14 +1,12 @@
 {% load static %}
 <html>
 <body>
-    <br/>
-    <img src="{% static 'app/images/hotdesk.jpg' %}" style="text-align:center; width: 30%" alt="HotDesk logo"/><br/>
-    <br/>
-    
+    <img src="{% static 'app/images/hotdesk.jpg' %}" style="text-align:center; width: 30%" alt="HotDesk logo"/><br/>   
     
     {% for cust in records %}
     
     <h2 style="text-align:center">Hello {{cust.1}}!<h2/>
+    
     <h2>Your Profile:<h2/>  
     <table border=1>
         <thead>
@@ -31,9 +29,7 @@
             <td> {{ cust.6 }} </td>
         </tr>
         {% endfor %}
-    </table>
-    <br/>
-        
+    </table>        
         
     <h2>Your Rents:<h2/>  
     <table border=1>
@@ -67,9 +63,7 @@
         </tr>
         {% endfor %}
     </table>
-    <br/><br/>
-    
-        
+    <br/>  
         
     <hr size="1" width="100%" color="blue">  
     <h2 style="text-align:center; color:blue">AVAILABLE SPACES FOR RENT<h2/>
