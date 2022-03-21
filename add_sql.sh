@@ -36,4 +36,6 @@ psql ${URI} -f sql/units.sql
 psql ${URI} -f sql/type.sql
 psql ${URI} -f sql/office_features.sql
 psql ${URI} -f sql/officespaces.sql
+psql ${URI} -f sql/confroom_features.sql
+psql ${URI} -f sql/confrooms.sql
 psql ${URI} -f sql/loginaccounts.sql
