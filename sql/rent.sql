@@ -3,10 +3,13 @@
 
 
 INSERT INTO rent(customerid, unit, street, unit_no, postal_code)
-SELECT (SELECT customerid, FLOOR(RANDOM()*(999))+1
+SELECT cust.customerid
+    FROM(SELECT customerid, FLOOR(RANDOM()*(999))+1
         FROM customers
         ORDER BY RANDOM()
-        LIMIT 1) , unit, street, unit_no, postal_code
+        LIMIT 1) AS cust, unit, street, unit_no, postal_code
 FROM temp 
 WHERE occupier = 'Yes';
+
+
 
