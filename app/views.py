@@ -71,15 +71,15 @@ def customerprofile(request, id):
                 offices_price_highlow = cursor.fetchall()
         if request.POST['action'] == 'pricelowhigh':
             with connection.cursor() as cursor:
-                cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY rate ASC")
+                cursor.execute("SELECT * FROM offices ORDER BY rate ASC")
                 offices_price_lowhigh = cursor.fetchall()
         if request.POST['action'] == 'sfhighlow':
             with connection.cursor() as cursor:
-                cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY size_sf DESC")
+                cursor.execute("SELECT * FROM offices ORDER BY size_sf DESC")
                 offices_sf_highlow = cursor.fetchall()
         if request.POST['action'] == 'sflowhigh':
             with connection.cursor() as cursor:
-                cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY size_sf ASC")
+                cursor.execute("SELECT * FROM offices ORDER BY size_sf ASC")
                 offices_sf_lowhigh = cursor.fetchall()
                       ##Filter function
     ##Sort function
