@@ -58,7 +58,7 @@ def customerprofile(request, id):
     if request.POST:
         if request.POST['action'] == 'pricehighlow':
             with connection.cursor() as cursor:
-                cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages GROUP BY unit, street, unit_no, postal_code ORDER BY rate DESC")
+                cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY offices.rate DESC")
                 offices_price_highlow = cursor.fetchall()
         if request.POST['action'] == 'pricelowhigh':
             with connection.cursor() as cursor:
