@@ -876,10 +876,38 @@ WHERE occupier = '1';
 
 
 /* update features col */
+UPDATE temp
+SET features = 
+(SELECT features, FLOOR(RANDOM()*(999))+1
+FROM office_features
+ORDER BY RANDOM()
+LIMIT 1)
+WHERE unit = 'Office space';
 
 UPDATE temp
-SET features = 'Yes'
-WHERE unit = 'Office space';
+SET features = 
+(SELECT features, FLOOR(RANDOM()*(999))+1
+FROM workcube_features
+ORDER BY RANDOM()
+LIMIT 1)
+WHERE unit = 'Working cubicle';
+
+UPDATE temp
+SET features = 
+(SELECT features, FLOOR(RANDOM()*(999))+1
+FROM confroom_features
+ORDER BY RANDOM()
+LIMIT 1)
+WHERE unit = 'Conference room';
+
+UPDATE temp
+SET features = 
+(SELECT features, FLOOR(RANDOM()*(999))+1
+FROM storage_features
+ORDER BY RANDOM()
+LIMIT 1)
+WHERE unit = 'Storage space';
+
 
 /* update timescale col */
 
