@@ -60,7 +60,7 @@ def customerprofile(request, id):
             ##sort by price
             if request.POST['action'] == 'pricehighlow':
                 with connection.cursor() as cursor:
-                    cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY rate")
+                    cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY rate DESC")
                     offices_price_highlow = cursor.fetchall()
 
     ## Use raw query to get all objects
