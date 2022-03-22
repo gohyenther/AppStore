@@ -54,11 +54,30 @@ def customerprofile(request, id):
                 cursor.execute("DELETE FROM rent WHERE customerid = %s AND unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [request.POST['rent_customerid'], request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
     ##Sort function
-    if request.POST:
-        if request.POST['action'] == 'sortby':
+    
+    #if request.POST:
+        #if request.POST['action'] == 'sortby':
             ##check what type of sorting
             ##sort by price
-            if request.POST['action'] == 'pricehighlow':
+    #        if request.POST['action'] == 'pricehighlow':
+    #            with connection.cursor() as cursor:
+    #                cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY rate DESC")
+    #                offices_price_highlow = cursor.fetchall()
+    #        if request.POST['action'] == 'pricelowhigh':
+    #            with connection.cursor() as cursor:
+    #                cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY rate ASC")
+    #                offices_price_lowhigh = cursor.fetchall()
+    #        if request.POST['action'] == 'sfhighlow':
+    #            with connection.cursor() as cursor:
+    #                cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY size_sf DESC")
+    #                offices_sf_highlow = cursor.fetchall()
+    #        if request.POST['action'] == 'sflowhigh':
+    #            with connection.cursor() as cursor:
+    #                cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY size_sf ASC")
+    #                offices_sf_lowhigh = cursor.fetchall()
+    
+    if request.POST:
+         if request.POST['action'] == 'pricehighlow':
                 with connection.cursor() as cursor:
                     cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY rate DESC")
                     offices_price_highlow = cursor.fetchall()
@@ -75,7 +94,8 @@ def customerprofile(request, id):
                     cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY size_sf ASC")
                     offices_sf_lowhigh = cursor.fetchall()
                       ##Filter function
-      if request.POST:
+      
+    if request.POST:
         if request.POST['action'] == 'filter':
             ##filtering by officespaces
             if request.POST['action'] == 'filteroffices':
