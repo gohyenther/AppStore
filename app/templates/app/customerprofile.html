@@ -69,10 +69,10 @@
     <h2 style="text-align:center; color:blue">AVAILABLE SPACES FOR RENT<h2/>
     <h2 style="color:blue">Office Spaces<h2/>
         
+    {% for offi in offices %}
 
     <form method="POST" style="display: inline;">
     {% csrf_token %}
-    {% for offi in offices %}
     <button type='submit' name='action' value= 'pricehighlow'>Price (High to Low)</button>
     <button type='submit' name='action' value = 'pricelowhigh'>Price (Low to High)</button>
     <button type='submit' name='action' value = 'sfhighlow'>Sq Ft (High to Low)</button>
