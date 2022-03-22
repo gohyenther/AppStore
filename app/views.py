@@ -124,7 +124,7 @@ def customerprofile(request, id):
     #                cursor.execute("SELECT * FROM storages")
     #                storages_filter = cursor.fetchall()
 
-    result_dict = {'records': customers, 'offices': offices, 'rented': rented, 'officepricehighlow': offices_price_highlow}
+    result_dict = {'records': customers, 'offices': offices, 'rented': rented}
     return render(request,'app/customerprofile.html',result_dict)
 
 
