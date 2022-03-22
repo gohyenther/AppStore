@@ -80,7 +80,7 @@ def customerprofile(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customers WHERE customerid = %s", [id])
         customers = cursor.fetchall()
-        cursor.execute("SELECT * FROM offices WHERE occupier ISNULL ORDER BY unit")
+        cursor.execute("SELECT * FROM offices WHERE occupier = 'No' ORDER BY unit")
         offices = cursor.fetchall()
         cursor.execute("SELECT * FROM rent WHERE customerid = %s", [id])
         rented = cursor.fetchall()
