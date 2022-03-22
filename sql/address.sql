@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS temp(
  rate NUMERIC(32),
  PRIMARY KEY (unit, street, unit_no, postal_code));
  
- insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (2, 18, 2, 6, 330, '92 Briar Crest Way', '47-10', '837954', 0, 481);
+insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (2, 18, 2, 6, 330, '92 Briar Crest Way', '47-10', '837954', 0, 481);
 insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (4, 4, 3, 5, 550, '65 Burrows Plaza', '91-94', '428856', 0, 970);
 insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (4, 2, 2, 4, 377, '2 Sheridan Court', '13-00', '504652', 0, 268);
 insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (3, 8, 3, 3, 381, '041 Northfield Park', '52-26', '328128', 1, 955);
