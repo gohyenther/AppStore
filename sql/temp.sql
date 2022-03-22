@@ -883,7 +883,21 @@ WHERE unit = 'Office space';
 
 /* update timescale col */
 
+UPDATE temp
+SET timescale = 'Hourly'
+WHERE unit = 'Working cubicle' OR unit = 'Conference room';
 
+UPDATE temp
+SET timescale = 'Weekly'
+WHERE unit = 'Storage space';
+
+UPDATE temp
+SET timescale = 'Weekly'
+WHERE unit = 'Office space' AND (timescale = '1' OR timescale = '3');
+
+UPDATE temp
+SET timescale = 'Monthly'
+WHERE unit = 'Office space' AND timescale = '2';
 
 
 
