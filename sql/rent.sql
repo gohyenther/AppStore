@@ -8,7 +8,6 @@ SELECT cust.customerid
         FROM customers
         ORDER BY RANDOM()
         LIMIT 1) AS cust, unit, street, unit_no, postal_code
-FROM temp 
 WHERE occupier = 'Yes';
 
 
