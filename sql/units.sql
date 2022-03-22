@@ -1,6 +1,6 @@
 
-INSERT INTO units VALUES('office space');
-INSERT INTO units VALUES('working cubicle');
-INSERT INTO units VALUES('conference room');
-INSERT INTO units VALUES('storage space');
-INSERT INTO units VALUES('unfurnished unit');
+INSERT INTO units VALUES('Office space');
+INSERT INTO units VALUES('Working cubicle');
+INSERT INTO units VALUES('Conference room');
+INSERT INTO units VALUES('Storage space');
+INSERT INTO units VALUES('Unfurnished unit');
