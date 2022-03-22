@@ -78,7 +78,6 @@
     <button type='submit' name='action' value = 'sflowhigh'>Sq Ft (Low to High)</button>
     </form>
         
-    {% for offi in offices %}
 
     <table border=1>
         <thead>
@@ -94,7 +93,7 @@
             <th>Rate ($/Timescale)</th>
             <th style="color:green">Action</th>
         </thead>
-        
+    {% for offi in offices %}
         <tr>
             <td> {{ offi.0 }} </td>
             <td> {{ offi.1 }} </td>
