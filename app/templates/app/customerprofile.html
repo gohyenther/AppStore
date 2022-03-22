@@ -70,11 +70,13 @@
     <h2 style="color:blue">Office Spaces<h2/>
         
 
-
-    <button type='submit' name='action' value='pricehighlow'>Price (High to Low)</button>
+    <form method="POST" style="display: inline;">
+    {% csrf_token %}
+    <button type='submit' name='action' value= 'pricehighlow'>Price (High to Low)</button>
     <button type='submit' name='action' value = 'pricelowhigh'>Price (Low to High)</button>
     <button type='submit' name='action' value = 'sfhighlow'>Sq Ft (High to Low)</button>
     <button type='submit' name='action' value = 'sflowhigh'>Sq Ft (Low to High)</button>
+    </form>
         
     <table border=1>
         <thead>
