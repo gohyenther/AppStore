@@ -69,15 +69,13 @@
     <h2 style="text-align:center; color:blue">AVAILABLE SPACES FOR RENT<h2/>
     <h2 style="color:blue">Office Spaces<h2/>
         
-        <div class='dropdown'>
-            <button name='action' value='sortby'>Sort By</button>
-            <div class='dropdown-content'>
-                <a href = "views.py" name='action' value='pricehighlow'>Price (High to Low)</a>
-                <a href = "views.py" name='action' value = 'pricelowhigh'>Price (Low to High)</a>
-                <a href = "views.py" name='action' value = 'sfhighlow'>Sq Ft (High to Low)</a>
-                <a href = "views.py" name='action' value = 'sflowhigh'>Sq Ft (Low to High)</a>
-            </div>
-        </div>
+
+    <div class='dropdown-content'>
+        <button type='submit' name='action' value='pricehighlow'>Price (High to Low)</button>
+        <button type='submit' name='action' value = 'pricelowhigh'>Price (Low to High)</button>
+        <button type='submit' name='action' value = 'sfhighlow'>Sq Ft (High to Low)</button>
+        <button type='submit' name='action' value = 'sflowhigh'>Sq Ft (Low to High)</button>
+    </div>
         
     <table border=1>
         <thead>
