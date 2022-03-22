@@ -879,7 +879,7 @@ WHERE occupier = '1';
 UPDATE temp 
 SET features = 
 (SELECT ofs.features 
-	FROM(SELECT features
+	FROM(SELECT features, FLOOR(RANDOM()*(999))+1
 		FROM office_features 
 		ORDER BY RANDOM()
 		LIMIT 1) AS ofs) 
