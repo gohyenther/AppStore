@@ -54,7 +54,16 @@ def customerprofile(request, id):
                 cursor.execute("DELETE FROM rent WHERE customerid = %s AND unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [request.POST['rent_customerid'], request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
 
+    ## Use raw query to get all objects after rent / vacate is clicked
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM customers WHERE customerid = %s", [id])
+        customers = cursor.fetchall()
+        cursor.execute("SELECT * FROM offices WHERE occupier = 'No' ORDER BY unit")
+        offices = cursor.fetchall()
+        cursor.execute("SELECT * FROM rent WHERE customerid = %s", [id])
+        rented = cursor.fetchall()
     
+    ## Kah Meng's Sorting functions
     if request.POST:
         if request.POST['action'] == 'pricehighlow':
             with connection.cursor() as cursor:
@@ -114,15 +123,6 @@ def customerprofile(request, id):
     #            with connection.cursor() as cursor:
     #                cursor.execute("SELECT * FROM storages")
     #                storages_filter = cursor.fetchall()
-
-    ## Use raw query to get all objects
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM customers WHERE customerid = %s", [id])
-        customers = cursor.fetchall()
-        cursor.execute("SELECT * FROM offices WHERE occupier = 'No' ORDER BY unit")
-        offices = cursor.fetchall()
-        cursor.execute("SELECT * FROM rent WHERE customerid = %s", [id])
-        rented = cursor.fetchall()
 
     result_dict = {'records': customers, 'offices': offices, 'rented': rented, 'officepricehighlow': offices_price_highlow}
     return render(request,'app/customerprofile.html',result_dict)
