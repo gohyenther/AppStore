@@ -812,3 +812,89 @@ insert into temp (unit, features, timescale, type, size_sf, street, unit_no, pos
 insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (1, 17, 1, 7, 363, '71984 David Junction', '82-03', '521364', 1, 993);
 insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (1, 12, 3, 2, 243, '34284 Colorado Hill', '83-21', '040641', 1, 737);
 insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (1, 3, 3, 7, 859, '953 Namekagon Circle', '90-03', '724229', 0, 351);
+
+
+/* updating unit col */
+
+UPDATE temp
+SET unit = 'Office space'
+WHERE unit = '1';
+
+UPDATE temp
+SET unit = 'Working cubicle'
+WHERE unit = '2';
+
+UPDATE temp
+SET unit = 'Conference room'
+WHERE unit = '3';
+
+UPDATE temp
+SET unit = 'Storage space'
+WHERE unit = '4';
+
+
+/* update type col */
+
+UPDATE temp
+SET type = 'Office building'
+WHERE type = '1';
+
+UPDATE temp
+SET type = 'Storage complex'
+WHERE type = '2';
+
+UPDATE temp
+SET type = 'Warehouse'
+WHERE type = '3';
+
+UPDATE temp
+SET type = 'Conference halls'
+WHERE type = '4';
+
+UPDATE temp
+SET type = 'Studio room'
+WHERE type = '5';
+
+UPDATE temp
+SET type = 'Apartment'
+WHERE type = '6';
+
+UPDATE temp
+SET type = 'HDB'
+WHERE type = '7';
+
+
+/* update occupier col*/
+
+UPDATE temp
+SET occupier = 'No'
+WHERE occupier = '0';
+
+UPDATE temp
+SET occupier = 'Yes'
+WHERE occupier = '1';
+
+
+/* update features col */
+
+UPDATE temp
+SET features = 'Yes'
+WHERE unit = 'Office space';
+
+/* update timescale col */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
