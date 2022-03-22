@@ -53,6 +53,26 @@ def customerprofile(request, id):
                                [request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
                 cursor.execute("DELETE FROM rent WHERE customerid = %s AND unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [request.POST['rent_customerid'], request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
+
+    
+    if request.POST:
+        if request.POST['action'] == 'pricehighlow':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY rate DESC")
+                offices_price_highlow = cursor.fetchall()
+        if request.POST['action'] == 'pricelowhigh':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY rate ASC")
+                offices_price_lowhigh = cursor.fetchall()
+        if request.POST['action'] == 'sfhighlow':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY size_sf DESC")
+                offices_sf_highlow = cursor.fetchall()
+        if request.POST['action'] == 'sflowhigh':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY size_sf ASC")
+                offices_sf_lowhigh = cursor.fetchall()
+                      ##Filter function
     ##Sort function
     
     #if request.POST:
@@ -75,41 +95,25 @@ def customerprofile(request, id):
     #            with connection.cursor() as cursor:
     #                cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY size_sf ASC")
     #                offices_sf_lowhigh = cursor.fetchall()
-    
-    if request.POST:
-         if request.POST['action'] == 'pricehighlow':
-                with connection.cursor() as cursor:
-                    cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY rate DESC")
-                    offices_price_highlow = cursor.fetchall()
-            if request.POST['action'] == 'pricelowhigh':
-                with connection.cursor() as cursor:
-                    cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY rate ASC")
-                    offices_price_lowhigh = cursor.fetchall()
-            if request.POST['action'] == 'sfhighlow':
-                with connection.cursor() as cursor:
-                    cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY size_sf DESC")
-                    offices_sf_highlow = cursor.fetchall()
-            if request.POST['action'] == 'sflowhigh':
-                with connection.cursor() as cursor:
-                    cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY size_sf ASC")
-                    offices_sf_lowhigh = cursor.fetchall()
-                      ##Filter function
-      
-    if request.POST:
-        if request.POST['action'] == 'filter':
-            ##filtering by officespaces
-            if request.POST['action'] == 'filteroffices':
-                cursor.execute("SELECT * FROM offices")
-                offices_filter = cursor.fetchall()
-            if request.POST['action'] == 'filterworkcubes':
-                cursor.execute("SELECT * FROM workcubes")
-                workcubes_filter = cursor.fetchall()
-            if request.POST['action'] == 'filterconfrooms':
-                cursor.execute("SELECT * FROM confrooms")
-                confrooms_filter = cursor.fetchall()
-            if request.POST['action'] == 'filterstorages':
-                cursor.execute("SELECT * FROM storages")
-                storages_filter = cursor.fetchall()
+    #if request.POST:
+    #    if request.POST['action'] == 'filter':
+    #        ##filtering by officespaces
+    #        if request.POST['action'] == 'filteroffices':
+    #            with connection.cursor() as cursor:
+    #                cursor.execute("SELECT * FROM offices")
+    #                offices_filter = cursor.fetchall()
+    #        if request.POST['action'] == 'filterworkcubes':
+    #            with connection.cursor() as cursor:
+    #                cursor.execute("SELECT * FROM workcubes")
+    #                workcubes_filter = cursor.fetchall()
+    #        if request.POST['action'] == 'filterconfrooms':
+    #            with connection.cursor() as cursor:
+    #                cursor.execute("SELECT * FROM confrooms")
+    #                confrooms_filter = cursor.fetchall()
+    #        if request.POST['action'] == 'filterstorages':
+    #            with connection.cursor() as cursor:
+    #                cursor.execute("SELECT * FROM storages")
+    #                storages_filter = cursor.fetchall()
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
