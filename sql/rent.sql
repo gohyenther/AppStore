@@ -3,7 +3,14 @@
 
 
 INSERT INTO rent(customerid, unit, street, unit_no, postal_code)
-SELECT FROM customers(customer_id),temp(unit, street, unit_no, postal_code)
-FROM customers c, temp t
-WHERE r.customer_id = c.customerid AND
-occupier = 'Yes';
+SELECT '0', unit, street, unit_no, postal_code
+FROM temp 
+WHERE occupier = 'Yes';
+
+UPDATE rent
+SET customerid = 
+(SELECT customerid, FLOOR(RANDOM()*(999))+1
+FROM customers
+ORDER BY RANDOM()
+LIMIT 1);
+
