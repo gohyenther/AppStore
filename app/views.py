@@ -59,6 +59,7 @@ def customerprofile(request, id):
         if request.POST['action'] == 'pricehighlow':
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM offices ORDER BY rate DESC")
+                offices_price_highlow = cursor.fetchall()
         if request.POST['action'] == 'pricelowhigh':
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY rate ASC")
@@ -123,7 +124,7 @@ def customerprofile(request, id):
         cursor.execute("SELECT * FROM rent WHERE customerid = %s", [id])
         rented = cursor.fetchall()
 
-    result_dict = {'records': customers, 'offices': offices, 'rented': rented}
+    result_dict = {'records': customers, 'offices': offices, 'rented': rented, 'officepricehighlow': offices_price_highlow}
     return render(request,'app/customerprofile.html',result_dict)
 
 
