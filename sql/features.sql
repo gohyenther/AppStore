@@ -1,7 +1,7 @@
 /* must run right after running temp.sql */
 CREATE TABLE IF NOT EXISTS features(
 	count_no VARCHAR(8) NOT NULL,
-	unit VARCHAR(32) NOT NULL,
+	unit_fts VARCHAR(32) NOT NULL,
 	features VARCHAR(512) NOT NULL);
 
 /* inserting office features, some are duplicates which can be changed if we introduce new features */
