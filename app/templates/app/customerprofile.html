@@ -86,10 +86,10 @@
 
     <form method="POST" style="display: inline;">
     {% csrf_token %}
-    <button type='submit' name='action' value= 'pricehighlow'>Price (High to Low)</button>
-    <button type='submit' name='action' value = 'pricelowhigh'>Price (Low to High)</button>
-    <button type='submit' name='action' value = 'sfhighlow'>Sq Ft (High to Low)</button>
-    <button type='submit' name='action' value = 'sflowhigh'>Sq Ft (Low to High)</button>
+    <button type='submit' name='action' value= 'office_pricehighlow'>Price (High to Low)</button>
+    <button type='submit' name='action' value = 'office_pricelowhigh'>Price (Low to High)</button>
+    <button type='submit' name='action' value = 'office_sfhighlow'>Sq Ft (High to Low)</button>
+    <button type='submit' name='action' value = 'office_sflowhigh'>Sq Ft (Low to High)</button>
     </form>
         
     <div class="ex1">
@@ -135,6 +135,15 @@
     <br/>
     
     <h2 style="color:blue">Storage Spaces<h2/>
+    
+    <form method="POST" style="display: inline;">
+    {% csrf_token %}
+    <button type='submit' name='action' value= 'storage_pricehighlow'>Price (High to Low)</button>
+    <button type='submit' name='action' value = 'storage_pricelowhigh'>Price (Low to High)</button>
+    <button type='submit' name='action' value = 'storage_sfhighlow'>Sq Ft (High to Low)</button>
+    <button type='submit' name='action' value = 'storage_sflowhigh'>Sq Ft (Low to High)</button>
+    </form>
+    
     <div class="ex2">
     <table border=1>
         <thead>
