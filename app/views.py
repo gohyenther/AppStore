@@ -459,7 +459,7 @@ def addconfrooms(request):
                 cursor.execute("INSERT INTO address VALUES (%s, %s, %s)",
                                [request.POST['street'], request.POST['unit_no'], request.POST['postal_code']])
             ## No same confroom
-            if storage == None:
+            if confroom == None:
                 cursor.execute("INSERT INTO confrooms VALUES ('Conference room', %s, %s, %s, %s, %s, %s, %s, 'No', %s)",
                                [request.POST['features'], request.POST['timescale'], request.POST['type'],
                                 request.POST['size_sf'], request.POST['street'], request.POST['unit_no'], request.POST['postal_code'], request.POST['rate']])
