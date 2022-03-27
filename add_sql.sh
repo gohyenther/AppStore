@@ -37,9 +37,9 @@ psql ${URI} -f sql/address.sql
 psql ${URI} -f sql/units.sql
 psql ${URI} -f sql/type.sql
 psql ${URI} -f sql/officespaces.sql
-#psql ${URI} -f sql/confrooms.sql
-#psql ${URI} -f sql/storages.sql
-#psql ${URI} -f sql/workcubes.sql
-#psql ${URI} -f sql/transaction.sql
-#psql ${URI} -f sql/rent.sql
-#psql ${URI} -f sql/loginaccounts.sql
+psql ${URI} -f sql/confrooms.sql
+psql ${URI} -f sql/storages.sql
+psql ${URI} -f sql/workcubes.sql
+psql ${URI} -f sql/transaction.sql
+psql ${URI} -f sql/rent.sql
+psql ${URI} -f sql/loginaccounts.sql
