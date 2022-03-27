@@ -28,6 +28,8 @@ urlpatterns = [
     path('addcustomer', app.views.addcustomer, name='addcustomer'),
     path('addoffice', app.views.addoffice, name='addoffice'),
     path('addstorage', app.views.addstorage, name='addstorage'),
+    path('addconfrooms', app.views.addconfrooms, name='addconfrooms'),
+    path('addworkcube', app.views.addworkcube, name='addworkcube'),
     path('view/<str:id>', app.views.view, name='view'),
     path('edit/<str:id>', app.views.edit, name='edit'),
 ]
