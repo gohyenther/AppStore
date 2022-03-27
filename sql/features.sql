@@ -101,7 +101,7 @@ INTO tempo
 FROM(SELECT *
 	FROM temp t, features fts
 	WHERE t.features_no = fts.count_no AND t.unit = fts.unit) 
-	AS temp2);
+) AS temp2;
 	
 /* drop table temp */	
 DROP TABLE temp;
