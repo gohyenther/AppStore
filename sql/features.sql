@@ -115,8 +115,7 @@ SELECT temp2.unit, temp2.features, temp2.timescale, temp2.type, temp2.size_sf, t
 /* from joint tables */
 FROM(SELECT *
      FROM temp t, features fts
-     WHERE t.features_no = fts.count_no AND t.unit = fts.unit) 
-) AS temp2;
+     WHERE t.features_no = fts.count_no AND t.unit = fts.unit) AS temp2;
 	
 /* drop table temp */	
 DROP TABLE temp;
