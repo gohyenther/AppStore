@@ -361,3 +361,35 @@ def addstorage(request):
 
     context['status'] = status
     return render(request, "app/addstorage.html", context)
+
+
+# ADD CONFROOMS PAGE
+def addconfrooms(request):
+    """Shows the add confrooms page"""
+    context = {}
+    status = ''
+
+    if request.POST:
+        ## Check if office unit, street, unit_no, postal_code is already in the table
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM confrooms WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                           [request.POST['unit'], request.POST['street'], request.POST['unit_no'], request.POST['postal_code']])
+            confroom = cursor.fetchone()
+            cursor.execute("SELECT * FROM address WHERE street = %s AND unit_no = %s AND postal_code = %s",
+                           [request.POST['street'], request.POST['unit_no'], request.POST['postal_code']])
+            address = cursor.fetchone()
+            ## No such address
+            if address == None:
+                cursor.execute("INSERT INTO address VALUES (%s, %s, %s)",
+                               [request.POST['street'], request.POST['unit_no'], request.POST['postal_code']])
+            ## No same office
+            if storage == None:
+                cursor.execute("INSERT INTO confrooms VALUES (%s, %s, %s, %s, %s, %s, %s, %s, 'No', %s)",
+                               [request.POST['unit'], request.POST['features'], request.POST['timescale'], request.POST['type'],
+                                request.POST['size_sf'], request.POST['street'], request.POST['unit_no'], request.POST['postal_code'], request.POST['rate']])
+                return redirect('administrator')
+            else:
+                status = '%s with this address already exists!' %(request.POST['unit'])
+
+    context['status'] = status
+    return render(request, "app/addconfrooms.html", context)
