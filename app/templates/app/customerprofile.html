@@ -82,7 +82,7 @@
     <hr size="1" width="100%" color="blue">  
     <h2 style="text-align:center; color:blue">AVAILABLE SPACES FOR RENT<h2/>
     <h2 style="color:blue">Office Spaces<h2/>
-        
+    <p style="color:red; text-align:center">{{ status|safe }}</p>   
 
     <form method="POST" style="display: inline;">
     {% csrf_token %}
