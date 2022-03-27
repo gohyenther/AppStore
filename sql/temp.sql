@@ -896,8 +896,25 @@ UPDATE temp
 SET timescale = 'Monthly'
 WHERE unit = 'Office space' AND timescale = '2';
 
+/* still thinking how to store datetime but this code works for the random customer assigned */
+CREATE TABLE IF NOT EXISTS datetime(
+	start_time VARCHAR(64),
+	end_time VARCHAR(64),
+	PRIMARY KEY(start_time, end_time));
 
-
+INSERT INTO rent
+SELECT c1.customerid, t.unit, dt.start_time, dt.end_time , t.street, t.unit_no, t.postal_code
+ FROM(SELECT c.customerid 
+	  FROM customers c 
+	  ORDER BY RANDOM() 
+	  LIMIT 374) AS c1, datetime dt, temp t;
+ 
+	
+/* transaction == payment table */
+CREATE TABLE IF NOT EXISTS transaction(
+ customerid VARCHAR(64) REFERENCES customers(customerid) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
+ transactionid VARCHAR(18) PRIMARY KEY,
+ amount_paid NUMERIC(64) NOT NULL);
 
 
 
