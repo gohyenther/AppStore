@@ -31,6 +31,36 @@ def index(request):
     context['status'] = status
     return render(request,'app/index.html',context)
 
+# SIGN UP PAGE
+def signup(request):
+    """Shows the signup page"""
+    context = {}
+    status = ''
+
+    if request.POST:
+        ## Check if customerid is already in the table
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM customers WHERE customerid = %s", [request.POST['customerid']])
+            customer = cursor.fetchone()
+            cursor.execute("SELECT * FROM login WHERE username = %s", [request.POST['username']])
+            username = cursor.fetchone()
+            ## No customer with same id and username
+            if customer == None:
+                if username == None:
+                    ##TODO: date validation
+                    cursor.execute("INSERT INTO customers VALUES (%s, %s, %s, %s, %s, %s, %s)"
+                            , [request.POST['customerid'], request.POST['first_name'], request.POST['last_name'], request.POST['email'],
+                               request.POST['gender'], request.POST['dob'] , request.POST['contact_no'] ])
+                    cursor.execute("INSERT INTO login VALUES (%s, %s)", [request.POST['username'], request.POST['username']])
+                    return redirect('index')
+                else:
+                    status = 'Username %s already exists' % (request.POST['username'])
+            else:
+                status = 'Customer with ID %s already exists' % (request.POST['customerid'])
+
+    context['status'] = status
+    return render(request, "app/signup.html", context)
+
 
 # CUSTOMERPROFILE PAGE
 def customerprofile(request, id):
