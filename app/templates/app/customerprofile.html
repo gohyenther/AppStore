@@ -126,7 +126,7 @@
                 <input type="hidden" name="office_street" value="{{offi.5}}"/>
                 <input type="hidden" name="office_unit_no" value="{{offi.6}}"/>
                 <input type="hidden" name="office_postal_code" value="{{offi.7}}"/>
-                <button style="color:green" onclick="return confirm('Are you sure you want to rent this {{offi.0}}?');" type="submit" name="action" value="rent">Rent</button> 
+                <button style="color:green" onclick="return confirm('Are you sure you want to rent this {{offi.0}}?');" type="submit" name="action" value="office_rent">Rent</button> 
                 </form></td> 
         </tr>
         {% endfor %}
@@ -169,7 +169,7 @@
                 <input type="hidden" name="store_street" value="{{store.5}}"/>
                 <input type="hidden" name="store_unit_no" value="{{store.6}}"/>
                 <input type="hidden" name="store_postal_code" value="{{store.7}}"/>
-                <button style="color:green" onclick="return confirm('Are you sure you want to rent this {{store.0}}?');" type="submit" name="action" value="rent">Rent</button> 
+                <button style="color:green" onclick="return confirm('Are you sure you want to rent this {{store.0}}?');" type="submit" name="action" value="storage_rent">Rent</button> 
                 </form></td> 
         </tr>
         {% endfor %}
