@@ -36,7 +36,7 @@ psql ${URI} -f sql/customers.sql
 psql ${URI} -f sql/address.sql
 psql ${URI} -f sql/units.sql
 psql ${URI} -f sql/type.sql
-#psql ${URI} -f sql/officespaces.sql
+psql ${URI} -f sql/officespaces.sql
 #psql ${URI} -f sql/confrooms.sql
 #psql ${URI} -f sql/storages.sql
 #psql ${URI} -f sql/workcubes.sql
