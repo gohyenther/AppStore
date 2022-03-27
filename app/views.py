@@ -51,7 +51,7 @@ def signup(request):
                     cursor.execute("INSERT INTO customers VALUES (%s, %s, %s, %s, %s, %s, %s)"
                             , [request.POST['customerid'], request.POST['first_name'], request.POST['last_name'], request.POST['email'],
                                request.POST['gender'], request.POST['dob'] , request.POST['contact_no'] ])
-                    cursor.execute("INSERT INTO login VALUES (%s, %s)", [request.POST['username'], request.POST['username']])
+                    cursor.execute("INSERT INTO login VALUES (%s, %s)", [request.POST['username'], request.POST['password']])
                     return redirect('index')
                 else:
                     status = 'Username %s already exists' % (request.POST['username'])
