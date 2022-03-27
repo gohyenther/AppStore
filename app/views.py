@@ -110,6 +110,21 @@ def customerprofile(request, id):
                     cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s)",
                                    [id, request.POST['store_unit'], request.POST['store_street'], request.POST['store_unit_no'], request.POST['store_postal_code']])
                     
+    ## Rent work cubicle
+    if request.POST:
+        if request.POST['action'] == 'workcube_rent':
+            with connection.cursor() as cursor:
+                cursor.execute("UPDATE workcubes SET occupier = %s WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                               ['Yes', request.POST['cube_unit'], request.POST['cube_street'], request.POST['cube_unit_no'], request.POST['cube_postal_code']])
+                cursor.execute("SELECT FROM rent WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                               [request.POST['cube_unit'], request.POST['cube_street'], request.POST['cube_unit_no'], request.POST['cube_postal_code']])
+                checkRent = cursor.fetchone()
+                if checkRent != None:
+                    status = 'Sorry, this work cubicle is already taken!'
+                else:
+                    cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s)",
+                                   [id, request.POST['cube_unit'], request.POST['cube_street'], request.POST['cube_unit_no'], request.POST['cube_postal_code']])
+                    
     ## Vacate office space
     if request.POST:
         if request.POST['action'] == 'vacate':
@@ -117,6 +132,10 @@ def customerprofile(request, id):
                 cursor.execute("UPDATE offices SET occupier = 'No' WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
                 cursor.execute("UPDATE storages SET occupier = 'No' WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                               [request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
+                cursor.execute("UPDATE confrooms SET occupier = 'No' WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                               [request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
+                cursor.execute("UPDATE workcubes SET occupier = 'No' WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
                 cursor.execute("DELETE FROM rent WHERE customerid = %s AND unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [request.POST['rent_customerid'], request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
