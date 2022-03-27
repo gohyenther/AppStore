@@ -896,11 +896,763 @@ UPDATE temp
 SET timescale = 'Monthly'
 WHERE unit = 'Office space' AND timescale = '2';
 
+CREATE TABLE IF NOT EXISTS rent(
+ customerid VARCHAR(64) REFERENCES customers(customerid) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
+ unit VARCHAR(32) REFERENCES units(purpose) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
+ start_rent VARCHAR(64) NOT NULL,
+ end_rent VARCHAR(64) NOT NULL,
+ street VARCHAR(32),
+ unit_no VARCHAR(32),
+ postal_code NUMERIC(6),
+ PRIMARY KEY (unit, street, unit_no, postal_code),
+ /* REFERENCES TO EITHER offices, workcubes, confrooms, storages or unf_units */
+ FOREIGN KEY (street, unit_no, postal_code) REFERENCES address(street, unit_no, postal_code) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED);
+
 /* still thinking how to store datetime but this code works for the random customer assigned */
 CREATE TABLE IF NOT EXISTS datetime(
 	start_time VARCHAR(64),
 	end_time VARCHAR(64),
 	PRIMARY KEY(start_time, end_time));
+	
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-10 15:23:50', '2022-02-23 08:34:50');
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-12 07:08:50', '2022-03-16 07:05:44');
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-03 21:57:42', '2022-03-03 15:38:12');
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-28 01:53:09', '2022-02-19 02:02:58');
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-14 20:21:23', '2022-03-21 06:36:13');
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-07 11:41:01', '2022-02-20 06:12:11');
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-06 19:53:50', '2022-03-23 00:02:20');
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-16 15:39:51', '2022-03-03 04:47:09');
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-10 16:29:12', '2022-03-03 08:23:03');
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-11 16:47:48', '2022-03-11 00:41:08');
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-24 18:31:04','2022-03-24 22:27:59');
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-08 12:18:26','2022-03-24 22:27:59');
+/* very tedious way to insert datetime 
+2022-03-13 10:09:53
+2022-03-04 09:04:04
+2022-03-02 05:14:31
+2022-02-27 07:01:44
+2022-03-15 11:19:29
+2022-02-18 04:48:03
+2022-02-27 22:40:13
+2022-02-17 13:55:55
+2022-03-13 22:49:40
+2022-02-25 01:39:06
+2022-03-16 16:15:42
+2022-03-19 03:45:29
+2022-03-22 01:13:36
+2022-02-21 21:03:01
+2022-03-05 11:13:33
+2022-02-25 09:09:32
+2022-03-26 17:19:03
+2022-02-23 11:34:42
+2022-03-15 18:43:17
+2022-03-21 20:29:59
+2022-03-05 17:58:20
+2022-02-26 17:17:21
+2022-03-18 08:24:55
+2022-03-20 08:57:59
+2022-03-25 20:50:37
+2022-02-27 20:09:40
+2022-03-08 23:16:11
+2022-02-24 01:14:46
+2022-03-22 10:52:53
+2022-03-03 08:07:08
+2022-02-25 01:56:23
+2022-02-19 03:09:54
+2022-03-21 16:45:34
+2022-03-14 09:34:13
+2022-03-12 19:26:29
+2022-03-02 15:39:13
+2022-02-16 16:15:25
+2022-03-14 08:55:10
+2022-02-26 14:57:18
+2022-03-27 09:54:28
+2022-03-05 08:37:19
+2022-03-09 16:27:03
+2022-02-24 22:08:47
+2022-03-14 08:45:55
+2022-02-27 22:30:39
+2022-03-22 06:29:51
+2022-02-23 23:58:27
+2022-03-15 23:45:01
+2022-02-25 11:37:20
+2022-02-24 02:03:38
+2022-03-20 11:42:18
+2022-03-10 19:50:47
+2022-02-24 00:49:18
+2022-03-23 01:29:21
+2022-02-16 05:35:48
+2022-02-24 00:22:47
+2022-02-18 18:26:29
+2022-02-28 03:04:12
+2022-03-15 07:40:55
+2022-03-02 16:33:13
+2022-03-13 21:51:40
+2022-03-12 21:43:43
+2022-03-14 01:27:46
+2022-03-03 18:17:17
+2022-02-25 23:07:26
+2022-03-10 09:23:38
+2022-03-24 19:23:20
+2022-03-20 08:29:01
+2022-03-01 19:03:20
+2022-02-17 12:42:55
+2022-02-21 16:46:29
+2022-02-27 04:48:07
+2022-02-26 01:20:53
+2022-03-06 18:08:10
+2022-02-19 09:51:15
+2022-02-28 09:12:12
+2022-03-13 04:27:25
+2022-03-21 15:02:06
+2022-03-27 23:58:56
+2022-02-22 04:50:54
+2022-03-14 04:13:57
+2022-02-22 00:00:42
+2022-03-24 16:27:08
+2022-03-26 18:59:46
+2022-03-17 18:37:56
+2022-02-26 04:45:24
+2022-02-20 10:27:50
+2022-02-22 08:13:49
+2022-02-20 04:30:17
+2022-03-16 16:52:07
+2022-03-24 01:38:32
+2022-03-16 23:32:07
+2022-02-23 13:07:41
+2022-03-24 14:52:38
+2022-03-04 14:49:30
+2022-02-27 10:23:36
+2022-02-18 23:06:38
+2022-03-10 13:25:57
+2022-02-28 13:52:12
+2022-03-13 01:14:30
+2022-03-10 04:54:10
+2022-03-06 05:36:58
+2022-03-10 12:39:53
+2022-02-20 04:17:18
+2022-03-26 04:18:32
+2022-02-16 11:37:27
+2022-03-01 23:19:53
+2022-03-12 16:37:23
+2022-03-15 04:40:51
+2022-02-17 09:46:23
+2022-02-24 05:46:57
+2022-03-27 20:14:11
+2022-02-20 19:37:32
+2022-03-20 17:01:49
+2022-03-06 08:18:18
+2022-02-22 11:15:16
+2022-03-26 14:08:32
+2022-03-26 16:38:42
+2022-03-04 06:02:00
+2022-02-19 21:10:57
+2022-02-25 08:08:12
+2022-03-04 06:06:33
+2022-03-13 06:46:07
+2022-03-24 22:37:16
+2022-03-23 23:57:24
+2022-03-12 03:40:07
+2022-02-27 02:00:57
+2022-02-19 21:15:29
+2022-03-02 01:10:02
+2022-02-23 00:15:51
+2022-02-19 15:24:27
+2022-03-10 03:32:48
+2022-03-27 21:11:12
+2022-03-03 17:10:30
+2022-03-04 06:15:30
+2022-02-27 03:16:13
+2022-02-16 05:02:33
+2022-03-07 11:16:32
+2022-03-15 18:00:44
+2022-02-20 21:51:01
+2022-03-22 11:32:19
+2022-03-15 21:50:11
+2022-03-11 18:38:36
+2022-02-25 07:05:56
+2022-02-21 20:46:23
+2022-03-26 05:10:14
+2022-02-18 13:12:18
+2022-02-21 14:25:07
+2022-02-20 20:13:44
+2022-03-05 07:19:31
+2022-03-07 21:47:08
+2022-02-22 17:10:08
+2022-02-21 22:52:52
+2022-03-02 21:31:54
+2022-02-16 05:24:05
+2022-03-24 10:13:15
+2022-02-18 16:35:24
+2022-02-20 05:15:44
+2022-03-13 20:52:19
+2022-03-10 08:18:56
+2022-03-09 16:47:46
+2022-03-05 02:26:32
+2022-02-23 06:54:20
+2022-02-16 04:35:08
+2022-03-09 00:18:26
+2022-03-03 12:43:45
+2022-03-11 01:37:59
+2022-03-09 05:42:58
+2022-03-04 04:55:13
+2022-03-19 15:25:30
+2022-03-06 06:46:19
+2022-03-06 17:35:25
+2022-03-11 01:38:05
+2022-02-26 17:06:27
+2022-03-13 22:10:05
+2022-03-15 12:44:00
+2022-03-01 08:20:43
+2022-03-23 14:04:26
+2022-02-26 13:03:58
+2022-03-25 13:19:26
+2022-03-24 23:59:55
+2022-03-07 19:47:14
+2022-03-16 05:33:08
+2022-02-16 22:20:35
+2022-03-08 01:05:38
+2022-03-03 07:20:56
+2022-02-28 09:58:40
+2022-03-08 18:47:06
+2022-02-16 16:48:32
+2022-03-05 02:47:02
+2022-03-16 22:07:00
+2022-02-28 00:15:28
+2022-03-26 04:49:23
+2022-02-26 17:47:28
+2022-02-28 19:36:36
+2022-03-22 01:13:57
+2022-03-06 14:34:34
+2022-03-16 13:34:17
+2022-03-09 13:46:21
+2022-03-22 19:11:43
+2022-03-26 02:57:42
+2022-03-03 19:27:48
+2022-02-28 07:58:16
+2022-02-16 16:51:21
+2022-03-06 18:17:50
+2022-02-24 23:41:15
+2022-03-21 23:54:49
+2022-03-05 15:53:24
+2022-03-03 10:11:20
+2022-03-26 14:03:44
+2022-02-20 08:25:24
+2022-02-17 20:27:54
+2022-02-23 10:50:42
+2022-03-11 22:15:31
+2022-03-02 02:36:22
+2022-02-26 16:48:12
+2022-03-16 01:02:28
+2022-03-26 12:02:51
+2022-03-22 16:36:15
+2022-03-14 08:56:55
+2022-03-20 05:55:37
+2022-03-07 13:23:21
+2022-03-02 21:35:52
+2022-02-17 23:42:26
+2022-02-21 14:28:17
+2022-03-18 10:36:29
+2022-03-09 07:40:49
+2022-02-18 20:55:11
+2022-03-18 21:07:56
+2022-03-14 14:37:35
+2022-03-20 03:04:30
+2022-03-06 03:45:49
+2022-02-17 08:03:42
+2022-02-22 08:52:16
+2022-03-01 20:34:59
+2022-03-11 15:13:21
+2022-02-17 19:52:10
+2022-02-25 19:32:12
+2022-03-22 08:53:09
+2022-02-28 10:29:58
+2022-02-16 01:43:29
+2022-03-22 08:35:58
+2022-03-04 16:33:00
+2022-03-03 14:56:10
+2022-03-15 19:03:24
+2022-03-19 22:38:39
+2022-03-20 18:47:02
+2022-03-17 08:18:24
+2022-02-19 23:01:06
+2022-02-17 04:38:53
+2022-03-23 16:45:38
+2022-02-16 22:24:30
+2022-03-10 13:40:51
+2022-03-19 01:26:31
+2022-03-15 10:43:52
+2022-03-12 06:48:51
+2022-03-21 14:56:34
+2022-03-12 16:33:00
+2022-02-17 12:54:47
+2022-02-26 18:38:10
+2022-02-16 02:48:20
+2022-02-23 22:35:57
+2022-03-08 18:17:46
+2022-02-24 21:10:20
+2022-03-03 16:51:05
+2022-03-22 13:45:15
+2022-03-08 22:31:21
+2022-03-05 10:10:23
+2022-02-24 07:31:51
+2022-03-19 12:42:14
+2022-03-27 13:25:55
+2022-03-05 05:24:14
+2022-03-15 19:50:54
+2022-02-19 19:15:53
+2022-03-17 06:41:08
+2022-03-09 06:38:13
+2022-03-27 18:04:47
+2022-03-24 05:43:34
+2022-03-23 00:46:52
+2022-03-17 14:37:57
+2022-03-05 21:19:07
+2022-03-15 20:24:26
+2022-02-23 17:48:27
+2022-03-21 06:44:20
+2022-03-24 17:19:01
+2022-03-01 14:16:23
+2022-02-20 16:23:07
+2022-02-28 07:32:19
+2022-03-19 09:49:40
+2022-03-24 13:30:12
+2022-03-09 13:47:00
+2022-03-06 04:08:13
+2022-03-25 23:26:02
+2022-03-13 21:58:18
+2022-02-17 06:28:13
+2022-02-17 06:11:52
+2022-03-07 18:00:12
+2022-02-22 17:45:13
+2022-03-12 01:30:04
+2022-02-16 15:00:44
+2022-03-05 12:38:42
+2022-03-09 09:30:23
+2022-03-24 02:30:22
+2022-03-13 16:57:11
+2022-03-01 16:35:51
+2022-03-17 01:08:21
+2022-02-22 20:08:34
+2022-03-13 07:46:54
+2022-02-20 16:08:48
+2022-03-07 07:27:28
+2022-03-21 08:36:24
+2022-02-22 04:50:29
+2022-03-20 01:42:39
+2022-02-21 02:52:52
+2022-02-21 09:12:09
+2022-02-28 08:07:43
+2022-03-13 18:59:13
+2022-03-26 17:59:53
+2022-02-25 05:01:16
+2022-02-18 21:53:51
+2022-03-21 12:30:42
+2022-03-05 14:38:09
+2022-03-08 04:33:54
+2022-02-27 15:20:01
+2022-03-13 11:42:22
+2022-02-17 22:19:56
+2022-02-25 18:39:52
+2022-03-24 00:00:57
+2022-02-21 11:01:37
+2022-03-04 09:52:32
+2022-03-04 02:08:14
+2022-02-23 16:28:06
+2022-02-25 03:42:44
+2022-03-21 13:50:32
+2022-03-17 16:27:02
+2022-02-24 20:44:56
+2022-02-28 10:42:59
+2022-03-08 07:08:18
+2022-03-27 01:46:13
+2022-03-12 12:01:39
+2022-02-28 15:47:42
+2022-03-11 00:17:25
+2022-03-21 19:41:01
+2022-02-28 10:40:05
+2022-03-20 13:02:34
+2022-02-28 23:47:15
+2022-03-02 15:39:03
+2022-03-04 20:58:32
+2022-02-23 05:22:08
+2022-02-28 12:33:28
+2022-03-15 21:21:19
+2022-03-16 00:44:11
+2022-03-16 20:36:47
+2022-03-08 02:17:08
+2022-03-05 15:17:19
+2022-03-07 15:21:12
+2022-02-16 22:40:27
+2022-02-28 13:26:56
+2022-03-10 21:43:38
+2022-02-19 13:20:12
+2022-03-12 17:35:09
+
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-15 06:42:12
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-07 11:01:59
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-16 14:33:12
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-10 11:50:22
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-05 14:05:09
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-04 06:06:19
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-08 23:49:05
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-16 18:04:55
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-10 13:02:33
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-07 21:19:08
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-05 15:46:48
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-13 06:48:28
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-04 12:38:23
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-03 21:11:04
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-05 04:09:33
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-10 07:12:00
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-12 21:13:55
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-06 09:04:37
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-17 04:02:21
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-22 07:22:41
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-17 15:00:34
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-06 14:18:06
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-08 14:37:45
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-22 14:12:34
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-11 11:35:27
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-05 04:50:32
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-10 12:34:39
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-09 10:12:06
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-20 01:02:07
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-13 17:58:24
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-02 02:46:43
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-05 08:04:01
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-25 08:12:32
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-15 06:39:39
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-06 00:25:14
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-24 19:39:53
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-04 16:32:38
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-23 06:35:04
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-05 07:37:03
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-07 14:42:44
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-11 23:32:09
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-17 06:45:31
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-19 07:18:39
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-01 01:21:17
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-12 10:12:24
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-21 14:33:31
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-30 13:32:37
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-12 22:48:27
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-02 01:21:18
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-19 14:43:45
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-02 02:08:07
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-17 02:01:49
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-03 11:45:41
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-11 23:28:50
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-10 21:57:13
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-04 10:30:21
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-13 22:22:53
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-26 16:28:03
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-06 08:31:38
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-13 23:34:40
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-03 06:12:52
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-03 03:41:37
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-26 00:44:25
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-14 12:29:53
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-14 08:03:57
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-14 10:59:43
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-30 06:02:37
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-10 14:14:37
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-11 01:06:45
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-10 00:24:26
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-21 12:57:58
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-31 20:22:08
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-07 21:16:55
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-07 13:21:58
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-21 09:49:15
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-15 19:27:42
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-07 15:27:44
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-02 14:27:43
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-17 17:14:07
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-11 03:26:45
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-01 16:12:34
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-22 17:38:12
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-12 03:48:02
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-03 04:57:11
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-05 16:33:06
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-11 11:22:55
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-11 10:10:33
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-07 09:54:00
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-13 11:41:16
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-12 12:47:38
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-18 11:11:01
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-13 07:42:23
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-21 18:28:12
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-08 20:19:16
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-29 16:47:12
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-15 10:20:43
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-11 04:29:53
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-05 13:03:55
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-17 15:22:53
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-07 14:07:07
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-07 22:27:16
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-04 17:24:10
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-03 14:43:28
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-04 04:53:22
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-02 19:10:53
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-19 00:20:20
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-01 20:15:44
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-10 18:55:47
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-17 09:31:43
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-07 12:09:02
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-29 19:07:18
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-03 02:27:01
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-13 03:09:48
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-12 15:20:34
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-09 17:43:41
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-14 10:35:46
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-29 17:01:32
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-04 11:47:38
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-24 00:51:49
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-07 17:56:12
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-28 18:30:01
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-02 16:06:14
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-18 18:29:12
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-12 23:30:55
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-18 15:53:06
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-01 10:39:43
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-27 07:18:27
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-24 11:24:12
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-14 09:54:20
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-08 05:00:41
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-11 14:43:43
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-15 16:39:46
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-03 17:27:00
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-09 18:51:20
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-10 07:22:19
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-27 22:58:55
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-07 19:54:06
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-07 11:14:54
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-09 01:03:19
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-08 13:24:27
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-14 10:52:36
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-29 02:16:08
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-05 11:51:25
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-03 07:31:50
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-22 13:11:06
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-24 00:56:00
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-30 20:54:10
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-06 02:28:48
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-02 19:47:33
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-09 17:24:28
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-17 11:32:26
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-21 20:29:41
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-23 09:37:03
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-29 11:00:54
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-06 23:23:16
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-18 08:04:54
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-02 03:36:25
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-01 20:38:19
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-30 08:35:43
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-20 17:12:11
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-07 22:07:06
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-11 09:09:05
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-25 22:34:01
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-25 00:00:55
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-08 03:24:51
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-04 15:19:23
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-15 16:43:12
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-06 05:59:51
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-03 10:14:58
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-27 23:05:22
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-11 11:16:34
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-27 21:48:18
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-24 04:09:07
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-07 02:50:10
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-28 10:30:29
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-15 15:07:24
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-08 22:10:49
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-09 05:27:06
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-09 23:48:41
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-06 04:40:35
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-24 21:02:40
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-24 11:31:30
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-09 02:13:02
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-08 10:08:17
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-08 23:16:05
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-03 09:57:19
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-26 21:08:23
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-02 23:52:37
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-05 15:49:23
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-14 12:54:00
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-13 07:40:32
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-15 08:30:55
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-04 11:32:44
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-07 17:06:13
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-26 00:59:24
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-22 11:07:56
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-07 20:41:53
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-28 01:41:56
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-02 09:06:34
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-24 10:59:06
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-19 03:22:04
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-05 04:04:13
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-24 05:53:11
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-18 18:15:46
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-29 16:31:36
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-05 01:13:50
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-24 04:38:04
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-25 05:06:09
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-06 12:50:54
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-25 20:03:04
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-18 00:49:09
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-08 22:01:35
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-08 12:05:00
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-25 10:30:51
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-25 16:00:37
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-25 16:09:05
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-06 16:24:47
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-15 03:58:38
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-07 21:18:13
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-22 13:56:19
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-22 16:49:13
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-11 09:32:22
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-13 07:12:01
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-25 21:33:46
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-24 17:24:20
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-29 22:58:19
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-12 14:14:57
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-10 00:25:39
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-12 07:49:23
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-02 23:03:06
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-05 04:07:35
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-05 19:22:54
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-17 03:45:45
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-23 01:05:57
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-07 12:51:20
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-09 00:22:19
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-12 12:11:37
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-21 09:54:09
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-01 15:26:05
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-08 19:43:02
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-06 19:40:23
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-18 05:28:53
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-18 09:58:03
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-27 17:38:47
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-16 22:57:17
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-08 07:15:20
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-15 13:08:59
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-05 21:47:48
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-10 08:37:57
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-20 06:35:31
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-18 14:53:06
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-22 21:41:40
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-22 06:54:17
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-12 13:26:57
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-10 00:05:37
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-13 23:40:37
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-03 14:44:05
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-07 00:25:38
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-08 14:39:16
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-08 21:54:58
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-29 04:09:03
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-18 12:25:27
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-02 19:12:35
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-13 14:10:58
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-14 04:20:52
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-05 23:27:05
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-28 01:16:09
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-21 16:24:45
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-29 01:34:03
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-28 18:27:26
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-11 20:12:07
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-03 06:01:23
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-11 13:17:36
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-15 18:09:37
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-31 23:18:00
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-15 15:31:13
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-07 12:57:57
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-12 00:16:12
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-03 03:05:18
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-11 15:17:28
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-26 13:51:26
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-29 13:45:37
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-02 14:22:03
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-05 21:30:00
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-28 06:50:50
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-09 06:32:49
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-04 05:54:49
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-10 03:30:03
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-21 08:25:04
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-14 06:04:23
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-15 22:18:04
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-06 06:43:07
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-11 22:28:55
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-19 04:31:57
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-06 04:56:34
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-02 22:23:42
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-02 10:14:11
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-06 12:54:16
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-03 18:04:34
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-12 20:33:03
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-11 19:01:29
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-01 16:51:20
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-26 11:01:41
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-12 06:50:44
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-18 07:00:05
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-16 16:46:23
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-07 01:18:55
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-09 18:01:08
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-11 14:06:36
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-13 22:18:41
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-12 18:11:17
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-04 02:50:50
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-07 12:45:55
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-07 21:19:32
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-27 11:54:24
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-04 12:57:13
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-11 13:02:23
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-05 15:39:26
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-27 18:11:23
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-07 13:19:07
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-09 15:13:23
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-02 21:47:54
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-11 12:27:14
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-07 07:05:49
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-05 22:56:45
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-03 06:25:26
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-24 00:47:24
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-06 23:12:24
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-30 14:54:28
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-12 14:36:36
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-11 03:09:38
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-01 18:11:52
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-25 05:06:14
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-04 14:01:02
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-06 09:57:36
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-09 06:06:59
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-20 13:49:53
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-14 12:51:10
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-07 17:59:48
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-12 14:50:36
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-02 13:49:57
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-27 05:11:51
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-23 04:04:27
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-07 12:37:02
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-02 06:02:41
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-28 10:31:24
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-10 01:05:02
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-09 04:03:07
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-05 06:17:01
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-07 04:13:02
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-02 08:18:22
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-11 06:37:45
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-19 05:34:27
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-12 07:33:01
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-14 04:06:54
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-01 13:15:54
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-06 18:13:21
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-16 03:57:22
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-07 11:28:37
+INSERT INTO datetime(start_time, end_time) VALUES('2022-02-09 16:26:21
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-28 21:09:46
+INSERT INTO datetime(start_time, end_time) VALUES('2022-01-30 18:33:06 */
+
+
 
 INSERT INTO rent
 SELECT c1.customerid, t.unit, dt.start_time, dt.end_time , t.street, t.unit_no, t.postal_code
