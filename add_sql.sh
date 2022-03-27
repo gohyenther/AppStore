@@ -35,13 +35,10 @@ psql ${URI} -f sql/temp.sql
 psql ${URI} -f sql/address.sql
 psql ${URI} -f sql/units.sql
 psql ${URI} -f sql/type.sql
-psql ${URI} -f sql/office_features.sql
+psql ${URI} -f sql/features.sql
 psql ${URI} -f sql/officespaces.sql
-psql ${URI} -f sql/confroom_features.sql
 psql ${URI} -f sql/confrooms.sql
-psql ${URI} -f sql/storage_features.sql
 psql ${URI} -f sql/storages.sql
-psql ${URI} -f sql/workcube_features.sql
 psql ${URI} -f sql/workcubes.sql
 psql ${URI} -f sql/transaction.sql
 psql ${URI} -f sql/rent.sql
