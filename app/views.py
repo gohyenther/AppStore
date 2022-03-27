@@ -295,8 +295,10 @@ def administrator(request):
         storages = cursor.fetchall()
         cursor.execute("SELECT * FROM confrooms ORDER BY unit")
         confrooms = cursor.fetchall()
+        cursor.execute("SELECT * FROM workcubes ORDER BY unit")
+        workcubes = cursor.fetchall()
 
-    result_dict = {'records': customers, 'offices': offices, 'storages': storages, 'confrooms': confrooms}
+    result_dict = {'records': customers, 'offices': offices, 'storages': storages, 'confrooms': confrooms, 'workcubes': workcubes}
     return render(request,'app/administrator.html',result_dict)
 
 
