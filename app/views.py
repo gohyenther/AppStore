@@ -35,14 +35,21 @@ def index(request):
 # CUSTOMERPROFILE PAGE
 def customerprofile(request, id):
     """Shows the customer profile page"""
+    status = ''
     
     ## Rent office space
     if request.POST:
         if request.POST['action'] == 'rent':
             with connection.cursor() as cursor:
-                cursor.execute("UPDATE offices SET occupier = %s WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                cursor.execute("SELECT occupier FROM offices WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                               [request.POST['office_unit'], request.POST['office_street'], request.POST['office_unit_no'], request.POST['office_postal_code']])
+                checkOccupier = cursor.fetchone()
+                if checkOccupier == 'Yes':
+                    status = 'Sorry, this office space is already taken!'
+                else:
+                    cursor.execute("UPDATE offices SET occupier = %s WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                ['Yes', request.POST['office_unit'], request.POST['office_street'], request.POST['office_unit_no'], request.POST['office_postal_code']])
-                cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s)",
+                    cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s)",
                                [id, request.POST['office_unit'], request.POST['office_street'], request.POST['office_unit_no'], request.POST['office_postal_code']])
          
     ## Vacate office space
@@ -124,7 +131,7 @@ def customerprofile(request, id):
     #                cursor.execute("SELECT * FROM storages")
     #                storages_filter = cursor.fetchall()
 
-    result_dict = {'records': customers, 'offices': offices, 'rented': rented}
+    result_dict = {'records': customers, 'offices': offices, 'rented': rented, 'status': status}
     return render(request,'app/customerprofile.html',result_dict)
 
 
