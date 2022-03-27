@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS features(
+	count_no VARCHAR(8) NOT NULL,
+	unit VARCHAR(32) NOT NULL,
+	features VARCHAR(512) NOT NULL);
