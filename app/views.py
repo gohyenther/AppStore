@@ -56,15 +56,15 @@ def customerprofile(request, id):
         if request.POST['action'] == 'storage_rent':
             with connection.cursor() as cursor:
                 cursor.execute("UPDATE storages SET occupier = %s WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
-                               ['Yes', request.POST['storage_unit'], request.POST['storage_street'], request.POST['storage_unit_no'], request.POST['storage_postal_code']])
+                               ['Yes', request.POST['store_unit'], request.POST['store_street'], request.POST['store_unit_no'], request.POST['store_postal_code']])
                 cursor.execute("SELECT FROM rent WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
-                               [request.POST['storage_unit'], request.POST['storage_street'], request.POST['storage_unit_no'], request.POST['storage_postal_code']])
+                               [request.POST['store_unit'], request.POST['store_street'], request.POST['store_unit_no'], request.POST['store_postal_code']])
                 checkRent = cursor.fetchone()
                 if checkRent != None:
                     status = 'Sorry, this storage space is already taken!'
                 else:
                     cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s)",
-                                   [id, request.POST['storage_unit'], request.POST['storage_street'], request.POST['storage_unit_no'], request.POST['storage_postal_code']])
+                                   [id, request.POST['store_unit'], request.POST['store_street'], request.POST['store_unit_no'], request.POST['store_postal_code']])
     
     ## Vacate office space
     if request.POST:
