@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS temp(
  unit VARCHAR(32) ,
- features VARCHAR(512),
+ features_no VARCHAR(512),
  timescale VARCHAR(32) NOT NULL,
  type VARCHAR(32) ,
  size_sf NUMERIC(16) NOT NULL,
@@ -11,29 +11,29 @@ CREATE TABLE IF NOT EXISTS temp(
  rate NUMERIC(32),
  PRIMARY KEY (unit, street, unit_no, postal_code));
  
- 
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (2, 18, 2, 6, 330, '92 Briar Crest Way', '47-10', '837954', 0, 481);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (4, 4, 3, 5, 550, '65 Burrows Plaza', '91-94', '428856', 0, 970);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (4, 2, 2, 4, 377, '2 Sheridan Court', '13-00', '504652', 0, 268);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (3, 8, 3, 3, 381, '041 Northfield Park', '52-26', '328128', 1, 955);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (4, 17, 1, 3, 347, '7133 Continental Place', '71-12', '336937', 1, 370);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (2, 18, 3, 4, 472, '16398 Valley Edge Pass', '63-16', '798609', 0, 380);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (3, 4, 2, 4, 394, '95 Porter Parkway', '80-52', '325442', 1, 994);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (4, 17, 3, 6, 916, '38 Northridge Junction', '50-26', '267445', 1, 357);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (4, 16, 2, 4, 216, '0717 Hovde Road', '03-43', '673133', 1, 885);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (3, 18, 3, 5, 425, '64 Debs Park', '91-76', '372326', 0, 825);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (2, 14, 3, 3, 578, '212 Holmberg Park', '31-17', '851929', 1, 758);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (1, 2, 3, 6, 838, '7 Golf View Drive', '62-54', '633165', 1, 992);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (1, 17, 3, 3, 174, '9 Twin Pines Park', '03-47', '841062', 0, 55);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (2, 5, 3, 6, 756, '038 Ridgeview Place', '80-84', '196634', 1, 426);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (1, 16, 1, 1, 678, '8 Manley Junction', '92-31', '875995', 0, 938);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (3, 5, 3, 6, 676, '69 East Crossing', '37-94', '407301', 0, 729);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (2, 7, 1, 4, 636, '0 Mosinee Terrace', '06-32', '290964', 0, 228);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (2, 7, 2, 5, 142, '06 Hauk Road', '77-45', '146358', 1, 923);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (2, 11, 1, 3, 700, '68 Hayes Alley', '50-59', '485246', 0, 67);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (3, 13, 3, 2, 77, '487 Haas Terrace', '37-94', '769168', 0, 318);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (4, 18, 1, 5, 161, '26545 Division Place', '94-64', '764673', 0, 822);
-insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (2, 17, 3, 7, 250, '5 Esch Parkway', '77-01', '008735', 0, 601);
+/* need change all features to features_no */
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (2, 18, 2, 6, 330, '92 Briar Crest Way', '47-10', '837954', 0, 481);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (4, 4, 3, 5, 550, '65 Burrows Plaza', '91-94', '428856', 0, 970);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (4, 2, 2, 4, 377, '2 Sheridan Court', '13-00', '504652', 0, 268);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (3, 8, 3, 3, 381, '041 Northfield Park', '52-26', '328128', 1, 955);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (4, 17, 1, 3, 347, '7133 Continental Place', '71-12', '336937', 1, 370);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (2, 18, 3, 4, 472, '16398 Valley Edge Pass', '63-16', '798609', 0, 380);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (3, 4, 2, 4, 394, '95 Porter Parkway', '80-52', '325442', 1, 994);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (4, 17, 3, 6, 916, '38 Northridge Junction', '50-26', '267445', 1, 357);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (4, 16, 2, 4, 216, '0717 Hovde Road', '03-43', '673133', 1, 885);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (3, 18, 3, 5, 425, '64 Debs Park', '91-76', '372326', 0, 825);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (2, 14, 3, 3, 578, '212 Holmberg Park', '31-17', '851929', 1, 758);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (1, 2, 3, 6, 838, '7 Golf View Drive', '62-54', '633165', 1, 992);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (1, 17, 3, 3, 174, '9 Twin Pines Park', '03-47', '841062', 0, 55);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (2, 5, 3, 6, 756, '038 Ridgeview Place', '80-84', '196634', 1, 426);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (1, 16, 1, 1, 678, '8 Manley Junction', '92-31', '875995', 0, 938);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (3, 5, 3, 6, 676, '69 East Crossing', '37-94', '407301', 0, 729);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (2, 7, 1, 4, 636, '0 Mosinee Terrace', '06-32', '290964', 0, 228);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (2, 7, 2, 5, 142, '06 Hauk Road', '77-45', '146358', 1, 923);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (2, 11, 1, 3, 700, '68 Hayes Alley', '50-59', '485246', 0, 67);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (3, 13, 3, 2, 77, '487 Haas Terrace', '37-94', '769168', 0, 318);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (4, 18, 1, 5, 161, '26545 Division Place', '94-64', '764673', 0, 822);
+insert into temp (unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (2, 17, 3, 7, 250, '5 Esch Parkway', '77-01', '008735', 0, 601);
 insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (3, 6, 2, 4, 747, '22338 Saint Paul Alley', '00-83', '311513', 0, 938);
 insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (4, 13, 2, 2, 654, '8 Schlimgen Point', '75-90', '862243', 0, 790);
 insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (1, 8, 2, 7, 297, '7 Dahle Lane', '39-16', '459994', 1, 642);
@@ -873,44 +873,6 @@ WHERE occupier = '0';
 UPDATE temp
 SET occupier = 'Yes'
 WHERE occupier = '1';
-
-
-/* update features col */
-UPDATE temp 
-SET features = 
-(SELECT ofs.features 
-	FROM(SELECT features, FLOOR(RANDOM()*(999))+1
-		FROM office_features 
-		ORDER BY RANDOM()
-		LIMIT 1) AS ofs) 
-WHERE unit = 'Office space';
-
-UPDATE temp 
-SET features = 
-(SELECT wcb.features 
-	FROM(SELECT features, FLOOR(RANDOM()*(999))+1
-		FROM workcube_features 
-		ORDER BY RANDOM()
-		LIMIT 1) AS wcb) 
-WHERE unit = 'Working cubicle';
-
-UPDATE temp 
-SET features = 
-(SELECT cfr.features 
-	FROM(SELECT features, FLOOR(RANDOM()*(999))+1
-		FROM confroom_features 
-		ORDER BY RANDOM()
-		LIMIT 1) AS cfr) 
-WHERE unit = 'Conference room';
-
-UPDATE temp 
-SET features = 
-(SELECT str.features 
-	FROM(SELECT features, FLOOR(RANDOM()*(999))+1
-		FROM storage_features 
-		ORDER BY RANDOM()
-		LIMIT 1) AS str) 
-WHERE unit = 'Storage space';
 
 
 /* update timescale col */
