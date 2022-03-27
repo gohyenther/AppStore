@@ -117,6 +117,8 @@ def customerprofile(request, id):
         offices = cursor.fetchall()
         cursor.execute("SELECT * FROM storages WHERE occupier = 'No' ORDER BY unit")
         storages = cursor.fetchall()
+        cursor.execute("SELECT * FROM workcubes WHERE occupier = 'No' ORDER BY unit")
+        workcubes = cursor.fetchall()
     
     ## Kah Meng's Sorting functions
     if request.POST:
@@ -137,6 +139,7 @@ def customerprofile(request, id):
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM offices WHERE occupier = 'No' ORDER BY size_sf ASC")
                 offices = cursor.fetchall()
+        
         ## STORAGE SPACES SORT
         if request.POST['action'] == 'storage_pricehighlow':
             with connection.cursor() as cursor:
@@ -154,6 +157,42 @@ def customerprofile(request, id):
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM storages WHERE occupier = 'No' ORDER BY size_sf ASC")
                 storages = cursor.fetchall()
+        
+        ## CONFROOMS SORT
+        if request.POST['action'] == 'confroom_pricehighlow':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM confrooms WHERE occupier = 'No' ORDER BY rate DESC")
+                confrooms = cursor.fetchall()
+        if request.POST['action'] == 'confroom_pricelowhigh':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM confrooms WHERE occupier = 'No' ORDER BY rate ASC")
+                confrooms = cursor.fetchall()
+        if request.POST['action'] == 'confroom_sfhighlow':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM confrooms WHERE occupier = 'No' ORDER BY size_sf DESC")
+                confrooms = cursor.fetchall()
+        if request.POST['action'] == 'confroom_sflowhigh':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM confrooms WHERE occupier = 'No' ORDER BY size_sf ASC")
+                confrooms = cursor.fetchall()
+        
+        ## WORKCUBES SORT
+        if request.POST['action'] == 'workcube_pricehighlow':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM workcubes WHERE occupier = 'No' ORDER BY rate DESC")
+                workcubes = cursor.fetchall()
+        if request.POST['action'] == 'workcube_pricelowhigh':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM workcubes WHERE occupier = 'No' ORDER BY rate ASC")
+                workcubes = cursor.fetchall()
+        if request.POST['action'] == 'workcube_sfhighlow':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM workcubes WHERE occupier = 'No' ORDER BY size_sf DESC")
+                workcubes = cursor.fetchall()
+        if request.POST['action'] == 'workcube_sflowhigh':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM workcubes WHERE occupier = 'No' ORDER BY size_sf ASC")
+                workcubes = cursor.fetchall()
     
     ##Filter function
     ##Sort function
@@ -198,7 +237,7 @@ def customerprofile(request, id):
     #                cursor.execute("SELECT * FROM storages")
     #                storages_filter = cursor.fetchall()
 
-    result_dict = {'records': customers, 'offices': offices, 'rented': rented, 'storages': storages, 'status': status}
+    result_dict = {'records': customers, 'offices': offices, 'rented': rented, 'storages': storages, 'workcubes': workcubes, 'status': status}
     return render(request,'app/customerprofile.html',result_dict)
 
 
