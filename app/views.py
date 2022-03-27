@@ -108,7 +108,7 @@ def customerprofile(request, id):
                     status = 'Sorry, this conference room space is already taken!'
                 else:
                     cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s)",
-                                   [id, request.POST['store_unit'], request.POST['store_street'], request.POST['store_unit_no'], request.POST['store_postal_code']])
+                                   [id, request.POST['conf_unit'], request.POST['conf_street'], request.POST['conf_unit_no'], request.POST['conf_postal_code']])
                     
     ## Rent work cubicle
     if request.POST:
