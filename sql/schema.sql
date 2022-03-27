@@ -22,26 +22,6 @@ CREATE TABLE IF NOT EXISTS type(
  classification VARCHAR(32) PRIMARY KEY);
  
  
-/* not needed anymore
- 
-CREATE TABLE IF NOT EXISTS office_features(
- features VARCHAR(512) PRIMARY KEY);
-
-
-CREATE TABLE IF NOT EXISTS workcube_features(
- features VARCHAR(512) PRIMARY KEY);
- 
- 
-CREATE TABLE IF NOT EXISTS confroom_features(
- features VARCHAR(512) PRIMARY KEY);
- 
- 
-CREATE TABLE IF NOT EXISTS storage_features(
- features VARCHAR(512) PRIMARY KEY);
- 
-*/
- 
- 
 /* this address table exists only to be referrenced to ensure address is valid, removed rate*/
 CREATE TABLE IF NOT EXISTS address(
  street VARCHAR(512),
