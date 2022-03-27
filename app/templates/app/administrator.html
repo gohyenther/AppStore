@@ -24,6 +24,12 @@
       height: 200px;
       overflow: scroll;
     }
+    div.ex4 {
+      background-color: lightpink;
+      width: 1100px;
+      height: 200px;
+      overflow: scroll;
+    }
     </style>
 
     <h2>Customers<h2/>
@@ -98,7 +104,7 @@
     </div>
     <br/>
         
-    <h2>Storages<h2/>
+    <h2>Storage Spaces<h2/>
     <a href="addstorage">Add new storage space</a>
     <div class="ex3">
     <table border=1>
@@ -131,6 +137,39 @@
     </table>
     </div>
     <br/>
-    
+
+    <h2>Conference Rooms<h2/>
+    <a href="addconfrooms">Add new conference room</a>
+    <div class="ex4">
+    <table border=1>
+        <thead>
+            <th>Unit</th>
+            <th>Features</th>
+            <th>Timescale</th>
+            <th>Type</th>
+            <th>Size (s.f.)</th>
+            <th>Street</th>
+            <th>Unit no.</th>
+            <th>Postal Code</th>
+            <th>Occupied?</th>
+            <th>Rate ($/Timescale)</th>
+        </thead>
+        {% for conf in confrooms %}
+        <tr>
+            <td> {{ conf.0 }} </td>
+            <td> {{ conf.1 }} </td>
+            <td> {{ conf.2 }} </td>
+            <td> {{ conf.3 }} </td>
+            <td> {{ conf.4 }} </td>
+            <td> {{ conf.5 }} </td>
+            <td> {{ conf.6 }} </td>
+            <td> {{ conf.7 }} </td>
+            <td> {{ conf.8 }} </td>
+            <td> {{ conf.9 }} </td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+    <br/>
 </body>
 </html>
