@@ -65,10 +65,12 @@ def customerprofile(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customers WHERE customerid = %s", [id])
         customers = cursor.fetchall()
-        cursor.execute("SELECT * FROM offices WHERE occupier = 'No' ORDER BY unit")
-        offices = cursor.fetchall()
         cursor.execute("SELECT * FROM rent WHERE customerid = %s", [id])
         rented = cursor.fetchall()
+        cursor.execute("SELECT * FROM offices WHERE occupier = 'No' ORDER BY unit")
+        offices = cursor.fetchall()
+        cursor.execute("SELECT * FROM storages WHERE occupier = 'No' ORDER BY unit")
+        storages = cursor.fetchall()
     
     ## Kah Meng's Sorting functions
     if request.POST:
@@ -131,7 +133,7 @@ def customerprofile(request, id):
     #                cursor.execute("SELECT * FROM storages")
     #                storages_filter = cursor.fetchall()
 
-    result_dict = {'records': customers, 'offices': offices, 'rented': rented, 'status': status}
+    result_dict = {'records': customers, 'offices': offices, 'rented': rented, 'storages': storages, 'status': status}
     return render(request,'app/customerprofile.html',result_dict)
 
 
