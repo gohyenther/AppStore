@@ -197,6 +197,16 @@
     </table>
     </div>
     <br/>
+        
+    <h2 style="color:blue">Conference Rooms<h2/>
+    
+    <form method="POST" style="display: inline;">
+    {% csrf_token %}
+    <button type='submit' name='action' value= 'confroom_pricehighlow'>Price (High to Low)</button>
+    <button type='submit' name='action' value = 'confroom_pricelowhigh'>Price (Low to High)</button>
+    <button type='submit' name='action' value = 'confroom_sfhighlow'>Sq Ft (High to Low)</button>
+    <button type='submit' name='action' value = 'confroom_sflowhigh'>Sq Ft (Low to High)</button>
+    </form>
     
     <div class="ex3">
     <table border=1>
