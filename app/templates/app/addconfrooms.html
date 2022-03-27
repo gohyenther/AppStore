@@ -1,0 +1,42 @@
+<html>
+<body>
+    <h2>Add New Conference Room</h2>
+
+    <p style="color:red">{{ status|safe }}</p>
+    <!-- Create a Form -->
+    <form method="POST">
+        <!-- Security token by Django -->
+        {% csrf_token %}
+        <!-- form -->
+        <div id="div_id_unit" class="control-group"> <label for="id_unit" class="control-label requiredField">
+        Unit<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="unit" maxlength="16" class="textinput textInput" required="" id="id_unit"> </div> </div> 
+        
+        <div id="div_id_feature" class="control-group"> <label for="id_features" class="control-label requiredField">
+        Features<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="features" maxlength="64" class="textinput textInput" required="" id="id_features"> </div> </div>
+        
+        <div id="div_id_timescale" class="control-group"> <label for="id_timescale" class="control-label requiredField">
+        Timescale<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="timescale" maxlength="16" class="textinput textInput" required="" id="id_timescale"> </div> </div>
+        
+        <div id="div_id_type" class="control-group"> <label for="id_type" class="control-label requiredField">
+        Type<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="type" maxlength="16" class="textinput textInput" required="" id="id_type"> </div> </div>
+        
+        <div id="div_id_size_sf" class="control-group"> <label for="id_size_sf" class="control-label requiredField">
+        Size (s.f)<span class="asteriskField">*</span> </label> <div class="controls"> <input type="number" name="size_sf" maxlength="8" class="numberinput numberInput" required="" id="id_size_sf"> </div> </div>
+        
+        <div id="div_id_street" class="control-group"> <label for="id_street" class="control-label requiredField">
+        Street<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="street" maxlength="64" class="textinput textInput" required="" id="id_street"> </div> </div>
+        
+        <div id="div_id_unit_no" class="control-group"> <label for="id_unit_no" class="control-label requiredField">
+        Unit No. (floor-unit)<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="unit_no" maxlength="16" class="textinput textInput" required="" id="id_unit_no"> </div> </div>
+        
+        <div id="div_id_postal_code" class="control-group"> <label for="id_postal_code" class="control-label requiredField">
+        Postal Code<span class="asteriskField">*</span> </label> <div class="controls"> <input type="number" name="postal_code" maxlength="8" class="numberinput numberInput" required="" id="id_postal_code"> </div> </div>
+        
+        <div id="div_id_rate" class="control-group"> <label for="id_rate" class="control-label requiredField">
+        Rate ($)<span class="asteriskField">*</span> </label> <div class="controls"> <input type="number" name="rate" maxlength="8" class="numberinput numberInput" required="" id="id_rate"> </div> </div>
+                
+        <br>
+        <button type="submit" value="Add">Add</button>
+    </form>
+</body>
+</html>
