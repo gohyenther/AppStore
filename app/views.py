@@ -338,7 +338,7 @@ def addstorage(request):
     status = ''
 
     if request.POST:
-        ## Check if office unit, street, unit_no, postal_code is already in the table
+        ## Check if storage unit, street, unit_no, postal_code is already in the table
         with connection.cursor() as cursor:
             cursor.execute("SELECT * FROM storages WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                            [request.POST['unit'], request.POST['street'], request.POST['unit_no'], request.POST['postal_code']])
@@ -350,7 +350,7 @@ def addstorage(request):
             if address == None:
                 cursor.execute("INSERT INTO address VALUES (%s, %s, %s)",
                                [request.POST['street'], request.POST['unit_no'], request.POST['postal_code']])
-            ## No same office
+            ## No same storage
             if storage == None:
                 cursor.execute("INSERT INTO storages VALUES (%s, %s, %s, %s, %s, %s, %s, %s, 'No', %s)",
                                [request.POST['unit'], request.POST['features'], request.POST['timescale'], request.POST['type'],
@@ -370,7 +370,7 @@ def addconfrooms(request):
     status = ''
 
     if request.POST:
-        ## Check if office unit, street, unit_no, postal_code is already in the table
+        ## Check if confroom unit, street, unit_no, postal_code is already in the table
         with connection.cursor() as cursor:
             cursor.execute("SELECT * FROM confrooms WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                            [request.POST['unit'], request.POST['street'], request.POST['unit_no'], request.POST['postal_code']])
@@ -382,7 +382,7 @@ def addconfrooms(request):
             if address == None:
                 cursor.execute("INSERT INTO address VALUES (%s, %s, %s)",
                                [request.POST['street'], request.POST['unit_no'], request.POST['postal_code']])
-            ## No same office
+            ## No same confroom
             if storage == None:
                 cursor.execute("INSERT INTO confrooms VALUES (%s, %s, %s, %s, %s, %s, %s, %s, 'No', %s)",
                                [request.POST['unit'], request.POST['features'], request.POST['timescale'], request.POST['type'],
@@ -402,7 +402,7 @@ def addworkcube(request):
     status = ''
 
     if request.POST:
-        ## Check if office unit, street, unit_no, postal_code is already in the table
+        ## Check if workcube unit, street, unit_no, postal_code is already in the table
         with connection.cursor() as cursor:
             cursor.execute("SELECT * FROM workcubes WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                            [request.POST['unit'], request.POST['street'], request.POST['unit_no'], request.POST['postal_code']])
@@ -414,7 +414,7 @@ def addworkcube(request):
             if address == None:
                 cursor.execute("INSERT INTO address VALUES (%s, %s, %s)",
                                [request.POST['street'], request.POST['unit_no'], request.POST['postal_code']])
-            ## No same office
+            ## No same workcube
             if workcube == None:
                 cursor.execute("INSERT INTO workcubes VALUES (%s, %s, %s, %s, %s, %s, %s, %s, 'No', %s)",
                                [request.POST['unit'], request.POST['features'], request.POST['timescale'], request.POST['type'],
