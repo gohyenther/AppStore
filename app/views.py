@@ -150,6 +150,8 @@ def customerprofile(request, id):
         offices = cursor.fetchall()
         cursor.execute("SELECT * FROM storages WHERE occupier = 'No' ORDER BY unit")
         storages = cursor.fetchall()
+        cursor.execute("SELECT * FROM confrooms WHERE occupier = 'No' ORDER BY unit")
+        confrooms = cursor.fetchall()
         cursor.execute("SELECT * FROM workcubes WHERE occupier = 'No' ORDER BY unit")
         workcubes = cursor.fetchall()
     
