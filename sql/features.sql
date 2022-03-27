@@ -96,11 +96,11 @@ INSERT INTO features VALUES(20,'Storage space','shared space, CCTV Security');
 
 /* extract selected cols into tempo */
 SELECT temp2.unit, temp2.features, temp2.timescale, temp2.type, temp2.size_sf, temp2.street, temp2.unit_no, temp2.postal_code, temp2.occupier, temp2.rate
-INTO tempo
+INSERT INTO tempo
 /* from joint tables */
 FROM(SELECT *
-	FROM temp t, features fts
-	WHERE t.features_no = fts.count_no AND t.unit = fts.unit) 
+     FROM temp t, features fts
+     WHERE t.features_no = fts.count_no AND t.unit = fts.unit) 
 ) AS temp2;
 	
 /* drop table temp */	
