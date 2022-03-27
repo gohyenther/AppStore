@@ -22,6 +22,7 @@ import app.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', app.views.index, name='index'),
+    path('signup', app.views.signup, name='signup'),
     path('customerprofile/<str:id>', app.views.customerprofile, name='customerprofile'),
     path('administrator', app.views.administrator, name='administrator'),
     path('addcustomer', app.views.addcustomer, name='addcustomer'),
