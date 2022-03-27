@@ -97,25 +97,6 @@ CREATE TABLE IF NOT EXISTS storages(
  rate NUMERIC(32),
  FOREIGN KEY (street, unit_no, postal_code) REFERENCES address(street, unit_no, postal_code) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
  PRIMARY KEY (unit, street, unit_no, postal_code));
-
- 
-/* if it exists in the table rent, then occupier = NULL in office spaces, workcubes, confrooms, storages, unf_units */
-CREATE TABLE IF NOT EXISTS rent(
- customerid VARCHAR(64) REFERENCES customers(customerid) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
- unit VARCHAR(32) REFERENCES units(purpose) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
- street VARCHAR(32),
- unit_no VARCHAR(32),
- postal_code NUMERIC(6),
- PRIMARY KEY (unit, street, unit_no, postal_code),
- /* REFERENCES TO EITHER offices, workcubes, confrooms, storages or unf_units */
- FOREIGN KEY (street, unit_no, postal_code) REFERENCES address(street, unit_no, postal_code) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED);
- 
-	
-/* transaction == payment table */
-CREATE TABLE IF NOT EXISTS transaction(
- customerid VARCHAR(64) REFERENCES customers(customerid) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
- transactionid VARCHAR(18) PRIMARY KEY,
- amount_paid NUMERIC(64) NOT NULL);
  
  
 /* login credentials */
