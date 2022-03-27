@@ -132,7 +132,50 @@
         {% endfor %}
     </table>
     </div>
-        
+    <br/>
+    
+    <h2 style="color:blue">Storage Spaces<h2/>
+    <div class="ex2">
+    <table border=1>
+        <thead>
+            <th>Unit</th>
+            <th>Features</th>
+            <th>Timescale</th>
+            <th>Type</th>
+            <th>Size (s.f.)</th>
+            <th>Street</th>
+            <th>Unit no.</th>
+            <th>Postal Code</th>
+            <th>Occupied?</th>
+            <th>Rate ($/Timescale)</th>
+            <th style="color:green">Action</th>
+        </thead>
+        {% for store in storages %}
+        <tr>
+            <td> {{ store.0 }} </td>
+            <td> {{ store.1 }} </td>
+            <td> {{ store.2 }} </td>
+            <td> {{ store.3 }} </td>
+            <td> {{ store.4 }} </td>
+            <td> {{ store.5 }} </td>
+            <td> {{ store.6 }} </td>
+            <td> {{ store.7 }} </td>
+            <td> {{ store.8 }} </td>
+            <td> {{ store.9 }} </td>
+            <td>
+                <form method="POST" style="display: inline;">
+                {% csrf_token %}
+                <input type="hidden" name="store_unit" value="{{store.0}}"/>
+                <input type="hidden" name="store_street" value="{{store.5}}"/>
+                <input type="hidden" name="store_unit_no" value="{{store.6}}"/>
+                <input type="hidden" name="store_postal_code" value="{{store.7}}"/>
+                <button style="color:green" onclick="return confirm('Are you sure you want to rent this {{store.0}}?');" type="submit" name="action" value="rent">Rent</button> 
+                </form></td> 
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+    <br/>
         
         
 </body>
