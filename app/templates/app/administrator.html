@@ -30,6 +30,12 @@
       height: 200px;
       overflow: scroll;
     }
+    div.ex5 {
+      background-color: lightgray;
+      width: 1100px;
+      height: 200px;
+      overflow: scroll;
+    }
     </style>
 
     <h2>Customers<h2/>
@@ -171,5 +177,40 @@
     </table>
     </div>
     <br/>
+        
+    <h2>Work Cubicles<h2/>
+    <a href="addworkcube">Add new work cubicle</a>
+    <div class="ex4">
+    <table border=1>
+        <thead>
+            <th>Unit</th>
+            <th>Features</th>
+            <th>Timescale</th>
+            <th>Type</th>
+            <th>Size (s.f.)</th>
+            <th>Street</th>
+            <th>Unit no.</th>
+            <th>Postal Code</th>
+            <th>Occupied?</th>
+            <th>Rate ($/Timescale)</th>
+        </thead>
+        {% for work in workcubes %}
+        <tr>
+            <td> {{ work.0 }} </td>
+            <td> {{ work.1 }} </td>
+            <td> {{ work.2 }} </td>
+            <td> {{ work.3 }} </td>
+            <td> {{ work.4 }} </td>
+            <td> {{ work.5 }} </td>
+            <td> {{ work.6 }} </td>
+            <td> {{ work.7 }} </td>
+            <td> {{ work.8 }} </td>
+            <td> {{ work.9 }} </td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+    <br/>
+    
 </body>
 </html>
