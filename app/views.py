@@ -111,19 +111,19 @@ def customerprofile(request, id):
         if request.POST['action'] == 'storage_pricehighlow':
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM storages WHERE occupier = 'No' ORDER BY rate DESC")
-                offices = cursor.fetchall()
+                storages = cursor.fetchall()
         if request.POST['action'] == 'storage_pricelowhigh':
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM storages WHERE occupier = 'No' ORDER BY rate ASC")
-                offices = cursor.fetchall()
+                storages = cursor.fetchall()
         if request.POST['action'] == 'storage_sfhighlow':
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM storages WHERE occupier = 'No' ORDER BY size_sf DESC")
-                offices = cursor.fetchall()
+                storages = cursor.fetchall()
         if request.POST['action'] == 'storage_sflowhigh':
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM storages WHERE occupier = 'No' ORDER BY size_sf ASC")
-                offices = cursor.fetchall()
+                storages = cursor.fetchall()
     
     ##Filter function
     ##Sort function
