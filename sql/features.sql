@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS tempo(
 
 
 /* extract selected cols into tempo */
-INSERT INTO tempo
+INSERT INTO tempo (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate)
 SELECT temp2.unit, temp2.features, temp2.timescale, temp2.type, temp2.size_sf, temp2.street, temp2.unit_no, temp2.postal_code, temp2.occupier, temp2.rate
 /* from joint tables */
 FROM(SELECT *
