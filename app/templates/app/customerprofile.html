@@ -18,6 +18,7 @@
     }
     </style>
     
+    {% for cust in records %}
     <h2 style="text-align:center">Hello {{cust.1}}!<h2/>
     
     <h2>Your Profile:<h2/>
@@ -31,8 +32,6 @@
             <th>D.O.B</th>
             <th>Contact No.</th>
         </thead>
-        
-        {% for cust in records %}
         
         <tr>
             <td> {{ cust.0 }} </td>
