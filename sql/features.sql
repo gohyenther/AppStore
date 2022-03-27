@@ -93,6 +93,19 @@ INSERT INTO features VALUES(18,'Storage space','common space');
 INSERT INTO features VALUES(19,'Storage space','shared space, CCTV Security, Security Access');
 INSERT INTO features VALUES(20,'Storage space','shared space, CCTV Security');
 
+/* create table tempo */
+CREATE TABLE IF NOT EXISTS tempo(
+ unit VARCHAR(32) ,
+ features VARCHAR(512),
+ timescale VARCHAR(32) NOT NULL,
+ type VARCHAR(32) ,
+ size_sf NUMERIC(16) NOT NULL,
+ street VARCHAR(32),
+ unit_no VARCHAR(32),
+ postal_code NUMERIC(6),
+ occupier VARCHAR(64),
+ rate NUMERIC(32),
+ PRIMARY KEY (unit, street, unit_no, postal_code));
 
 /* extract selected cols into tempo */
 SELECT temp2.unit, temp2.features, temp2.timescale, temp2.type, temp2.size_sf, temp2.street, temp2.unit_no, temp2.postal_code, temp2.occupier, temp2.rate
