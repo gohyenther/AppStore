@@ -1,3 +1,4 @@
+/* must run right after running temp.sql */
 CREATE TABLE IF NOT EXISTS features(
 	count_no VARCHAR(8) NOT NULL,
 	unit VARCHAR(32) NOT NULL,
@@ -111,9 +112,4 @@ RENAME TO temp;
 
 
 
-(SELECT cfr.features 
-	FROM(SELECT features, FLOOR(RANDOM()*(999))+1
-		FROM confroom_features 
-		ORDER BY RANDOM()
-		LIMIT 1) AS cfr) 
-WHERE unit = 'Conference room';
+
