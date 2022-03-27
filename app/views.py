@@ -272,7 +272,7 @@ def customerprofile(request, id):
     #                cursor.execute("SELECT * FROM storages")
     #                storages_filter = cursor.fetchall()
 
-    result_dict = {'records': customers, 'offices': offices, 'rented': rented, 'storages': storages, 'workcubes': workcubes, 'status': status}
+    result_dict = {'records': customers, 'offices': offices, 'rented': rented, 'storages': storages, 'confrooms': confrooms, 'workcubes': workcubes, 'status': status}
     return render(request,'app/customerprofile.html',result_dict)
 
 
