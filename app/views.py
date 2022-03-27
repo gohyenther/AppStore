@@ -90,23 +90,42 @@ def customerprofile(request, id):
     
     ## Kah Meng's Sorting functions
     if request.POST:
-        if request.POST['action'] == 'pricehighlow':
+        ## OFFICE SPACES SORT
+        if request.POST['action'] == 'office_pricehighlow':
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM offices WHERE occupier = 'No' ORDER BY rate DESC")
                 offices = cursor.fetchall()
-        if request.POST['action'] == 'pricelowhigh':
+        if request.POST['action'] == 'office_pricelowhigh':
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM offices WHERE occupier = 'No' ORDER BY rate ASC")
                 offices = cursor.fetchall()
-        if request.POST['action'] == 'sfhighlow':
+        if request.POST['action'] == 'office_sfhighlow':
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM offices WHERE occupier = 'No' ORDER BY size_sf DESC")
                 offices = cursor.fetchall()
-        if request.POST['action'] == 'sflowhigh':
+        if request.POST['action'] == 'office_sflowhigh':
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM offices WHERE occupier = 'No' ORDER BY size_sf ASC")
                 offices = cursor.fetchall()
-                      ##Filter function
+        ## STORAGE SPACES SORT
+        if request.POST['action'] == 'storage_pricehighlow':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM storages WHERE occupier = 'No' ORDER BY rate DESC")
+                offices = cursor.fetchall()
+        if request.POST['action'] == 'storage_pricelowhigh':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM storages WHERE occupier = 'No' ORDER BY rate ASC")
+                offices = cursor.fetchall()
+        if request.POST['action'] == 'storage_sfhighlow':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM storages WHERE occupier = 'No' ORDER BY size_sf DESC")
+                offices = cursor.fetchall()
+        if request.POST['action'] == 'storage_sflowhigh':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM storages WHERE occupier = 'No' ORDER BY size_sf ASC")
+                offices = cursor.fetchall()
+    
+    ##Filter function
     ##Sort function
     
     #if request.POST:
