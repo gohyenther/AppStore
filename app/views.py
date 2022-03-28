@@ -86,7 +86,7 @@ def customerprofile(request, id):
                 else:
                     now = datetime.now()
                     start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
-                    if str(timescale) == 'Monthly':
+                    if timescale[0] == 'Monthly':
                         future = now + timedelta(months=1)
                     else:
                         future = now + timedelta(days=7)
@@ -110,7 +110,7 @@ def customerprofile(request, id):
                 else:
                     now = datetime.now()
                     start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
-                    if str(timescale) == 'Monthly':
+                    if timescale[0] == 'Monthly':
                         future = now + timedelta(months=1)
                     else:
                         future = now + timedelta(days=7)
@@ -134,7 +134,7 @@ def customerprofile(request, id):
                 else:
                     now = datetime.now()
                     start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
-                    if str(timescale) == 'Monthly':
+                    if timescale[0] == 'Monthly':
                         future = now + timedelta(months=1)
                     else:
                         future = now + timedelta(days=7)
@@ -159,7 +159,7 @@ def customerprofile(request, id):
                 else:
                     now = datetime.now()
                     start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
-                    if str(timescale) == 'Monthly':
+                    if timescale[0] == 'Monthly':
                         future = now + timedelta(months=1)
                     else:
                         future = now + timedelta(days=7)
