@@ -87,7 +87,7 @@ def customerprofile(request, id):
                     now = datetime.now()
                     start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
                     if timescale[0] == 'Monthly':
-                        future = now + timedelta(month=1)
+                        future = now + timedelta(days=30)
                     else:
                         future = now + timedelta(days=7)
                     end_rent = future.strftime("%d/%m/%Y %H:%M:%S")
@@ -111,7 +111,7 @@ def customerprofile(request, id):
                     now = datetime.now()
                     start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
                     if timescale[0] == 'Monthly':
-                        future = now + timedelta(month=1)
+                        future = now + timedelta(days=30)
                     else:
                         future = now + timedelta(days=7)
                     end_rent = future.strftime("%d/%m/%Y %H:%M:%S")
@@ -135,7 +135,7 @@ def customerprofile(request, id):
                     now = datetime.now()
                     start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
                     if timescale[0] == 'Monthly':
-                        future = now + timedelta(month=1)
+                        future = now + timedelta(days=30)
                     else:
                         future = now + timedelta(days=7)
                     end_rent = future.strftime("%d/%m/%Y %H:%M:%S")
@@ -160,7 +160,7 @@ def customerprofile(request, id):
                     now = datetime.now()
                     start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
                     if timescale[0] == 'Monthly':
-                        future = now + timedelta(month=1)
+                        future = now + timedelta(days=30)
                     else:
                         future = now + timedelta(days=7)
                     end_rent = future.strftime("%d/%m/%Y %H:%M:%S")
