@@ -1295,6 +1295,7 @@ insert into datetime (start_time, end_time) values ('2021-10-09 09:04:13', '2021
 insert into datetime (start_time, end_time) values ('2021-10-08 04:54:53', '2021-03-02 02:32:46');
 insert into datetime (start_time, end_time) values ('2021-10-09 19:52:34', '2021-01-10 02:15:45');
 
+/* i comment this out first to prevent the cross join from crashing server
 
 INSERT INTO rent
 SELECT c1.customerid, t.unit, dt.start_time, dt.end_time, t.street, t.unit_no, t.postal_code
@@ -1302,6 +1303,8 @@ FROM customers c1, datetime dt, temp t
 WHERE t.occupier = 'Yes'
 ORDER BY RANDOM()
 LIMIT 374;
+
+*/
  
 	
 /* transaction == payment table */
