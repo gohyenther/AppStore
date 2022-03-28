@@ -1658,7 +1658,7 @@ INSERT INTO rent
 SELECT c1.customerid, t.unit, dt.start_time, dt.end_time, t.street, t.unit_no, t.postal_code
 FROM customers c1, datetime dt, temp t
 ORDER BY RANDOM()
-LIMIT 374
+LIMIT 374;
  
 	
 /* transaction == payment table */
