@@ -882,7 +882,7 @@ WHERE street = '92 Briar Crest Way' AND unit_no = '47-10' AND postal_code = '837
 OR street = '65 Burrows Plaza' AND unit_no = '91-94' AND postal_code = '428856'
 OR street = '2 Sheridan Court' AND unit_no =  '13-00' AND postal_code = '504652'
 OR street = '041 Northfield Park' AND unit_no = '52-26' AND postal_code = '328128'
-OR street = '7133 Continental Place' AND unit_no = , '71-12' AND postal_code = '336937'
+OR street = '7133 Continental Place' AND unit_no = '71-12' AND postal_code = '336937'
 OR street = '16398 Valley Edge Pass' AND unit_no = '63-16' AND postal_code = '798609'
 OR street = '95 Porter Parkway' AND unit_no = '80-52' AND postal_code = '325442'
 OR street = '38 Northridge Junction' AND unit_no = '50-26' AND postal_code = '267445'
@@ -944,7 +944,7 @@ insert into datetime (start_time, end_time) values ('2021-10-15 08:45:12', '2021
 
 INSERT INTO rent
 SELECT c2.customerid, t.unit, dt.start_time, dt.end_time, t.street, t.unit_no, t.postal_code
-FROM (SELECT c1.customerid FROM customers c1 ORDER BY RANDOM() LIMIT 10) c2, datetime dt, temp t
+FROM (SELECT c1.customerid FROM customers c1 ORDER BY RANDOM() LIMIT 10) AS c2, datetime dt, temp t
 WHERE t.occupier = 'Yes';
 
 
