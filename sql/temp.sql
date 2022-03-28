@@ -906,7 +906,7 @@ CREATE TABLE IF NOT EXISTS rent(
  street VARCHAR(32),
  unit_no VARCHAR(32),
  postal_code NUMERIC(6),
- PRIMARY KEY (unit, street, unit_no, postal_code),
+ PRIMARY KEY (customerid, start_rent, unit, street, unit_no, postal_code), /* i updated the primary keys */
  /* REFERENCES TO EITHER offices, workcubes, confrooms, storages or unf_units */
  FOREIGN KEY (street, unit_no, postal_code) REFERENCES address(street, unit_no, postal_code) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED);
 
