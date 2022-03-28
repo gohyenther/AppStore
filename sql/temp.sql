@@ -901,16 +901,15 @@ SET timescale = 'Monthly'
 WHERE unit = 'Office space' AND timescale = '2';
 
 
-/* end_rent should not be NOT NULL because some customers haven't end the rents yet */
 CREATE TABLE IF NOT EXISTS rent(
  customerid VARCHAR(64) REFERENCES customers(customerid) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
  unit VARCHAR(32) REFERENCES units(purpose) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
  start_rent VARCHAR(64) NOT NULL,
- end_rent VARCHAR(64),
+ end_rent VARCHAR(64) NOT NULL,
  street VARCHAR(32),
  unit_no VARCHAR(32),
  postal_code NUMERIC(6),
- PRIMARY KEY (customerid, start_rent, unit, street, unit_no, postal_code), /* i updated the primary keys */
+ PRIMARY KEY (customerid, start_rent, unit, street, unit_no, postal_code), /* updated the primary keys */
  /* REFERENCES TO EITHER offices, workcubes, confrooms, storages or unf_units */
  FOREIGN KEY (street, unit_no, postal_code) REFERENCES address(street, unit_no, postal_code) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED);
 
