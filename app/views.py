@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.db import connection
-import datetime
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 
 # LOGIN PAGE
@@ -75,45 +76,54 @@ def customerprofile(request, id):
             with connection.cursor() as cursor:
                 cursor.execute("UPDATE offices SET occupier = %s WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                ['Yes', request.POST['office_unit'], request.POST['office_street'], request.POST['office_unit_no'], request.POST['office_postal_code']])
-                cursor.execute("SELECT FROM rent WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                cursor.execute("SELECT * FROM rent WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [request.POST['office_unit'], request.POST['office_street'], request.POST['office_unit_no'], request.POST['office_postal_code']])
                 checkRent = cursor.fetchone()
                 if checkRent != None:
                     status = 'Sorry, this office space is already taken!'
                 else:
-                    start_rent = datetime.datetime.now()
-                    cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, NULL, %s, %s, %s)",
-                                   [id, request.POST['office_unit'], start_rent, request.POST['office_street'], request.POST['office_unit_no'], request.POST['office_postal_code']])
+                    now = datetime.now()
+                    future = now + relativedelta(months=1)
+                    start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
+                    end_rent = future.strftime("%d/%m/%Y %H:%M:%S")
+                    cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s, %s, %s)",
+                                   [id, request.POST['office_unit'], start_rent, end_rent, request.POST['office_street'], request.POST['office_unit_no'], request.POST['office_postal_code']])
     ## Rent storage space
     if request.POST:
         if request.POST['action'] == 'storage_rent':
             with connection.cursor() as cursor:
                 cursor.execute("UPDATE storages SET occupier = %s WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                ['Yes', request.POST['store_unit'], request.POST['store_street'], request.POST['store_unit_no'], request.POST['store_postal_code']])
-                cursor.execute("SELECT FROM rent WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                cursor.execute("SELECT * FROM rent WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [request.POST['store_unit'], request.POST['store_street'], request.POST['store_unit_no'], request.POST['store_postal_code']])
                 checkRent = cursor.fetchone()
                 if checkRent != None:
                     status = 'Sorry, this storage space is already taken!'
                 else:
-                    start_rent = datetime.datetime.now()
-                    cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, NULL, %s, %s, %s)",
-                                   [id, request.POST['store_unit'], start_rent, request.POST['store_street'], request.POST['store_unit_no'], request.POST['store_postal_code']])
+                    now = datetime.now()
+                    future = now + relativedelta(months=1)
+                    start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
+                    end_rent = future.strftime("%d/%m/%Y %H:%M:%S")
+                    cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s, %s, %s)",
+                                   [id, request.POST['store_unit'], start_rent, end_rent, request.POST['store_street'], request.POST['store_unit_no'], request.POST['store_postal_code']])
     ## Rent conference room
     if request.POST:
         if request.POST['action'] == 'confroom_rent':
             with connection.cursor() as cursor:
                 cursor.execute("UPDATE confrooms SET occupier = %s WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                ['Yes', request.POST['conf_unit'], request.POST['conf_street'], request.POST['conf_unit_no'], request.POST['conf_postal_code']])
-                cursor.execute("SELECT FROM rent WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                cursor.execute("SELECT * FROM rent WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [request.POST['conf_unit'], request.POST['conf_street'], request.POST['conf_unit_no'], request.POST['conf_postal_code']])
                 checkRent = cursor.fetchone()
                 if checkRent != None:
                     status = 'Sorry, this conference room space is already taken!'
                 else:
-                    start_rent = datetime.datetime.now()
-                    cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, NULL, %s, %s, %s)",
-                                   [id, request.POST['conf_unit'], start_rent, request.POST['conf_street'], request.POST['conf_unit_no'], request.POST['conf_postal_code']])
+                    now = datetime.now()
+                    future = now + relativedelta(months=1)
+                    start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
+                    end_rent = future.strftime("%d/%m/%Y %H:%M:%S")
+                    cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s, %s, %s)",
+                                   [id, request.POST['conf_unit'], start_rent, end_rent, request.POST['conf_street'], request.POST['conf_unit_no'], request.POST['conf_postal_code']])
                     
     ## Rent work cubicle
     if request.POST:
@@ -121,15 +131,18 @@ def customerprofile(request, id):
             with connection.cursor() as cursor:
                 cursor.execute("UPDATE workcubes SET occupier = %s WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                ['Yes', request.POST['cube_unit'], request.POST['cube_street'], request.POST['cube_unit_no'], request.POST['cube_postal_code']])
-                cursor.execute("SELECT FROM rent WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                cursor.execute("SELECT * FROM rent WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [request.POST['cube_unit'], request.POST['cube_street'], request.POST['cube_unit_no'], request.POST['cube_postal_code']])
                 checkRent = cursor.fetchone()
                 if checkRent != None:
                     status = 'Sorry, this work cubicle is already taken!'
                 else:
-                    start_rent = datetime.datetime.now()
-                    cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, NULL, %s, %s, %s)",
-                                   [id, request.POST['cube_unit'], start_rent, request.POST['cube_street'], request.POST['cube_unit_no'], request.POST['cube_postal_code']])
+                    now = datetime.now()
+                    future = now + relativedelta(months=1)
+                    start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
+                    end_rent = future.strftime("%d/%m/%Y %H:%M:%S")
+                    cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s, %s, %s)",
+                                   [id, request.POST['cube_unit'], start_rent, end_rent, request.POST['cube_street'], request.POST['cube_unit_no'], request.POST['cube_postal_code']])
                     
     ## Vacate office space
     if request.POST:
