@@ -99,19 +99,6 @@ CREATE TABLE IF NOT EXISTS storages(
  PRIMARY KEY (unit, street, unit_no, postal_code));
  
  
-CREATE TABLE IF NOT EXISTS rent(
- customerid VARCHAR(64) REFERENCES customers(customerid) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
- unit VARCHAR(32) REFERENCES units(purpose) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
- start_time VARCHAR(64),
- end_time VARCHAR(64),
- street VARCHAR(32),
- unit_no VARCHAR(32),
- postal_code NUMERIC(6),
- PRIMARY KEY (unit, street, unit_no, postal_code),
- /* REFERENCES TO EITHER offices, workcubes, confrooms, storages or unf_units */
- FOREIGN KEY (street, unit_no, postal_code) REFERENCES address(street, unit_no, postal_code) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED);
- 
- 
 /* login credentials */
 CREATE TABLE IF NOT EXISTS login(
  username VARCHAR(64) REFERENCES customers(customerid),
