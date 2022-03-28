@@ -896,11 +896,13 @@ UPDATE temp
 SET timescale = 'Monthly'
 WHERE unit = 'Office space' AND timescale = '2';
 
+
+/* end_rent should not be NOT NULL because some customers haven't end the rents yet */
 CREATE TABLE IF NOT EXISTS rent(
  customerid VARCHAR(64) REFERENCES customers(customerid) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
  unit VARCHAR(32) REFERENCES units(purpose) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
  start_rent VARCHAR(64) NOT NULL,
- end_rent VARCHAR(64) NOT NULL,
+ end_rent VARCHAR(64),
  street VARCHAR(32),
  unit_no VARCHAR(32),
  postal_code NUMERIC(6),
