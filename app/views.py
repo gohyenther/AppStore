@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.db import connection
 from datetime import datetime
+import pandas as pd
 
 
 # LOGIN PAGE
@@ -85,12 +86,12 @@ def customerprofile(request, id):
                     status = 'Sorry, this office space is already taken!'
                 else:
                     now = datetime.now()
-                    if timescale == 'monthly':
-                        future = now.month + 1
-                    else:
-                        future = now.day + 7
                     start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
-                    end_rent = now.strftime("%d/") + str(future) + now.strftime("/%Y %H:%M:%S")
+                    if timescale == 'Monthly':
+                        future = now + pd.DateOffset(months=1)
+                    else:
+                        future = now + pd.DateOffset(days=7)
+                    end_rent = future.strftime("%d/%m/%Y %H:%M:%S")
                     cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s, %s, %s)",
                                    [id, request.POST['office_unit'], start_rent, end_rent, request.POST['office_street'], request.POST['office_unit_no'], request.POST['office_postal_code']])
     ## Rent storage space
@@ -109,12 +110,12 @@ def customerprofile(request, id):
                     status = 'Sorry, this storage space is already taken!'
                 else:
                     now = datetime.now()
-                    if timescale == 'monthly':
-                        future = now.month + 1
-                    else:
-                        future = now.day + 7
                     start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
-                    end_rent = now.strftime("%d/") + str(future) + now.strftime("/%Y %H:%M:%S")
+                    if timescale == 'Monthly':
+                        future = now + pd.DateOffset(months=1)
+                    else:
+                        future = now + pd.DateOffset(days=7)
+                    end_rent = future.strftime("%d/%m/%Y %H:%M:%S")
                     cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s, %s, %s)",
                                    [id, request.POST['store_unit'], start_rent, end_rent, request.POST['store_street'], request.POST['store_unit_no'], request.POST['store_postal_code']])
     ## Rent conference room
@@ -133,12 +134,12 @@ def customerprofile(request, id):
                     status = 'Sorry, this conference room space is already taken!'
                 else:
                     now = datetime.now()
-                    if timescale == 'monthly':
-                        future = now.month + 1
-                    else:
-                        future = now.day + 7
                     start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
-                    end_rent = now.strftime("%d/") + str(future) + now.strftime("/%Y %H:%M:%S")
+                    if timescale == 'Monthly':
+                        future = now + pd.DateOffset(months=1)
+                    else:
+                        future = now + pd.DateOffset(days=7)
+                    end_rent = future.strftime("%d/%m/%Y %H:%M:%S")
                     cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s, %s, %s)",
                                    [id, request.POST['conf_unit'], start_rent, end_rent, request.POST['conf_street'], request.POST['conf_unit_no'], request.POST['conf_postal_code']])
                     
@@ -158,12 +159,12 @@ def customerprofile(request, id):
                     status = 'Sorry, this work cubicle is already taken!'
                 else:
                     now = datetime.now()
-                    if timescale == 'monthly':
-                        future = now.month + 1
-                    else:
-                        future = now.day + 7
                     start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
-                    end_rent = now.strftime("%d/") + str(future) + now.strftime("/%Y %H:%M:%S")
+                    if timescale == 'Monthly':
+                        future = now + pd.DateOffset(months=1)
+                    else:
+                        future = now + pd.DateOffset(days=7)
+                    end_rent = future.strftime("%d/%m/%Y %H:%M:%S")
                     cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s, %s, %s)",
                                    [id, request.POST['cube_unit'], start_rent, end_rent, request.POST['cube_street'], request.POST['cube_unit_no'], request.POST['cube_postal_code']])
                     
