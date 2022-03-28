@@ -813,6 +813,10 @@ insert into temp (unit, features, timescale, type, size_sf, street, unit_no, pos
 insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (1, 12, 3, 2, 243, '34284 Colorado Hill', '83-21', '040641', 1, 737);
 insert into temp (unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate) values (1, 3, 3, 7, 859, '953 Namekagon Circle', '90-03', '724229', 0, 351);
 
+/*insert into address first */
+INSERT INTO address(street, unit_no, postal_code)
+SELECT t.street, t.unit_no, t.postal_code FROM temp t;
+
 /* rename col name from features to features_no */
 ALTER TABLE temp 
 RENAME COLUMN features TO features_no;
