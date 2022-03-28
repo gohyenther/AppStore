@@ -83,7 +83,7 @@ def customerprofile(request, id):
                 else:
                     now = datetime.now()
                     start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
-                    end_rent = future.strftime("%d/%m/%Y %H:%M+1:%S")
+                    end_rent = now.strftime("%d/%m/%Y %H:%M+1:%S")
                     cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s, %s, %s)",
                                    [id, request.POST['office_unit'], start_rent, end_rent, request.POST['office_street'], request.POST['office_unit_no'], request.POST['office_postal_code']])
     ## Rent storage space
@@ -100,7 +100,7 @@ def customerprofile(request, id):
                 else:
                     now = datetime.now()
                     start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
-                    end_rent = future.strftime("%d/%m/%Y %H:%M+1:%S")
+                    end_rent = now.strftime("%d/%m/%Y %H:%M+1:%S")
                     cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s, %s, %s)",
                                    [id, request.POST['store_unit'], start_rent, end_rent, request.POST['store_street'], request.POST['store_unit_no'], request.POST['store_postal_code']])
     ## Rent conference room
@@ -117,7 +117,7 @@ def customerprofile(request, id):
                 else:
                     now = datetime.now()
                     start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
-                    end_rent = future.strftime("%d/%m/%Y %H:%M+1:%S")
+                    end_rent = now.strftime("%d/%m/%Y %H:%M+1:%S")
                     cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s, %s, %s)",
                                    [id, request.POST['conf_unit'], start_rent, end_rent, request.POST['conf_street'], request.POST['conf_unit_no'], request.POST['conf_postal_code']])
                     
@@ -135,7 +135,7 @@ def customerprofile(request, id):
                 else:
                     now = datetime.now()
                     start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
-                    end_rent = future.strftime("%d/%m/%Y %H:%M+1:%S")
+                    end_rent = now.strftime("%d/%m/%Y %H:%M+1:%S")
                     cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s, %s, %s)",
                                    [id, request.POST['cube_unit'], start_rent, end_rent, request.POST['cube_street'], request.POST['cube_unit_no'], request.POST['cube_postal_code']])
                     
