@@ -35,7 +35,6 @@ psql ${URI} -f sql/units.sql
 psql ${URI} -f sql/type.sql
 psql ${URI} -f sql/temp.sql
 psql ${URI} -f sql/features.sql
-psql ${URI} -f sql/address.sql
 psql ${URI} -f sql/officespaces.sql
 psql ${URI} -f sql/confrooms.sql
 psql ${URI} -f sql/storages.sql
