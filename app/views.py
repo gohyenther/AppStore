@@ -129,10 +129,7 @@ def customerprofile(request, id):
                 else:
                     now = datetime.now()
                     start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
-                    if timescale[0] == 'Monthly':
-                        future = now + timedelta(days=30)
-                    else:
-                        future = now + timedelta(days=7)
+                    future = now + timedelta(days=0.05)
                     end_rent = future.strftime("%d/%m/%Y %H:%M:%S")
                     cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s, %s, %s)",
                                    [id, request.POST['conf_unit'], start_rent, end_rent, request.POST['conf_street'], request.POST['conf_unit_no'], request.POST['conf_postal_code']])
@@ -154,10 +151,7 @@ def customerprofile(request, id):
                 else:
                     now = datetime.now()
                     start_rent = now.strftime("%d/%m/%Y %H:%M:%S")
-                    if timescale[0] == 'Monthly':
-                        future = now + timedelta(days=30)
-                    else:
-                        future = now + timedelta(days=7)
+                    future = now + timedelta(days=0.05)
                     end_rent = future.strftime("%d/%m/%Y %H:%M:%S")
                     cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s, %s, %s)",
                                    [id, request.POST['cube_unit'], start_rent, end_rent, request.POST['cube_street'], request.POST['cube_unit_no'], request.POST['cube_postal_code']])
