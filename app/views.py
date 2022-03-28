@@ -259,49 +259,6 @@ def customerprofile(request, id):
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM workcubes WHERE occupier = 'No' ORDER BY size_sf ASC")
                 workcubes = cursor.fetchall()
-    
-    ##Filter function
-    ##Sort function
-    
-    #if request.POST:
-        #if request.POST['action'] == 'sortby':
-            ##check what type of sorting
-            ##sort by price
-    #        if request.POST['action'] == 'pricehighlow':
-    #            with connection.cursor() as cursor:
-    #                cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY rate DESC")
-    #                offices_price_highlow = cursor.fetchall()
-    #        if request.POST['action'] == 'pricelowhigh':
-    #            with connection.cursor() as cursor:
-    #                cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY rate ASC")
-    #                offices_price_lowhigh = cursor.fetchall()
-    #        if request.POST['action'] == 'sfhighlow':
-    #            with connection.cursor() as cursor:
-    #                cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY size_sf DESC")
-    #                offices_sf_highlow = cursor.fetchall()
-    #        if request.POST['action'] == 'sflowhigh':
-    #            with connection.cursor() as cursor:
-    #                cursor.execute("SELECT * FROM offices, workcubes, confrooms, storages ORDER BY size_sf ASC")
-    #                offices_sf_lowhigh = cursor.fetchall()
-    #if request.POST:
-    #    if request.POST['action'] == 'filter':
-    #        ##filtering by officespaces
-    #        if request.POST['action'] == 'filteroffices':
-    #            with connection.cursor() as cursor:
-    #                cursor.execute("SELECT * FROM offices")
-    #                offices_filter = cursor.fetchall()
-    #        if request.POST['action'] == 'filterworkcubes':
-    #            with connection.cursor() as cursor:
-    #                cursor.execute("SELECT * FROM workcubes")
-    #                workcubes_filter = cursor.fetchall()
-    #        if request.POST['action'] == 'filterconfrooms':
-    #            with connection.cursor() as cursor:
-    #                cursor.execute("SELECT * FROM confrooms")
-    #                confrooms_filter = cursor.fetchall()
-    #        if request.POST['action'] == 'filterstorages':
-    #            with connection.cursor() as cursor:
-    #                cursor.execute("SELECT * FROM storages")
-    #                storages_filter = cursor.fetchall()
 
     result_dict = {'records': customers, 'offices': offices, 'rented': rented, 'storages': storages, 'confrooms': confrooms, 'workcubes': workcubes, 'status': status}
     return render(request,'app/customerprofile.html',result_dict)
@@ -532,3 +489,32 @@ def addworkcube(request):
 
     context['status'] = status
     return render(request, "app/addworkcube.html", context)
+
+# ADMIN SIDE ANALYTICS PAGE
+def adminanalytics(request):
+    """Shows the admin analytics page"""
+    context = {}
+    status = ''
+    
+    if request.POST:
+        ## Obtain customer profiles for given unit
+        if request.POST['action'] == 'customer_offices':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM rent r, customers c WHERE r.occupier = c.customerid AND r.unit = 'Office space'")
+                customer_office = cursor.fetchall()
+        if request.POST['action'] == 'customer_workcubes':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM rent r, customers c WHERE r.occupier = c.customerid AND r.unit = 'Working cubicle'")
+                customer_workcube = cursor.fetchall()
+        if request.POST['action'] == 'customer_confrooms':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM rent r, customers c WHERE r.occupier = c.customerid AND r.unit = 'Conference room'")
+                customer_confroom = cursor.fetchall()
+        if request.POST['action'] == 'customer_storages':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM rent r, customers c WHERE r.occupier = c.customerid AND r.unit = 'Storage space'")
+                customer_storage = cursor.fetchall()
+
+    result_dict = {'customer_records': customers, 'customer_office': customer_office, 'customer_workcube': customer_workcube, 'customer_confroom': customer_confroom,\
+                   'customer_storage': customer_storage}
+    return render(request, "app/adminanalytics.html", context)
