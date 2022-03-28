@@ -101,6 +101,6 @@ CREATE TABLE IF NOT EXISTS storages(
  
 /* login credentials */
 CREATE TABLE IF NOT EXISTS login(
- username VARCHAR(64) REFERENCES customers(customerid),
+ username VARCHAR(64) NOT NULL,
  password VARCHAR(64) NOT NULL);
  
