@@ -1657,6 +1657,7 @@ INSERT INTO datetime(start_time, end_time) VALUES('2022-01-30 18:33:06 */
 INSERT INTO rent
 SELECT c1.customerid, t.unit, dt.start_time, dt.end_time, t.street, t.unit_no, t.postal_code
 FROM customers c1, datetime dt, temp t
+WHERE t.occupier = 'Yes';
 ORDER BY RANDOM()
 LIMIT 374;
  
