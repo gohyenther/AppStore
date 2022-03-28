@@ -40,25 +40,20 @@ def signup(request):
     status = ''
 
     if request.POST:
-        ## Check if customerid is already in the table
+        ## Check if customerid aka (username) is already in the table
         with connection.cursor() as cursor:
-            cursor.execute("SELECT * FROM customers WHERE customerid = %s", [request.POST['customerid']])
-            customer = cursor.fetchone()
             cursor.execute("SELECT * FROM login WHERE username = %s", [request.POST['username']])
-            username = cursor.fetchone()
+            customer = cursor.fetchone()
             ## No customer with same id and username
             if customer == None:
-                if username == None:
-                    ##TODO: date validation
-                    cursor.execute("INSERT INTO customers VALUES (%s, %s, %s, %s, %s, %s, %s)"
-                            , [request.POST['customerid'], request.POST['first_name'], request.POST['last_name'], request.POST['email'],
-                               request.POST['gender'], request.POST['dob'] , request.POST['contact_no'] ])
-                    cursor.execute("INSERT INTO login VALUES (%s, %s)", [request.POST['username'], request.POST['password']])
-                    return redirect('index')
-                else:
-                    status = 'Username %s already exists' % (request.POST['username'])
+                ##TODO: date validation
+                cursor.execute("INSERT INTO customers VALUES (%s, %s, %s, %s, %s, %s, %s)"
+                        , [request.POST['username'], request.POST['first_name'], request.POST['last_name'], request.POST['email'],
+                           request.POST['gender'], request.POST['dob'] , request.POST['contact_no'] ])
+                cursor.execute("INSERT INTO login VALUES (%s, %s)", [request.POST['username'], request.POST['password']])
+                return redirect('index')
             else:
-                status = 'Customer with ID %s already exists' % (request.POST['customerid'])
+                status = 'Customer with ID %s already exists' % (request.POST['username'])
 
     context['status'] = status
     return render(request, "app/signup.html", context)
