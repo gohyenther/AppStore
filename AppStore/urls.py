@@ -32,5 +32,5 @@ urlpatterns = [
     path('addworkcube', app.views.addworkcube, name='addworkcube'),
     path('view/<str:id>', app.views.view, name='view'),
     path('edit/<str:id>', app.views.edit, name='edit'),
-    path('adminanalytics', app.views.adminanalytics, name='adminanalytics'),
+    path('adminanalytics', app.views.adminanalytics, name='adminanalytics')
 ]
