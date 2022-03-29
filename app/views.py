@@ -516,6 +516,8 @@ def adminanalytics(request):
                 customer_storage = cursor.fetchall()
 
     with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM rent ORDER BY unit")
+        customer_rented = cursor.fetchall()
         cursor.execute("SELECT * FROM offices WHERE occupier = 'No' ORDER BY unit")
         customer_office = cursor.fetchall()
         cursor.execute("SELECT * FROM storages WHERE occupier = 'No' ORDER BY unit")
@@ -525,5 +527,5 @@ def adminanalytics(request):
         cursor.execute("SELECT * FROM workcubes WHERE occupier = 'No' ORDER BY unit")
         customer_workcube = cursor.fetchall()
                 
-    result_dict = {'customer_office': customer_office, 'customer_workcube': customer_workcube, 'customer_confroom': customer_confroom,'customer_storage': customer_storage}
+    result_dict = {'customer_rented': customer_rented, 'customer_office': customer_office, 'customer_workcube': customer_workcube, 'customer_confroom': customer_confroom,'customer_storage': customer_storage}
     return render(request, "app/adminanalytics.html")
