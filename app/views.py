@@ -525,5 +525,5 @@ def adminanalytics(request):
         cursor.execute("SELECT * FROM workcubes WHERE occupier = 'No' ORDER BY unit")
         customer_workcube = cursor.fetchall()
                 
-    result_dict = {'customers': customers, 'customer_office': customer_office, 'customer_workcube': customer_workcube, 'customer_confroom': customer_confroom,'customer_storage': customer_storage}
+    result_dict = {'customer_office': customer_office, 'customer_workcube': customer_workcube, 'customer_confroom': customer_confroom,'customer_storage': customer_storage}
     return render(request, "app/adminanalytics.html")
