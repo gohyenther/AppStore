@@ -45,13 +45,6 @@
             <td> {{ rent.4 }} </td>
             <td> {{ rent.5 }} </td>
             <td> {{ rent.6 }} </td>
-            <td>
-                <a href="view/{{rent.0}}"><button>View</button></a> | 
-                <a href="edit/{{rent.0}}"><button>Edit</button></a>
-                | 
-                <form method="POST" style="display: inline;">
-                {% csrf_token %}
-                <input type="hidden" name="id" value="{{rent.0}}"/>
               </form></td>
         </tr>
         {% endfor %}
