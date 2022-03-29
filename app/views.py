@@ -516,8 +516,6 @@ def adminanalytics(request):
                 customer_storage = cursor.fetchall()
 
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM customers WHERE customerid = %s", [id])
-        customers = cursor.fetchall()
         cursor.execute("SELECT * FROM offices WHERE occupier = 'No' ORDER BY unit")
         customer_office = cursor.fetchall()
         cursor.execute("SELECT * FROM storages WHERE occupier = 'No' ORDER BY unit")
