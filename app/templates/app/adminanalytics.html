@@ -45,6 +45,15 @@
             <td> {{ rent.4 }} </td>
             <td> {{ rent.5 }} </td>
             <td> {{ rent.6 }} </td>
+            <td>
+                <form method="POST" style="display: inline;">
+                {% csrf_token %}
+                <input type="hidden" name="rent_customerid" value="{{rent.0}}"/>
+                <input type="hidden" name="rent_unit" value="{{rent.1}}"/>
+                <input type="hidden" name="rent_street" value="{{rent.4}}"/>
+                <input type="hidden" name="rent_unit_no" value="{{rent.5}}"/>
+                <input type="hidden" name="rent_postal_code" value="{{rent.6}}"/>
+                </form></td> 
         </tr>
         {% endfor %}
     </table>
