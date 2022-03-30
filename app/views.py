@@ -499,17 +499,13 @@ def adminanalytics(request):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM rent ORDER BY unit")
         customer_rented = cursor.fetchall()
-        cursor.execute("SELECT * FROM offices WHERE occupier = 'No' ORDER BY unit")
-        customer_office = cursor.fetchall()
-        cursor.execute("SELECT * FROM storages WHERE occupier = 'No' ORDER BY unit")
-        customer_storage = cursor.fetchall()
-        cursor.execute("SELECT * FROM confrooms WHERE occupier = 'No' ORDER BY unit")
-        customer_confroom = cursor.fetchall()
-        cursor.execute("SELECT * FROM workcubes WHERE occupier = 'No' ORDER BY unit")
-        customer_workcube = cursor.fetchall()
     
     if request.POST:
         ## Obtain customer profiles for given unit
+        if request.POST['action'] == 'customer_all':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM rent ORDER BY unit")
+                customer_rented = cursor.fetchall()
         if request.POST['action'] == 'customer_offices':
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM rent r, customers c WHERE r.customerid = c.customerid AND r.unit = 'Office space'")
