@@ -497,30 +497,30 @@ def adminanalytics(request):
     status = ''
     
     with connection.cursor() as cursor:
-        cursor.execute("SELECT r.customerid, c.first_name, c.last_name, r.unit, r.start_rent, r.end_rent, r.street, r.postal_code  FROM rent r FULL OUTER JOIN customers c ON r.customerid = c.customerid WHERE r.customerid IS NOT NULL ORDER BY unit")
+        cursor.execute("SELECT r.customerid, c.first_name, c.last_name, r.unit, r.start_rent, r.end_rent, r.street, r.postal_code FROM rent r FULL OUTER JOIN customers c ON r.customerid = c.customerid WHERE r.customerid IS NOT NULL ORDER BY unit")
         customer_rented = cursor.fetchall()
     
     if request.POST:
         ## Obtain customer profiles for given unit
         if request.POST['action'] == 'customer_all':
             with connection.cursor() as cursor:
-                cursor.execute("SELECT * FROM rent ORDER BY unit")
+                cursor.execute("SELECT r.customerid, c.first_name, c.last_name, r.unit, r.start_rent, r.end_rent, r.street, r.postal_code FROM rent r FULL OUTER JOIN customers c ON r.customerid = c.customerid WHERE r.customerid IS NOT NULL ORDER BY unit")
                 customer_rented = cursor.fetchall()
         if request.POST['action'] == 'customer_offices':
             with connection.cursor() as cursor:
-                cursor.execute("SELECT * FROM rent r, customers c WHERE r.customerid = c.customerid AND r.unit = 'Office space'")
+                cursor.execute("SELECT r.customerid, c.first_name, c.last_name, r.unit, r.start_rent, r.end_rent, r.street, r.postal_code FROM rent r FULL OUTER JOIN customers c ON r.customerid = c.customerid c WHERE r.customerid = c.customerid AND r.unit = 'Office space' AND r.customerid IS NOT NULL")
                 customer_rented = cursor.fetchall()
         if request.POST['action'] == 'customer_workcubes':
             with connection.cursor() as cursor:
-                cursor.execute("SELECT * FROM rent r, customers c WHERE r.customerid = c.customerid AND r.unit = 'Working cubicle'")
+                cursor.execute("SELECT r.customerid, c.first_name, c.last_name, r.unit, r.start_rent, r.end_rent, r.street, r.postal_code FROM rent r FULL OUTER JOIN customers c ON r.customerid = c.customerid WHERE r.customerid = c.customerid AND r.unit = 'Working cubicle' AND r.customerid IS NOT NULL")
                 customer_rented = cursor.fetchall()
         if request.POST['action'] == 'customer_confrooms':
             with connection.cursor() as cursor:
-                cursor.execute("SELECT * FROM rent r, customers c WHERE r.customerid = c.customerid AND r.unit = 'Conference room'")
+                cursor.execute("SELECT r.customerid, c.first_name, c.last_name, r.unit, r.start_rent, r.end_rent, r.street, r.postal_code FROM rent r FULL OUTER JOIN customers c ON r.customerid = c.customeridWHERE r.customerid = c.customerid AND r.unit = 'Conference room' AND r.customerid IS NOT NULL")
                 customer_rented = cursor.fetchall()
         if request.POST['action'] == 'customer_storages':
             with connection.cursor() as cursor:
-                cursor.execute("SELECT * FROM rent r, customers c WHERE r.customerid = c.customerid AND r.unit = 'Storage space'")
+                cursor.execute("SELECT r.customerid, c.first_name, c.last_name, r.unit, r.start_rent, r.end_rent, r.street, r.postal_code FROM rent r FULL OUTER JOIN customers c ON r.customerid = c.customerid WHERE r.customerid = c.customerid AND r.unit = 'Storage space' AND r.customerid IS NOT NULL")
                 customer_rented = cursor.fetchall()
 
                 
