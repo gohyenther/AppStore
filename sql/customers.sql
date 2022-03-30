@@ -998,3 +998,4 @@ insert into customers (customerid, first_name, last_name, email, gender, dob, co
 insert into customers (customerid, first_name, last_name, email, gender, dob, contact_no) values ('cgasquoinerp', 'Curtice', 'Gasquoine', 'cgasquoinerp@icio.us', 'Male', '9/19/1972', '21668288');
 insert into customers (customerid, first_name, last_name, email, gender, dob, contact_no) values ('esprionghallrq', 'Emilie', 'Sprionghall', 'esprionghallrq@census.gov', 'Female', '8/23/1978', '98529542');
 insert into customers (customerid, first_name, last_name, email, gender, dob, contact_no) values ('bhawkingsrr', 'Beverley', 'Hawkings', 'bhawkingsrr@weibo.com', 'Male', '6/18/1973', '49117862');
+INSERT INTO customers VALUES('random customer', 'Random', 'Customer', 'random1997@gmail.com', 'Male', '1997-05-20', '987765532');
