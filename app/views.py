@@ -496,6 +496,18 @@ def adminanalytics(request):
     context = {}
     status = ''
     
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM rent ORDER BY unit")
+        customer_rented = cursor.fetchall()
+        cursor.execute("SELECT * FROM offices WHERE occupier = 'No' ORDER BY unit")
+        customer_office = cursor.fetchall()
+        cursor.execute("SELECT * FROM storages WHERE occupier = 'No' ORDER BY unit")
+        customer_storage = cursor.fetchall()
+        cursor.execute("SELECT * FROM confrooms WHERE occupier = 'No' ORDER BY unit")
+        customer_confroom = cursor.fetchall()
+        cursor.execute("SELECT * FROM workcubes WHERE occupier = 'No' ORDER BY unit")
+        customer_workcube = cursor.fetchall()
+    
     if request.POST:
         ## Obtain customer profiles for given unit
         if request.POST['action'] == 'customer_offices':
@@ -515,17 +527,6 @@ def adminanalytics(request):
                 cursor.execute("SELECT * FROM rent r, customers c WHERE r.customerid = c.customerid AND r.unit = 'Storage space'")
                 customer_storage = cursor.fetchall()
 
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM rent ORDER BY unit")
-        customer_rented = cursor.fetchall()
-        cursor.execute("SELECT * FROM offices WHERE occupier = 'No' ORDER BY unit")
-        customer_office = cursor.fetchall()
-        cursor.execute("SELECT * FROM storages WHERE occupier = 'No' ORDER BY unit")
-        customer_storage = cursor.fetchall()
-        cursor.execute("SELECT * FROM confrooms WHERE occupier = 'No' ORDER BY unit")
-        customer_confroom = cursor.fetchall()
-        cursor.execute("SELECT * FROM workcubes WHERE occupier = 'No' ORDER BY unit")
-        customer_workcube = cursor.fetchall()
                 
     result_dict = {'customer_rented': customer_rented, 'customer_office': customer_office, 'customer_workcube': customer_workcube, 'customer_confroom': customer_confroom,'customer_storage': customer_storage}
     return render(request, "app/adminanalytics.html", result_dict)
