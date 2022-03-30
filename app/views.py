@@ -513,20 +513,20 @@ def adminanalytics(request):
         if request.POST['action'] == 'customer_offices':
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM rent r, customers c WHERE r.customerid = c.customerid AND r.unit = 'Office space'")
-                customer_office = cursor.fetchall()
+                customer_rented = cursor.fetchall()
         if request.POST['action'] == 'customer_workcubes':
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM rent r, customers c WHERE r.customerid = c.customerid AND r.unit = 'Working cubicle'")
-                customer_workcube = cursor.fetchall()
+                customer_rented = cursor.fetchall()
         if request.POST['action'] == 'customer_confrooms':
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM rent r, customers c WHERE r.customerid = c.customerid AND r.unit = 'Conference room'")
-                customer_confroom = cursor.fetchall()
+                customer_rented = cursor.fetchall()
         if request.POST['action'] == 'customer_storages':
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM rent r, customers c WHERE r.customerid = c.customerid AND r.unit = 'Storage space'")
-                customer_storage = cursor.fetchall()
+                customer_rented = cursor.fetchall()
 
                 
-    result_dict = {'customer_rented': customer_rented, 'customer_office': customer_office, 'customer_workcube': customer_workcube, 'customer_confroom': customer_confroom,'customer_storage': customer_storage}
+    result_dict = {'customer_rented': customer_rented}
     return render(request, "app/adminanalytics.html", result_dict)
