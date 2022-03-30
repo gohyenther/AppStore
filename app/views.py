@@ -497,7 +497,7 @@ def adminanalytics(request):
     status = ''
     
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM rent r FULL OUTER JOIN customers c ON r.customerid = c.customer id ORDER BY unit")
+        cursor.execute("SELECT * FROM rent r FULL OUTER JOIN customers c ON r.customerid = c.customerid ORDER BY unit")
         customer_rented = cursor.fetchall()
     
     if request.POST:
