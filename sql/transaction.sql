@@ -12,3 +12,5 @@ FROM rent r, temp t
 WHERE r.street = t.street
 AND r.unit_no = t.unit_no
 AND r.postal_code = t.postal_code;
+
+
