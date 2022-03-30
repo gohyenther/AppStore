@@ -998,8 +998,9 @@ WHERE street = '64 Debs Park' AND unit_no = '91-76' AND postal_code = '372326';
 /* transaction == payment table */
 CREATE TABLE IF NOT EXISTS transaction(
  customerid VARCHAR(64) REFERENCES customers(customerid) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
- transactionid VARCHAR(18) PRIMARY KEY,
- amount_paid NUMERIC(64) NOT NULL);
+ transactionid VARCHAR(18),
+ amount_paid NUMERIC(64) NOT NULL,
+ PRIMARY KEY (customerid, transactionid, amount_paid));
 
 
 
