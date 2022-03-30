@@ -508,7 +508,7 @@ def adminanalytics(request):
                 customer_rented = cursor.fetchall()
         if request.POST['action'] == 'customer_offices':
             with connection.cursor() as cursor:
-                cursor.execute("SELECT r.customerid, c.first_name, c.last_name, r.unit, r.start_rent, r.end_rent, r.street, r.postal_code FROM rent r FULL OUTER JOIN customers c ON r.customerid = c.customerid c WHERE r.customerid = c.customerid AND r.unit = 'Office space' AND r.customerid IS NOT NULL")
+                cursor.execute("SELECT r.customerid, c.first_name, c.last_name, r.unit, r.start_rent, r.end_rent, r.street, r.postal_code FROM rent r FULL OUTER JOIN customers c ON r.customerid = c.customerid WHERE r.customerid = c.customerid AND r.unit = 'Office space' AND r.customerid IS NOT NULL")
                 customer_rented = cursor.fetchall()
         if request.POST['action'] == 'customer_workcubes':
             with connection.cursor() as cursor:
@@ -516,7 +516,7 @@ def adminanalytics(request):
                 customer_rented = cursor.fetchall()
         if request.POST['action'] == 'customer_confrooms':
             with connection.cursor() as cursor:
-                cursor.execute("SELECT r.customerid, c.first_name, c.last_name, r.unit, r.start_rent, r.end_rent, r.street, r.postal_code FROM rent r FULL OUTER JOIN customers c ON r.customerid = c.customeridWHERE r.customerid = c.customerid AND r.unit = 'Conference room' AND r.customerid IS NOT NULL")
+                cursor.execute("SELECT r.customerid, c.first_name, c.last_name, r.unit, r.start_rent, r.end_rent, r.street, r.postal_code FROM rent r FULL OUTER JOIN customers c ON r.customerid = c.customerid WHERE r.customerid = c.customerid AND r.unit = 'Conference room' AND r.customerid IS NOT NULL")
                 customer_rented = cursor.fetchall()
         if request.POST['action'] == 'customer_storages':
             with connection.cursor() as cursor:
