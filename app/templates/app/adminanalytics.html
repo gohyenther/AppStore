@@ -30,20 +30,21 @@
             <th>ID</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Email</th>
-            <th>Gender</th>
-            <th>D.O.B</th>
-            <th>Contact No.</th>
-            <th>Action</th>
+            <th>Unit</th>
+            <th>Start Rent</th>
+            <th>End Rent</th>
+            <th>Street</th>
+            <th>Postal Code</th>
         </thead>
         {% for rent in customer_rented %}
         <tr>
             <td> {{ rent.0 }} </td>
             <td> {{ rent.1 }} </td>
             <td> {{ rent.2 }} </td>
+            <td> {{ rent.1 }} </td>
+            <td> {{ rent.2 }} </td>
             <td> {{ rent.3 }} </td>
             <td> {{ rent.4 }} </td>
-            <td> {{ rent.5 }} </td>
             <td> {{ rent.6 }} </td>
             <td>
                 <form method="POST" style="display: inline;">
