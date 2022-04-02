@@ -870,9 +870,7 @@ UPDATE temp
 SET type = 'HDB'
 WHERE type = '7';
 
-/* insert into type table */
-INSERT INTO type(type)
-SELECT t.type FROM temp t;
+
 
 
 /* update occupier col*/
