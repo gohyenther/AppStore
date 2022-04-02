@@ -522,7 +522,13 @@ def adminanalytics(request):
             with connection.cursor() as cursor:
                 cursor.execute("SELECT r.customerid, c.first_name, c.last_name, r.unit, r.start_rent, r.end_rent, r.street, r.postal_code FROM rent r FULL OUTER JOIN customers c ON r.customerid = c.customerid WHERE r.customerid = c.customerid AND r.unit = 'Storage space' AND r.customerid IS NOT NULL")
                 customer_rented = cursor.fetchall()
-
                 
-    result_dict = {'customer_rented': customer_rented}
+    if request.POST:
+        ##Obtain customer profiles for given unit
+        if request.POST['action'] == 'richest':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT r.customerid, c.first_name, c.last_name, t.amount_paid FROM rent r FULL OUTER JOIN customers c ON r.customerid = c.customerid FULL OUTER JOIN transaction t ON r.customerid = t.customerid GROUPBY t.customerid HAVING r.customerid IS NOT NULL ORDER BY unit")
+                customer_comparison = cursor.fetchall()
+                
+    result_dict = {'customer_rented': customer_rented, 'customer_comparison': customer_comparison}
     return render(request, "app/adminanalytics.html", result_dict)
