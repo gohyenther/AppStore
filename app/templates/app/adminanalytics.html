@@ -9,7 +9,16 @@
     div.ex1 {
       background-color: lightyellow;
       width: 1100px;
-      height: 800px;
+      height: 400px;
+      overflow: scroll;
+    }
+    </style>
+        
+    <style>
+    div.ex2 {
+      background-color: lightyellow;
+      width: 1100px;
+      height: 400px;
       overflow: scroll;
     }
     </style>
@@ -55,6 +64,33 @@
                 <input type="hidden" name="rent_street" value="{{rent.4}}"/>
                 <input type="hidden" name="rent_unit_no" value="{{rent.5}}"/>
                 <input type="hidden" name="rent_postal_code" value="{{rent.6}}"/>
+                </form></td> 
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+        
+    <div class="ex2">
+    <table border=1>
+        <thead>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Amount Paid</th>
+        </thead>
+        {% for cust in customer_comparison %}
+        <tr>
+            <td> {{ cust.0 }} </td>
+            <td> {{ cust.1 }} </td>
+            <td> {{ cust.2 }} </td>
+            <td> {{ cust.3 }} </td>
+            <td>
+                <form method="POST" style="display: inline;">
+                {% csrf_token %}
+                <input type="hidden" name="comp_customerid" value="{{cust.0}}"/>
+                <input type="hidden" name="comp_firstname" value="{{cust.1}}"/>
+                <input type="hidden" name="comp_lastname" value="{{cust.2}}"/>
+                <input type="hidden" name="comp_amountpaid" value="{{cust.3}}"/>
                 </form></td> 
         </tr>
         {% endfor %}
