@@ -499,7 +499,7 @@ def adminanalytics(request):
     with connection.cursor() as cursor:
         cursor.execute("SELECT r.customerid, c.first_name, c.last_name, r.unit, r.start_rent, r.end_rent, r.street, r.postal_code FROM rent r FULL OUTER JOIN customers c ON r.customerid = c.customerid WHERE r.customerid IS NOT NULL ORDER BY unit")
         customer_rented = cursor.fetchall()
-        cursor.execute("SELECT r.customerid, c.first_name, c.last_name, SUM(t.amount_paid) FROM rent r, customers c, transaction t WHERE c.customerid = t.customerid AND c.customerid = r.customerid GROUP BY c.customerid ORDER BY SUM(t.amount_paid)")
+        cursor.execute("SELECT r.customerid, c.first_name, c.last_name, SUM(t.amount_paid) FROM rent r, customers c, transaction t WHERE c.customerid = t.customerid AND c.customerid = r.customerid GROUP BY r.customerid ORDER BY SUM(t.amount_paid)")
         customer_comparison = cursor.fetchall()
     
     if request.POST:
