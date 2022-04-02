@@ -499,6 +499,8 @@ def adminanalytics(request):
     with connection.cursor() as cursor:
         cursor.execute("SELECT r.customerid, c.first_name, c.last_name, r.unit, r.start_rent, r.end_rent, r.street, r.postal_code FROM rent r FULL OUTER JOIN customers c ON r.customerid = c.customerid WHERE r.customerid IS NOT NULL ORDER BY unit")
         customer_rented = cursor.fetchall()
+        cursor.execute("SELECT r.customerid, c.first_name, c.last_name, t.amount_paid FROM rent r FULL OUTER JOIN customers c ON r.customerid = c.customerid FULL OUTER JOIN transaction t ON r.customerid = t.customerid GROUPBY t.customerid HAVING r.customerid IS NOT NULL ORDER BY unit")
+        customer_comparison = cursor.fetchall()
     
     if request.POST:
         ## Obtain customer profiles for given unit
