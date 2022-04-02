@@ -5,6 +5,6 @@ INSERT INTO offices VALUES('office space', 'unfurnished, air-con, near MRT', 'mo
 */
 
 INSERT INTO offices(unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate)
-SELECT unit, features_no, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate
+SELECT unit, features, timescale, type, size_sf, street, unit_no, postal_code, occupier, rate
 FROM temp
 WHERE unit = 'Office space';
