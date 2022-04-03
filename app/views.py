@@ -571,7 +571,7 @@ def adminanalytics(request):
                 customer_rented = cursor.fetchall()
         if request.POST['action'] == 'no_rent':
             with connection.cursor() as cursor:
-                cursor.execute("SELECT c.customerid FROM customers c EXCEPT SELECT r.customerid FROM rent r")
+                cursor.execute("SELECT c1.customerid, c1.first_name, c1.last_name FROM customers c1 WHERE c1.customerid IN( SELECT c.customerid FROM customers c EXCEPT SELECT r.customerid FROM rent r)")
                 customer_rented = cursor.fetchall()
                 
     if request.POST:
