@@ -260,6 +260,11 @@ def customerprofile(request, id):
                 cursor.execute("SELECT * FROM workcubes WHERE occupier = 'No' ORDER BY size_sf ASC")
                 workcubes = cursor.fetchall()
     
+    if request.POST:
+        # logout
+        if request.POST['action'] == 'logout':
+            return redirect('index')
+    
     result_dict = {'records': customers, 'offices': offices, 'rented': rented, 'storages': storages, 'confrooms': confrooms, 'workcubes': workcubes, 'status': status}
     return render(request,'app/customerprofile.html',result_dict)
 
