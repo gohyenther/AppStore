@@ -552,7 +552,7 @@ def adminanalytics(request):
         revenueunit = [['unit', 'revenue']]
         for x in cursor:
             units = str(x[0])
-            revenues = x[1])
+            revenues = x[1]
             unitsx = [units, revenues]
             revenueunit.append(unitsx)
     
