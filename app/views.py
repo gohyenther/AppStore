@@ -550,11 +550,11 @@ def adminanalytics(request):
         popularity = cursor.fetchall()
         cursor.execute("SELECT t.amount_paid, r.unit FROM transaction t, rent r WHERE t.customerid = r.customerid GROUP BY r.unit, t.amount_paid")
         revenueunit = [['unit', 'revenue']]
-            for x in mycursor:
-                units = str(x[0])
-                revenues = float(x[1])
-                unitsx = [hour, ic]
-                revenueunit.append(unitsx)
+        for x in mycursor:
+            units = str(x[0])
+            revenues = float(x[1])
+            unitsx = [hour, ic]
+            revenueunit.append(unitsx)
     
     if request.POST:
         ## Obtain customer profiles for given unit
