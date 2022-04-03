@@ -91,7 +91,7 @@ def customerprofile(request, id):
                     end_rent = future.strftime("%d/%m/%Y %H:%M:%S")
                     cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s, %s, %s)",
                                    [id, request.POST['office_unit'], start_rent, end_rent, request.POST['office_street'], request.POST['office_unit_no'], request.POST['office_postal_code']])
-                    cursor.execute("INSERT INTO transaction VALUES(id, id, rate)")
+                    cursor.execute("INSERT INTO transaction VALUES(%s, %s, %s)", [id, id, rate])
     ## Rent storage space
     if request.POST:
         if request.POST['action'] == 'storage_rent':
