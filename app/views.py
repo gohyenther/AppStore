@@ -295,21 +295,6 @@ def administrator(request):
             with connection.cursor() as cursor:
                 cursor.execute("DELETE FROM login WHERE username = %s", [request.POST['id']])
                 cursor.execute("DELETE FROM customers WHERE customerid = %s", [request.POST['id']])
-
-    ## Use raw query to get all objects
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM customers ORDER BY customerid")
-        customers = cursor.fetchall()
-        cursor.execute("SELECT * FROM offices ORDER BY unit")
-        offices = cursor.fetchall()
-        cursor.execute("SELECT * FROM storages ORDER BY unit")
-        storages = cursor.fetchall()
-        cursor.execute("SELECT * FROM confrooms ORDER BY unit")
-        confrooms = cursor.fetchall()
-        cursor.execute("SELECT * FROM workcubes ORDER BY unit")
-        workcubes = cursor.fetchall()
-        cursor.execute("SELECT * FROM rent ORDER BY unit")
-        rented = cursor.fetchall()
     
     if request.POST:
         if request.POST['action'] == 'vacate':
@@ -324,6 +309,21 @@ def administrator(request):
                                [request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
                 cursor.execute("DELETE FROM rent WHERE customerid = %s AND unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [request.POST['rent_customerid'], request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
+    
+    ## Use raw query to get all objects
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM customers ORDER BY customerid")
+        customers = cursor.fetchall()
+        cursor.execute("SELECT * FROM offices ORDER BY unit")
+        offices = cursor.fetchall()
+        cursor.execute("SELECT * FROM storages ORDER BY unit")
+        storages = cursor.fetchall()
+        cursor.execute("SELECT * FROM confrooms ORDER BY unit")
+        confrooms = cursor.fetchall()
+        cursor.execute("SELECT * FROM workcubes ORDER BY unit")
+        workcubes = cursor.fetchall()
+        cursor.execute("SELECT * FROM rent ORDER BY unit")
+        rented = cursor.fetchall()
     
     if request.POST:
         # logout
