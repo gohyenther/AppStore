@@ -3,7 +3,14 @@
 <body>
     <img src="{% static 'app/images/hotdesk.jpg' %}" style="text-align:center; width: 30%" alt="HotDesk logo"/><br/>    
     <h2 style="text-align:center">Adminsistrator Analytics<h2/>
-    <br/>
+        
+    <div style="text-align:right">
+        <form method="POST" style="display: inline;">
+            <!-- Security token by Django -->
+            {% csrf_token %}
+            <button type="submit" style="color:blue" name="action" value="back">Back</button>
+        </form>
+    </div><br/>
     
     <style>
     div.ex1 {
