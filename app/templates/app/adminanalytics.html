@@ -95,6 +95,7 @@
     <form method="POST" style="display: inline;">
         {% csrf_token %}
         <label for="custidsearch">Search for customerid: </label><input type="text" id="custidsearch" name="custidsearch" value=""><button type="submit" style="color:green" name="action" value="search">Search</button>
+        <button type='submit' name='action' value='transaction_all'>All transactions</button>
     </form><br/>
     
     <div class="ex3">
