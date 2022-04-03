@@ -571,12 +571,12 @@ def adminanalytics(request):
             with connection.cursor() as cursor:
                 cursor.execute("SELECT t.customerid, t.transactionid, t.amount_paid FROM customers c, transaction t WHERE c.customerid = t.customerid AND c.customerid = %s", [request.POST['custidsearch']])
                 transactions = cursor.fetchall()
-    
-    if request.POST:
-        ## refresh all transaction table
         if request.POST['action'] == 'transaction_all':
-            cursor.execute("SELECT * FROM transaction")
-            transactions = cursor.fetchall()
+            ## refresh all transaction table
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM transaction")
+                transactions = cursor.fetchall()
+        
     
     result_dict = {'customer_rented': customer_rented, 'customer_comparison': customer_comparison, 'transactions': transactions}
     return render(request, "app/adminanalytics.html", result_dict)
