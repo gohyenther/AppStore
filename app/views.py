@@ -577,6 +577,10 @@ def adminanalytics(request):
                 cursor.execute("SELECT * FROM transaction")
                 transactions = cursor.fetchall()
         
+    if request.POST:
+        # back to admin page
+        if request.POST['action'] == 'back':
+            return redirect('administrator')
     
     result_dict = {'customer_rented': customer_rented, 'customer_comparison': customer_comparison, 'transactions': transactions}
     return render(request, "app/adminanalytics.html", result_dict)
