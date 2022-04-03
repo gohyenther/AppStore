@@ -95,17 +95,15 @@
     <div class="ex3">
     <table border=1>
         <thead>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Customer ID</th>
+            <th>Transaction ID</th>
             <th>Amount Paid</th>
         </thead>
-        {% for cust in customer_comparison %}
+        {% for trans in transactions %}
         <tr>
-            <td> {{ cust.0 }} </td>
-            <td> {{ cust.1 }} </td>
-            <td> {{ cust.2 }} </td>
-            <td> {{ cust.3 }} </td>
+            <td> {{ trans.0 }} </td>
+            <td> {{ trans.1 }} </td>
+            <td> {{ trans.2 }} </td>
         </tr>
         {% endfor %}
     </table>
