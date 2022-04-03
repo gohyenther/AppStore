@@ -569,6 +569,10 @@ def adminanalytics(request):
             with connection.cursor() as cursor:
                 cursor.execute("SELECT r.customerid, c.first_name, c.last_name, r.unit, r.start_rent, r.end_rent, r.street, r.postal_code FROM rent r FULL OUTER JOIN customers c ON r.customerid = c.customerid WHERE r.customerid = c.customerid AND r.unit = 'Storage space' AND r.customerid IS NOT NULL")
                 customer_rented = cursor.fetchall()
+        if request.POST['action'] == 'no_rent':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM customers c EXCEPT SELECT * FROM rent r")
+                customer_rented = cursor.fetchall()
                 
     if request.POST:
         ## Obtain customer profiles for given unit
