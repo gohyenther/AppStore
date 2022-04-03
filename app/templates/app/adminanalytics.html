@@ -148,7 +148,12 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        var data = google.visualization.arrayToDataTable([{{revenueunit}}]);
+        var data = google.visualization.arrayToDataTable([
+        ['Unit', 'Frequency'],
+        {% for rev in revenueunit %}
+            ['{{rev.0}}',{{rev.1}}], 
+        {% endfor %}
+        ]);
 
         var options = {
           title: 'Revenue by Unit'
