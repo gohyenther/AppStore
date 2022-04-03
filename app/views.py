@@ -308,13 +308,29 @@ def administrator(request):
         confrooms = cursor.fetchall()
         cursor.execute("SELECT * FROM workcubes ORDER BY unit")
         workcubes = cursor.fetchall()
+        cursor.execute("SELECT * FROM rent ORDER BY unit")
+        rented = cursor.fetchall()
+    
+    if request.POST:
+        if request.POST['action'] == 'vacate':
+            with connection.cursor() as cursor:
+                cursor.execute("UPDATE offices SET occupier = 'No' WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                               [request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
+                cursor.execute("UPDATE storages SET occupier = 'No' WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                               [request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
+                cursor.execute("UPDATE confrooms SET occupier = 'No' WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                               [request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
+                cursor.execute("UPDATE workcubes SET occupier = 'No' WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                               [request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
+                cursor.execute("DELETE FROM rent WHERE customerid = %s AND unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                               [request.POST['rent_customerid'], request.POST['rent_unit'], request.POST['rent_street'], request.POST['rent_unit_no'], request.POST['rent_postal_code']])
     
     if request.POST:
         # logout
         if request.POST['action'] == 'logout':
             return redirect('index')
     
-    result_dict = {'records': customers, 'offices': offices, 'storages': storages, 'confrooms': confrooms, 'workcubes': workcubes}
+    result_dict = {'records': customers, 'offices': offices, 'storages': storages, 'confrooms': confrooms, 'workcubes': workcubes, 'rented': rented}
     return render(request,'app/administrator.html',result_dict)
 
 
