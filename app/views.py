@@ -293,6 +293,11 @@ def administrator(request):
         cursor.execute("SELECT * FROM workcubes ORDER BY unit")
         workcubes = cursor.fetchall()
     
+    if request.POST:
+        # logout
+        if request.POST['action'] == 'logout':
+            return redirect('index')
+    
     result_dict = {'records': customers, 'offices': offices, 'storages': storages, 'confrooms': confrooms, 'workcubes': workcubes}
     return render(request,'app/administrator.html',result_dict)
 
