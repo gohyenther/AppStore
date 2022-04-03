@@ -31,12 +31,6 @@
       height: 400px;
       overflow: scroll;
     }
-    div.ex4 {
-      position: absolute;
-      top: 400px;
-      right: 350px;
-    }
-      
     </style>
 
     <h2>Customer Logs<h2/>
@@ -72,6 +66,21 @@
             <td> {{ rent.5 }} </td>
             <td> {{ rent.6 }} </td>
             <td> {{ rent.7 }} </td>
+        </tr>
+        {% endfor %}
+    </table>
+        
+    <table border=1
+           style="width:20%; float:left">
+        <caption>Unit Popularity</caption>
+        <thead>
+            <th>Unit</th>
+            <th>Number of Rents</th>
+        </thead>
+        {% for pop in popularity %}
+        <tr>
+            <td> {{ pop.0 }} </td>
+            <td> {{ pop.1 }} </td>
         </tr>
         {% endfor %}
     </table>
@@ -128,20 +137,7 @@
     </div><br/>
 
 <div class="ex4">
-    <table border=1
-           style="width:20%">
-        <caption>Unit Popularity</caption>
-        <thead>
-            <th>Unit</th>
-            <th>Number of Rents</th>
-        </thead>
-        {% for pop in popularity %}
-        <tr>
-            <td> {{ pop.0 }} </td>
-            <td> {{ pop.1 }} </td>
-        </tr>
-        {% endfor %}
-    </table>
+
     </div><br/>
     
 </body>
