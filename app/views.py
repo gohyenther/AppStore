@@ -261,9 +261,9 @@ def customerprofile(request, id):
                 workcubes = cursor.fetchall()
     
      if request.POST:
-        ## Log Out
-        if request.POST['action'] == 'logout':
-            return redirect('index')
+            ## Log Out
+            if request.POST['action'] == 'logout':
+                return redirect('index')
     
     result_dict = {'records': customers, 'offices': offices, 'rented': rented, 'storages': storages, 'confrooms': confrooms, 'workcubes': workcubes, 'status': status}
     return render(request,'app/customerprofile.html',result_dict)
@@ -294,9 +294,9 @@ def administrator(request):
         workcubes = cursor.fetchall()
     
     if request.POST:
-        ## Log Out
-        if request.POST['action'] == 'logout':
-            return redirect('index')
+            ## Log Out
+            if request.POST['action'] == 'logout':
+                return redirect('index')
     
     result_dict = {'records': customers, 'offices': offices, 'storages': storages, 'confrooms': confrooms, 'workcubes': workcubes}
     return render(request,'app/administrator.html',result_dict)
@@ -548,9 +548,9 @@ def adminanalytics(request):
                 customer_comparison = cursor.fetchall()
     
     if request.POST:
-        ## Log Out
-        if request.POST['action'] == 'logout':
-            return redirect('index')
+            ## Log Out
+            if request.POST['action'] == 'logout':
+                return redirect('index')
     
     result_dict = {'customer_rented': customer_rented, 'customer_comparison': customer_comparison}
     return render(request, "app/adminanalytics.html", result_dict)
