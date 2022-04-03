@@ -546,6 +546,8 @@ def adminanalytics(request):
         customer_comparison = cursor.fetchall()
         cursor.execute("SELECT * FROM transaction")
         transactions = cursor.fetchall()
+        cursor.exeucte("SELECT COUNT(*) FROM rent r GROUP BY unit ORDER BY COUNT(*) ASC")
+        popularity = cursor.fetchall()
     
     if request.POST:
         ## Obtain customer profiles for given unit
@@ -602,5 +604,5 @@ def adminanalytics(request):
         if request.POST['action'] == 'back':
             return redirect('administrator')
     
-    result_dict = {'customer_rented': customer_rented, 'customer_comparison': customer_comparison, 'transactions': transactions}
+    result_dict = {'customer_rented': customer_rented, 'customer_comparison': customer_comparison, 'transactions': transactions, 'popularity': popularity}
     return render(request, "app/adminanalytics.html", result_dict)
