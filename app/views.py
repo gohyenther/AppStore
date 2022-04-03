@@ -546,11 +546,11 @@ def adminanalytics(request):
         ##Obtain customer profiles for given unit
         if request.POST['action'] == 'richest':
             with connection.cursor() as cursor:
-                cursor.execute("SELECT r.customerid, c.first_name, c.last_name, SUM(t.amount_paid) FROM rent r, customers c, transaction t WHERE c.customerid = t.customerid AND c.customerid = r.customerid GROUP BY r.customerid, c.first_name, c.last_name ORDER BY SUM(t.amount_paid) DESC")
+                cursor.execute("SELECT c.customerid, c.first_name, c.last_name, SUM(t.amount_paid) FROM customers c, transaction t WHERE c.customerid = t.customerid GROUP BY c.customerid, c.first_name, c.last_name ORDER BY SUM(t.amount_paid) DESC")
                 customer_comparison = cursor.fetchall()
         if request.POST['action'] == 'poorest':
             with connection.cursor() as cursor:
-                cursor.execute("SELECT r.customerid, c.first_name, c.last_name, SUM(t.amount_paid) FROM rent r, customers c, transaction t WHERE c.customerid = t.customerid AND c.customerid = r.customerid GROUP BY r.customerid, c.first_name, c.last_name ORDER BY SUM(t.amount_paid) ASC")
+                cursor.execute("SELECT c.customerid, c.first_name, c.last_name, SUM(t.amount_paid) FROM customers c, transaction t WHERE c.customerid = t.customerid GROUP BY c.customerid, c.first_name, c.last_name ORDER BY SUM(t.amount_paid) ASC")
                 customer_comparison = cursor.fetchall()
 
     
