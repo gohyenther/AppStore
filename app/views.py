@@ -552,8 +552,8 @@ def adminanalytics(request):
         revenueunit = [['unit', 'revenue']]
         for x in cursor:
             units = str(x[0])
-            revenues = float(x[1])
-            unitsx = [hour, ic]
+            revenues = x[1])
+            unitsx = [units, revenues]
             revenueunit.append(unitsx)
     
     if request.POST:
