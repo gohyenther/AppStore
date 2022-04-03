@@ -26,12 +26,12 @@
     <h2>Customer Logs<h2/>
         
     <form method="POST" style="display: inline;">
-    {% csrf_token %}
-    <button type='submit' name='action' value= 'customer_all'>Rented All</button>
-    <button type='submit' name='action' value= 'customer_offices'>Rented Offices</button>
-    <button type='submit' name='action' value = 'customer_workcubes'>Rented Workcubes</button>
-    <button type='submit' name='action' value = 'customer_confrooms'>Rented Conference Rooms</button>
-    <button type='submit' name='action' value = 'customer_storages'>Rented Storages</button>
+        {% csrf_token %}
+        <button type='submit' name='action' value= 'customer_all'>Rented All</button>
+        <button type='submit' name='action' value= 'customer_offices'>Rented Offices</button>
+        <button type='submit' name='action' value = 'customer_workcubes'>Rented Workcubes</button>
+        <button type='submit' name='action' value = 'customer_confrooms'>Rented Conference Rooms</button>
+        <button type='submit' name='action' value = 'customer_storages'>Rented Storages</button>
     </form>
         
     <h2>Rental Analytics<h2/>
@@ -58,15 +58,6 @@
             <td> {{ rent.5 }} </td>
             <td> {{ rent.6 }} </td>
             <td> {{ rent.7 }} </td>
-            <td>
-                <form method="POST" style="display: inline;">
-                {% csrf_token %}
-                <input type="hidden" name="rent_customerid" value="{{rent.0}}"/>
-                <input type="hidden" name="rent_unit" value="{{rent.1}}"/>
-                <input type="hidden" name="rent_street" value="{{rent.4}}"/>
-                <input type="hidden" name="rent_unit_no" value="{{rent.5}}"/>
-                <input type="hidden" name="rent_postal_code" value="{{rent.6}}"/>
-                </form></td> 
         </tr>
         {% endfor %}
     </table>
@@ -92,14 +83,6 @@
             <td> {{ cust.1 }} </td>
             <td> {{ cust.2 }} </td>
             <td> {{ cust.3 }} </td>
-            <td>
-                <form method="POST" style="display: inline;">
-                {% csrf_token %}
-                <input type="hidden" name="comp_customerid" value="{{cust.0}}"/>
-                <input type="hidden" name="comp_firstname" value="{{cust.1}}"/>
-                <input type="hidden" name="comp_lastname" value="{{cust.2}}"/>
-                <input type="hidden" name="comp_amountpaid" value="{{cust.3}}"/>
-                </form></td> 
         </tr>
         {% endfor %}
     </table>
