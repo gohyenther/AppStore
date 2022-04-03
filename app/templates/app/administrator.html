@@ -3,7 +3,16 @@
 <body>
     <img src="{% static 'app/images/hotdesk.jpg' %}" style="text-align:center; width: 30%" alt="HotDesk logo"/><br/>    
     <h2 style="text-align:center">Hello Administrator!<h2/>
-        <p><a href='adminanalytics'>Admin Analytics</a></p>
+    
+    <div style="text-align:right">
+        <form method="POST" style="display: inline;">
+            <!-- Security token by Django -->
+            {% csrf_token %}
+            <button type="submit" style="color:blue" name="action" value="logout">Log out</button>
+        </form>
+    </div>
+    
+    <p><a href='adminanalytics'>Admin Analytics</a></p>
     <br/>
     
     <style>
