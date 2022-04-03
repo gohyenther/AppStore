@@ -124,15 +124,15 @@
 <div class="ex4">
     <table border=1
            align = 'right'
-           style="width:20%">
+           style="width:20%;vertical-align: top">
         <thead>
             <th>Unit</th>
             <th>Number of Rents</th>
         </thead>
         {% for pop in popularity %}
         <tr>
-            <td> {{ rent.0 }} </td>
-            <td> {{ rent.1 }} </td>
+            <td> {{ pop.0 }} </td>
+            <td> {{ pop.1 }} </td>
         </tr>
         {% endfor %}
     </table>
