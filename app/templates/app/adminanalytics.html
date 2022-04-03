@@ -149,8 +149,9 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
         ['FileName', 'Frequency'],
-            ['this', 100],
-            ['that', 200]
+        {% for rev in revenueunit %}
+        ['{{ rev.unit }}', {{ rev.amount_paid }}], 
+        {% endfor %}
         ]);
 
         var options = {
