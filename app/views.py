@@ -548,7 +548,7 @@ def adminanalytics(request):
         transactions = cursor.fetchall()
         cursor.execute("SELECT r.unit, COUNT(*) FROM rent r GROUP BY unit ORDER BY COUNT(*) DESC")
         popularity = cursor.fetchall()
-        cursor.execute("SELECT t.amount_paid, r.unit FROM transaction t, rent r WHERE t.customerid = r.customerid GROUP BY r.unit")
+        cursor.execute("SELECT t.amount_paid, r.unit FROM transaction t, rent r WHERE t.customerid = r.customerid GROUP BY r.unit, t.amount_paid")
         revenueunit = cursor.fetchall()
     
     if request.POST:
