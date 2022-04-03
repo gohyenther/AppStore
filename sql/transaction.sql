@@ -1,5 +1,5 @@
 INSERT INTO transaction
-SELECT r.customerid, r.customerid,
+SELECT r.customerid, r.start_date,
 			(CASE WHEN t.timescale = 'Monthly'
 			 THEN ((DATE_PART('year', r.end_rent::date) - DATE_PART('year', r.start_rent::date)) * 12 +
               (DATE_PART('month', r.end_rent::date) - DATE_PART('month', r.start_rent::date))) * t.rate
