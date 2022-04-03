@@ -34,8 +34,6 @@
     </style>
 
     <h2>Customer Logs<h2/>
-    
-    <h2>Rental Analytics<h2/> 
     <form method="POST" style="display: inline;">
         {% csrf_token %}
         <button type='submit' name='action' value= 'customer_all'>Rented All</button>
@@ -43,7 +41,7 @@
         <button type='submit' name='action' value = 'customer_workcubes'>Rented Workcubes</button>
         <button type='submit' name='action' value = 'customer_confrooms'>Rented Conference Rooms</button>
         <button type='submit' name='action' value = 'customer_storages'>Rented Storages</button>
-        <button type='submit' name='action' value = 'no_rent'>Rented Storages</button>
+        <button type='submit' name='action' value = 'no_rent'>No Rented</button>
     </form>
 
     <div class="ex1">
