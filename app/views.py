@@ -512,6 +512,8 @@ def adminanalytics(request):
         customer_rented = cursor.fetchall()
         cursor.execute("SELECT r.customerid, c.first_name, c.last_name, SUM(t.amount_paid) FROM rent r, customers c, transaction t WHERE c.customerid = t.customerid AND c.customerid = r.customerid GROUP BY r.customerid, c.first_name, c.last_name ORDER BY SUM(t.amount_paid) DESC")
         customer_comparison = cursor.fetchall()
+        cursor.execute("SELECT * FROM transaction")
+        transactions = cursor.fetchall()
     
     if request.POST:
         ## Obtain customer profiles for given unit
@@ -548,5 +550,5 @@ def adminanalytics(request):
                 customer_comparison = cursor.fetchall()
 
     
-    result_dict = {'customer_rented': customer_rented, 'customer_comparison': customer_comparison}
+    result_dict = {'customer_rented': customer_rented, 'customer_comparison': customer_comparison, 'transactions': transactions}
     return render(request, "app/adminanalytics.html", result_dict)
