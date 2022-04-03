@@ -551,7 +551,7 @@ def adminanalytics(request):
         cursor.execute("SELECT t.amount_paid, r.unit FROM transaction t, rent r WHERE t.customerid = r.customerid GROUP BY r.unit, t.amount_paid")
         revenueunit = [['unit', 'revenue']]
         for x in cursor:
-            units = str(x[0])
+            units = x[0]
             revenues = x[1]
             unitsx = [units, revenues]
             revenueunit.append(unitsx)
