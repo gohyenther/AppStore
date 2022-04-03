@@ -548,6 +548,8 @@ def adminanalytics(request):
         transactions = cursor.fetchall()
         cursor.execute("SELECT r.unit, COUNT(*) FROM rent r GROUP BY unit ORDER BY COUNT(*) DESC")
         popularity = cursor.fetchall()
+        cursor.execute("SELECT DATE_TRUNC('month', r.start_rent) AS rental, COUNT(r.customerid) AS count FROM rent r GROUPBY DATE_TRUNC('month', r.start_rent)")
+        revenuetime = cursor.fetchall()
     
     if request.POST:
         ## Obtain customer profiles for given unit
@@ -604,11 +606,8 @@ def adminanalytics(request):
         if request.POST['action'] == 'back':
             return redirect('administrator')
     
-    #Find revenue over time
-    if request.POST:
-        if request.POST['action'] == 'revenuetime':
-            cursor.execute("SELECT DATE_TRUNC('month', r.start_rent) AS rental, COUNT(r.customerid) AS count FROM rent r GROUPBY DATE_TRUNC('month', r.start_rent)")
-            revenuetime = cursor.fetchall()
+
+
     
     result_dict = {'customer_rented': customer_rented, 'customer_comparison': customer_comparison, 'transactions': transactions, 'popularity': popularity, 'revenuetime': revenuetime}
     return render(request, "app/adminanalytics.html", result_dict)
