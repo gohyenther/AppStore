@@ -34,7 +34,7 @@
     </style>
 
     <h2>Customer Logs<h2/>
-    <form method="POST" style="display: inline-block; float:left;">
+    <form method="POST" style="display: inline;">
         {% csrf_token %}
         <button type='submit' name='action' value= 'customer_all'>Rented All</button>
         <button type='submit' name='action' value= 'customer_offices'>Rented Offices</button>
@@ -45,8 +45,7 @@
     </form>
 
     <div class="ex1">
-    <table border=1
-           style = 'float: left'>
+    <table border=1>
         <thead>
             <th>ID</th>
             <th>First Name</th>
@@ -125,7 +124,7 @@
 
 <div class="ex4">
     <table border=1
-           style="width:20%; display:inline-block;">
+           style="width:20%;">
         <caption>Unit Popularity</caption>
         <thead>
             <th>Unit</th>
