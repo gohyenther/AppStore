@@ -546,7 +546,7 @@ def adminanalytics(request):
         customer_comparison = cursor.fetchall()
         cursor.execute("SELECT * FROM transaction")
         transactions = cursor.fetchall()
-        cursor.exeucte("SELECT COUNT(*) FROM rent r GROUP BY unit ORDER BY COUNT(*) ASC")
+        cursor.execute("SELECT COUNT(*) FROM rent r GROUP BY unit ORDER BY COUNT(*) ASC")
         popularity = cursor.fetchall()
     
     if request.POST:
