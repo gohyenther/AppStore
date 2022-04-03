@@ -101,6 +101,9 @@ def customerprofile(request, id):
                 cursor.execute("SELECT timescale FROM storages WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [request.POST['store_unit'], request.POST['store_street'], request.POST['store_unit_no'], request.POST['store_postal_code']])
                 timescale = cursor.fetchone()
+                cursor.execute("SELECT rate FROM storages WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                               [request.POST['store_unit'], request.POST['store_street'], request.POST['store_unit_no'], request.POST['store_postal_code']])
+                rate = cursor.fetchone()
                 cursor.execute("SELECT * FROM rent WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [request.POST['store_unit'], request.POST['store_street'], request.POST['store_unit_no'], request.POST['store_postal_code']])
                 checkRent = cursor.fetchone()
@@ -116,6 +119,7 @@ def customerprofile(request, id):
                     end_rent = future.strftime("%d/%m/%Y %H:%M:%S")
                     cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s, %s, %s)",
                                    [id, request.POST['store_unit'], start_rent, end_rent, request.POST['store_street'], request.POST['store_unit_no'], request.POST['store_postal_code']])
+                    cursor.execute("INSERT INTO transaction VALUES(%s, %s, %s)", [id, id, rate])
     ## Rent conference room
     if request.POST:
         if request.POST['action'] == 'confroom_rent':
@@ -125,6 +129,9 @@ def customerprofile(request, id):
                 cursor.execute("SELECT timescale FROM confrooms WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [request.POST['conf_unit'], request.POST['conf_street'], request.POST['conf_unit_no'], request.POST['conf_postal_code']])
                 timescale = cursor.fetchone()
+                cursor.execute("SELECT rate FROM confrooms WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                               [request.POST['conf_unit'], request.POST['conf_street'], request.POST['conf_unit_no'], request.POST['conf_postal_code']])
+                rate = cursor.fetchone()
                 cursor.execute("SELECT * FROM rent WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [request.POST['conf_unit'], request.POST['conf_street'], request.POST['conf_unit_no'], request.POST['conf_postal_code']])
                 checkRent = cursor.fetchone()
@@ -137,6 +144,7 @@ def customerprofile(request, id):
                     end_rent = future.strftime("%d/%m/%Y %H:%M:%S")
                     cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s, %s, %s)",
                                    [id, request.POST['conf_unit'], start_rent, end_rent, request.POST['conf_street'], request.POST['conf_unit_no'], request.POST['conf_postal_code']])
+                    cursor.execute("INSERT INTO transaction VALUES(%s, %s, %s)", [id, id, rate])
                     
     ## Rent work cubicle
     if request.POST:
@@ -147,6 +155,9 @@ def customerprofile(request, id):
                 cursor.execute("SELECT timescale FROM workcubes WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [request.POST['cube_unit'], request.POST['cube_street'], request.POST['cube_unit_no'], request.POST['cube_postal_code']])
                 timescale = cursor.fetchone()
+                cursor.execute("SELECT rate FROM workcubes WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
+                               [request.POST['cube_unit'], request.POST['cube_street'], request.POST['cube_unit_no'], request.POST['cube_postal_code']])
+                rate = cursor.fetchone()
                 cursor.execute("SELECT * FROM rent WHERE unit = %s AND street = %s AND unit_no = %s AND postal_code = %s",
                                [request.POST['cube_unit'], request.POST['cube_street'], request.POST['cube_unit_no'], request.POST['cube_postal_code']])
                 checkRent = cursor.fetchone()
@@ -159,6 +170,7 @@ def customerprofile(request, id):
                     end_rent = future.strftime("%d/%m/%Y %H:%M:%S")
                     cursor.execute("INSERT INTO rent VALUES(%s, %s, %s, %s, %s, %s, %s)",
                                    [id, request.POST['cube_unit'], start_rent, end_rent, request.POST['cube_street'], request.POST['cube_unit_no'], request.POST['cube_postal_code']])
+                    cursor.execute("INSERT INTO transaction VALUES(%s, %s, %s)", [id, id, rate])
                     
     ## Vacate office space
     if request.POST:
@@ -514,7 +526,7 @@ def adminanalytics(request):
     with connection.cursor() as cursor:
         cursor.execute("SELECT r.customerid, c.first_name, c.last_name, r.unit, r.start_rent, r.end_rent, r.street, r.postal_code FROM rent r FULL OUTER JOIN customers c ON r.customerid = c.customerid WHERE r.customerid IS NOT NULL ORDER BY unit")
         customer_rented = cursor.fetchall()
-        cursor.execute("SELECT r.customerid, c.first_name, c.last_name, SUM(t.amount_paid) FROM rent r, customers c, transaction t WHERE c.customerid = t.customerid AND c.customerid = r.customerid GROUP BY r.customerid, c.first_name, c.last_name ORDER BY SUM(t.amount_paid) DESC")
+        cursor.execute("SELECT c.customerid, c.first_name, c.last_name, SUM(t.amount_paid) FROM customers c, transaction t WHERE c.customerid = t.customerid GROUP BY c.customerid, c.first_name, c.last_name ORDER BY SUM(t.amount_paid) DESC")
         customer_comparison = cursor.fetchall()
         cursor.execute("SELECT * FROM transaction")
         transactions = cursor.fetchall()
