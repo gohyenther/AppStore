@@ -555,7 +555,7 @@ def adminanalytics(request):
                 customer_rented = cursor.fetchall()
                 
     if request.POST:
-        ##Obtain customer profiles for given unit
+        ## Obtain customer profiles for given unit
         if request.POST['action'] == 'richest':
             with connection.cursor() as cursor:
                 cursor.execute("SELECT c.customerid, c.first_name, c.last_name, SUM(t.amount_paid) FROM customers c, transaction t WHERE c.customerid = t.customerid GROUP BY c.customerid, c.first_name, c.last_name ORDER BY SUM(t.amount_paid) DESC")
@@ -564,7 +564,13 @@ def adminanalytics(request):
             with connection.cursor() as cursor:
                 cursor.execute("SELECT c.customerid, c.first_name, c.last_name, SUM(t.amount_paid) FROM customers c, transaction t WHERE c.customerid = t.customerid GROUP BY c.customerid, c.first_name, c.last_name ORDER BY SUM(t.amount_paid) ASC")
                 customer_comparison = cursor.fetchall()
-
+    
+    if request.POST:
+        ## Search for a particular customerid in transaction table
+        if request.POST['action'] == 'search':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT c.customerid, c.first_name, c.last_name, SUM(t.amount_paid) FROM customers c, transaction t WHERE c.customerid = t.customerid AND c.customerid = %s GROUP BY c.customerid, c.first_name, c.last_name ORDER BY SUM(t.amount_paid) DESC", [request.POST['custidsearch']])
+                transactions = cursor.fetchall()
     
     result_dict = {'customer_rented': customer_rented, 'customer_comparison': customer_comparison, 'transactions': transactions}
     return render(request, "app/adminanalytics.html", result_dict)
