@@ -33,6 +33,14 @@
     {% for cust in records %}
     <h2 style="text-align:center">Hello {{cust.1}}!<h2/>
     
+    <div style="text-align:right">
+        <form method="POST" style="display: inline;">
+            <!-- Security token by Django -->
+            {% csrf_token %}
+            <button type="submit" style="color:blue" name="action" value="logout">Log out</button>
+        </form>
+    </div>
+        
     <h2>Your Profile:<h2/>
     <table border=1>
         <thead>
