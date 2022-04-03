@@ -147,12 +147,7 @@
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-        ['FileName', 'Frequency'],
-        {% for rev in revenueunit %}
-        [{{ rev.0 }}, {{ rev.1 }}], 
-        {% endfor %}
-        ]);
+        var data = google.visualization.arrayToDataTable({{revenueunit|safe}});
 
         var options = {
         title: 'Trend by Unit',
