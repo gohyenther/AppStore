@@ -604,5 +604,11 @@ def adminanalytics(request):
         if request.POST['action'] == 'back':
             return redirect('administrator')
     
-    result_dict = {'customer_rented': customer_rented, 'customer_comparison': customer_comparison, 'transactions': transactions, 'popularity': popularity}
+    #Find revenue over time
+    if request.POST:
+        if request.POST['action'] == 'revenuetime':
+            cursor.execute("SELECT DATE_TRUNC('month', r.start_rent) AS rental, COUNT(r.customerid) AS count FROM rent r GROUPBY DATE_TRUNC('month', r.start_rent)")
+            revenuetime = cursor.fetchall()
+    
+    result_dict = {'customer_rented': customer_rented, 'customer_comparison': customer_comparison, 'transactions': transactions, 'popularity': popularity, 'revenuetime': revenuetime}
     return render(request, "app/adminanalytics.html", result_dict)
