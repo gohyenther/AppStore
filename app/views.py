@@ -259,7 +259,12 @@ def customerprofile(request, id):
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM workcubes WHERE occupier = 'No' ORDER BY size_sf ASC")
                 workcubes = cursor.fetchall()
-
+    
+     if request.POST:
+        ## Log Out
+        if request.POST['action'] == 'logout':
+            return redirect('index')
+    
     result_dict = {'records': customers, 'offices': offices, 'rented': rented, 'storages': storages, 'confrooms': confrooms, 'workcubes': workcubes, 'status': status}
     return render(request,'app/customerprofile.html',result_dict)
 
@@ -287,7 +292,12 @@ def administrator(request):
         confrooms = cursor.fetchall()
         cursor.execute("SELECT * FROM workcubes ORDER BY unit")
         workcubes = cursor.fetchall()
-
+    
+    if request.POST:
+        ## Log Out
+        if request.POST['action'] == 'logout':
+            return redirect('index')
+    
     result_dict = {'records': customers, 'offices': offices, 'storages': storages, 'confrooms': confrooms, 'workcubes': workcubes}
     return render(request,'app/administrator.html',result_dict)
 
@@ -490,6 +500,7 @@ def addworkcube(request):
     context['status'] = status
     return render(request, "app/addworkcube.html", context)
 
+
 # ADMIN SIDE ANALYTICS PAGE
 def adminanalytics(request):
     """Shows the admin analytics page"""
@@ -535,6 +546,11 @@ def adminanalytics(request):
             with connection.cursor() as cursor:
                 cursor.execute("SELECT r.customerid, c.first_name, c.last_name, SUM(t.amount_paid) FROM rent r, customers c, transaction t WHERE c.customerid = t.customerid AND c.customerid = r.customerid GROUP BY r.customerid, c.first_name, c.last_name ORDER BY SUM(t.amount_paid) ASC")
                 customer_comparison = cursor.fetchall()
-                
+    
+    if request.POST:
+        ## Log Out
+        if request.POST['action'] == 'logout':
+            return redirect('index')
+    
     result_dict = {'customer_rented': customer_rented, 'customer_comparison': customer_comparison}
     return render(request, "app/adminanalytics.html", result_dict)
