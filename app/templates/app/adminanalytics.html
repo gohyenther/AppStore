@@ -147,7 +147,7 @@
         google.load("visualization", "1", {packages:["corechart"]});
         google.setOnLoadCallback(drawChart);
         function drawChart() {
-            var data = google.visualization.arrayToDataTable([ ['Unit', 'Revenue'], ru[0] ]);
+            var data = google.visualization.arrayToDataTable([ ['Unit', 'Revenue'], [ru[0]] ]);
             var options = {
                 title: 'Trend by Unit',
                 hAxis: {title: 'FileName', titleTextStyle: {color: 'red'}}
