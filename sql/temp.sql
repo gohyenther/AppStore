@@ -933,14 +933,14 @@ WHERE t.occupier = 'Yes';
 /* 10 rented units with customers */
 UPDATE rent
 SET customerid = 'bburehillkx',
-start_rent = '2021-05-11 00:02:15' ,
+start_rent = '2021-05-10 00:02:15' ,
 end_rent = '2021-05-12 00:31:58'
 WHERE street = '92 Briar Crest Way' AND unit_no = '47-10' AND postal_code = '837954';
 
 /* to demonstrate one customer can rent multiple units */
 UPDATE rent
 SET customerid = 'bburehillkx',
-start_rent = '2021-12-30 17:38:55', 
+start_rent = '2021-12-29 17:38:55', 
 end_rent = '2022-01-01 19:01:07'
 WHERE street = '65 Burrows Plaza' AND unit_no = '91-94' AND postal_code = '428856';
 
@@ -948,7 +948,7 @@ WHERE street = '65 Burrows Plaza' AND unit_no = '91-94' AND postal_code = '42885
 
 UPDATE rent
 SET customerid = 'amaldenqa',
-start_rent = '2021-07-21 04:31:21' ,
+start_rent = '2021-07-20 04:31:21' ,
 end_rent = '2021-07-22 05:00:16'
 WHERE street = '2 Sheridan Court' AND unit_no =  '13-00' AND postal_code = '504652';
 
@@ -961,12 +961,12 @@ WHERE street = '041 Northfield Park' AND unit_no = '52-26' AND postal_code = '32
 UPDATE rent
 SET customerid = 'asamsinil',
 start_rent = '2021-07-10 00:39:44', 
-end_rent = '2021-07-11 10:02:17'
+end_rent = '2021-07-12 10:02:17'
 WHERE street = '7133 Continental Place' AND unit_no = '71-12' AND postal_code = '336937';
 
 UPDATE rent
 SET customerid = 'kdederichol',
-start_rent = '2021-08-25 17:36:37', 
+start_rent = '2021-08-29 17:36:37', 
 end_rent = '2021-09-01 02:36:30'
 WHERE street = '16398 Valley Edge Pass' AND unit_no = '63-16' AND postal_code = '798609';
 
@@ -978,13 +978,13 @@ WHERE street = '95 Porter Parkway' AND unit_no = '80-52' AND postal_code = '3254
 
 UPDATE rent
 SET customerid = 'jhovecl',
-start_rent = '2021-12-29 19:21:15', 
+start_rent = '2021-12-20 19:21:15', 
 end_rent = '2022-01-02 00:04:08'
 WHERE street = '38 Northridge Junction' AND unit_no = '50-26' AND postal_code = '267445';
 
 UPDATE rent
 SET customerid = 'listed9b',
-start_rent = '2021-12-28 02:40:07', 
+start_rent = '2021-12-11 02:40:07', 
 end_rent = '2022-01-01 06:09:43'
 WHERE street = '0717 Hovde Road' AND unit_no = '03-43' AND postal_code = '673133';
 
