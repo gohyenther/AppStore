@@ -933,14 +933,14 @@ WHERE t.occupier = 'Yes';
 /* 10 rented units with customers */
 UPDATE rent
 SET customerid = 'bburehillkx',
-start_rent = '2021-05-10 00:02:15' ,
+start_rent = '2021-05-04 00:02:15' ,
 end_rent = '2021-05-12 00:31:58'
 WHERE street = '92 Briar Crest Way' AND unit_no = '47-10' AND postal_code = '837954';
 
 /* to demonstrate one customer can rent multiple units */
 UPDATE rent
 SET customerid = 'bburehillkx',
-start_rent = '2021-12-29 17:38:55', 
+start_rent = '2021-12-20 17:38:55', 
 end_rent = '2022-01-01 19:01:07'
 WHERE street = '65 Burrows Plaza' AND unit_no = '91-94' AND postal_code = '428856';
 
@@ -948,7 +948,7 @@ WHERE street = '65 Burrows Plaza' AND unit_no = '91-94' AND postal_code = '42885
 
 UPDATE rent
 SET customerid = 'amaldenqa',
-start_rent = '2021-07-20 04:31:21' ,
+start_rent = '2021-07-12 04:31:21' ,
 end_rent = '2021-07-22 05:00:16'
 WHERE street = '2 Sheridan Court' AND unit_no =  '13-00' AND postal_code = '504652';
 
@@ -960,7 +960,7 @@ WHERE street = '041 Northfield Park' AND unit_no = '52-26' AND postal_code = '32
 
 UPDATE rent
 SET customerid = 'asamsinil',
-start_rent = '2021-07-10 00:39:44', 
+start_rent = '2021-07-02 00:39:44', 
 end_rent = '2021-07-12 10:02:17'
 WHERE street = '7133 Continental Place' AND unit_no = '71-12' AND postal_code = '336937';
 
