@@ -140,26 +140,22 @@
     
 <h1>Charts</h1>
     <script>
-        var ru_array = [];
+        var ru_array = [['Unit', 'Revenue']];
     </script>
     
     {% for ru in revenueunit %}
     <script>
-        ru_array.push("{{ ru.0 }}");
+        ru_array.push(["{{ ru.0 }}", "{{ ru.1}}"]);
     </script>
     {% endfor %}
     
-    <p id="demo"></p>
-    
     <head>
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-        <script type="text/javascript">
-        document.getElementById("demo").innerHTML = ru_array[0];
-        
+        <script type="text/javascript">      
         google.load("visualization", "1", {packages:["corechart"]});
         google.setOnLoadCallback(drawChart);
         function drawChart() {
-            var data = google.visualization.arrayToDataTable([ ['Unit', 'Revenue'], ['test', 10] ]);
+            var data = google.visualization.arrayToDataTable(ru_array);
             var options = {
                 title: 'Trend by Unit',
                 hAxis: {title: 'FileName', titleTextStyle: {color: 'red'}}
