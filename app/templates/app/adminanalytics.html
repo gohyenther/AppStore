@@ -139,25 +139,23 @@
     </div><br/>
     
 <h1>Charts</h1>
-    <head>
-        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-        <script type="text/javascript">
-        var data = JSON.parse("{{revenueunit|escapejs}}");
-        document.getElementById("demo").innerHTML = 5;
-            
-        google.load("visualization", "1", {packages:["corechart"]});
-        google.setOnLoadCallback(drawChart);
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([ ['Unit', 'Revenue'], ['test', 10] ]);
-            var options = {
-                title: 'Trend by Unit',
-                hAxis: {title: 'FileName', titleTextStyle: {color: 'red'}}
-            };
-            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-            chart.draw(data, options);
-        }
-        </script>
-    </head>
+    <div id="chart_div"></div>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    document.getElementById("demo").innerHTML = 5;
+
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([ ['Unit', 'Revenue'], ['test', 10] ]);
+        var options = {
+            title: 'Trend by Unit',
+            hAxis: {title: 'FileName', titleTextStyle: {color: 'red'}}
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+    </script>
 
 </body>
 </html>
