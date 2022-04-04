@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.db import connection
 from datetime import datetime, timedelta
-from json import dumps
 
 
 # LOGIN PAGE
@@ -610,5 +609,5 @@ def adminanalytics(request):
 
 
     
-    result_dict = {'customer_rented': customer_rented, 'customer_comparison': customer_comparison, 'transactions': transactions, 'popularity': popularity, 'revenueunit': dumps(revenueunit)}
+    result_dict = {'customer_rented': customer_rented, 'customer_comparison': customer_comparison, 'transactions': transactions, 'popularity': popularity, 'revenueunit': revenueunit}
     return render(request, "app/adminanalytics.html", result_dict)
