@@ -142,10 +142,11 @@
     <head>
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <script type="text/javascript">
-        var mylist = document.getElementById("ru").innerHTML;
-        for(i = 0; i < revenueunit.length; i++){
-            console.log(revenueunit[i])
+        var mylist = {{revenueunit}};
+        for(i = 0; i < mylist.length; i++){
+            console.log(mylist[i])
         };
+
         google.load("visualization", "1", {packages:["corechart"]});
         google.setOnLoadCallback(drawChart);
         function drawChart() {
