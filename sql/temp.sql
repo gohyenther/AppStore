@@ -934,14 +934,14 @@ WHERE t.occupier = 'Yes';
 UPDATE rent
 SET customerid = 'bburehillkx',
 start_rent = '2021-05-11 00:02:15' ,
-end_rent = '2021-06-14 00:31:58'
+end_rent = '2021-05-12 00:31:58'
 WHERE street = '92 Briar Crest Way' AND unit_no = '47-10' AND postal_code = '837954';
 
 /* to demonstrate one customer can rent multiple units */
 UPDATE rent
 SET customerid = 'bburehillkx',
 start_rent = '2021-12-30 17:38:55', 
-end_rent = '2022-01-04 19:01:07'
+end_rent = '2022-01-01 19:01:07'
 WHERE street = '65 Burrows Plaza' AND unit_no = '91-94' AND postal_code = '428856';
 
 /* remaining 8 rents */
@@ -949,49 +949,49 @@ WHERE street = '65 Burrows Plaza' AND unit_no = '91-94' AND postal_code = '42885
 UPDATE rent
 SET customerid = 'amaldenqa',
 start_rent = '2021-07-21 04:31:21' ,
-end_rent = '2021-08-10 05:00:16'
+end_rent = '2021-07-22 05:00:16'
 WHERE street = '2 Sheridan Court' AND unit_no =  '13-00' AND postal_code = '504652';
 
 UPDATE rent
 SET customerid = 'ubernardouxob',
 start_rent = '2021-06-11 12:01:17', 
-end_rent = '2021-07-27 05:51:57'
+end_rent = '2021-06-12 05:51:57'
 WHERE street = '041 Northfield Park' AND unit_no = '52-26' AND postal_code = '328128';
 
 UPDATE rent
 SET customerid = 'asamsinil',
 start_rent = '2021-07-10 00:39:44', 
-end_rent = '2021-08-11 10:02:17'
+end_rent = '2021-07-11 10:02:17'
 WHERE street = '7133 Continental Place' AND unit_no = '71-12' AND postal_code = '336937';
 
 UPDATE rent
 SET customerid = 'kdederichol',
 start_rent = '2021-08-25 17:36:37', 
-end_rent = '2021-09-06 02:36:30'
+end_rent = '2021-09-01 02:36:30'
 WHERE street = '16398 Valley Edge Pass' AND unit_no = '63-16' AND postal_code = '798609';
 
 UPDATE rent
 SET customerid = 'cmapowderaz',
 start_rent = '2021-05-06 04:14:22', 
-end_rent = '2021-06-12 02:01:32'
+end_rent = '2021-05-07 02:01:32'
 WHERE street = '95 Porter Parkway' AND unit_no = '80-52' AND postal_code = '325442';
 
 UPDATE rent
 SET customerid = 'jhovecl',
-start_rent = '2021-12-21 19:21:15', 
-end_rent = '2022-01-24 00:04:08'
+start_rent = '2021-12-29 19:21:15', 
+end_rent = '2022-01-02 00:04:08'
 WHERE street = '38 Northridge Junction' AND unit_no = '50-26' AND postal_code = '267445';
 
 UPDATE rent
 SET customerid = 'listed9b',
-start_rent = '2021-12-11 02:40:07', 
-end_rent = '2022-01-26 06:09:43'
+start_rent = '2021-12-28 02:40:07', 
+end_rent = '2022-01-01 06:09:43'
 WHERE street = '0717 Hovde Road' AND unit_no = '03-43' AND postal_code = '673133';
 
 UPDATE rent
 SET customerid = 'hjezardkb',
 start_rent = '2021-05-15 08:45:12', 
-end_rent = '2021-06-04 02:55:06'
+end_rent = '2021-05-17 02:55:06'
 WHERE street = '64 Debs Park' AND unit_no = '91-76' AND postal_code = '372326';
 
 
