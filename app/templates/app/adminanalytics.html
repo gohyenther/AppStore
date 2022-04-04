@@ -142,6 +142,7 @@
     <head>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
+    var ru = JSON.parse("{{revenueunit|escapejs}}");
     google.load("visualization", "1", {packages:["corechart"]});
     google.setOnLoadCallback(drawChart);
     function drawChart() {
