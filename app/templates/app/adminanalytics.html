@@ -142,15 +142,12 @@
     <head>
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <script type="text/javascript">
-        var mylist = {{revenueunit}};
-        for(i = 0; i < mylist.length; i++){
-            console.log(mylist[i])
-        };
+        var ru = {{revenueunit}};
 
         google.load("visualization", "1", {packages:["corechart"]});
         google.setOnLoadCallback(drawChart);
         function drawChart() {
-            var data = google.visualization.arrayToDataTable([['Unit', 'Revenue'], [{{ru.0}}, {{ru.1}}]]);
+            var data = google.visualization.arrayToDataTable([ ['Unit', 'Revenue'], ru[0] ]);
             var options = {
                 title: 'Trend by Unit',
                 hAxis: {title: 'FileName', titleTextStyle: {color: 'red'}}
