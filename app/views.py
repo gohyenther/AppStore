@@ -605,9 +605,6 @@ def adminanalytics(request):
         # back to admin page
         if request.POST['action'] == 'back':
             return redirect('administrator')
-    
 
-
-    
     result_dict = {'customer_rented': customer_rented, 'customer_comparison': customer_comparison, 'transactions': transactions, 'popularity': popularity, 'revenueunit': revenueunit}
     return render(request, "app/adminanalytics.html", result_dict)
