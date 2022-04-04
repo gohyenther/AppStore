@@ -140,12 +140,12 @@
     
 <h1>Charts</h1>
     <script>
-        var ru_array = [];
+        var ru_array = ["start"];
     </script>
     
     {% for ru in revenueunit %}
     <script>
-        var ru_array.push({{ru.0}});
+        ru_array.push("test");
     </script>
     {% endfor %}
     
