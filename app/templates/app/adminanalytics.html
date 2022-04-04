@@ -140,11 +140,15 @@
     
 <h1>Charts</h1>
     <p id="demo"></p>
-    <head>
+    <head><div id="chart_div" style="width: 900px; height: 500px;">
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <script type="text/javascript">
-        var ru = {{revenueunit}};
-        document.getElementById("demo").innerHTML = ru[0];
+        var ru_var = [
+            {% for ru in revenueunit %}
+                {{ ru.0 }},
+            {% endfor %}
+            ];
+        document.getElementById("demo").innerHTML = 5;
             
         google.load("visualization", "1", {packages:["corechart"]});
         google.setOnLoadCallback(drawChart);
@@ -158,22 +162,7 @@
             chart.draw(data, options);
         }
         </script>
-    </head>
+    </head></div>
 
-  <body>
-     <div id="chart_div" style="width: 900px; height: 500px;"></div>
-     <table border=1 style="width:20%;">
-        <thead>
-            <th>Unit</th>
-            <th>Revenue</th>
-        </thead>
-        {% for ru in revenueunit %}
-        <tr>
-            <td> {{ ru.0 }} </td>
-            <td> {{ ru.1 }} </td>
-        </tr>
-        {% endfor %}
-    </table>
-  </body>
 </body>
 </html>
