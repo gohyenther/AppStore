@@ -139,24 +139,26 @@
     </div><br/>
     
 <h1>Charts</h1>
-    {% load revenueunit % }
   <head>
-   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-   <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable({{revenueunit}});
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+       {{ revenueunit|safe }}.forEach(item => {
+           console.log(item)
+       })
+       google.load("visualization", "1", {packages:["corechart"]});
+       google.setOnLoadCallback(drawChart);
+       function drawChart() {
+           var data = google.visualization.arrayToDataTable({{revenueunit}});
 
-        var options = {
-        title: 'Trend by Unit',
-        hAxis: {title: 'FileName', titleTextStyle: {color: 'red'}}
-        };
+           var options = {
+            title: 'Trend by Unit',
+            hAxis: {title: 'FileName', titleTextStyle: {color: 'red'}}
+           };
 
-        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
+           var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+           chart.draw(data, options);
       }
-   </script>
+    </script>
   </head>
   <body>
      <div id="chart_div" style="width: 900px; height: 500px;"></div>
