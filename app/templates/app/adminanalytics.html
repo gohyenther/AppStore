@@ -144,7 +144,7 @@
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <script type="text/javascript">
         var ru = "{{revenueunit}}";
-        document.getElementById("demo").innerHTML = ru;
+        document.getElementById("demo").innerHTML = ru[0];
             
         google.load("visualization", "1", {packages:["corechart"]});
         google.setOnLoadCallback(drawChart);
